@@ -70,6 +70,7 @@ const QUERY = `
         title
         thumbnail
         url
+        site
     }
     trailer {
         id
@@ -134,7 +135,46 @@ const getAnilistMetaFromId = async (id: string) => {
     data: args,
   });
 
-  console.log(response?.data?.data.Media);
+  return response?.data?.data?.Media;
+};
+
+const genMappings = async (animeMeta: any) => {
+  console.log("GENERATING MAPPINGS FOR", animeMeta.title.romaji);
+  const providers = [
+    { name: "AniWatch", endpoint: "https://hianime.to/search/" },
+    {
+      name: "Gogoanime",
+      endpoint: "https://ww19.gogoanimes.fi/search.html",
+    },
+  ];
+
+  const mappings = [];
+
+  for (const provider of providers) {
+    const url = `${provider.endpoint}?keyword=${encodeURIComponent(
+      animeMeta.title.romaji
+    )}`;
+
+    const response = await safeRequest(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    let searchResults;
+
+    switch (provider.name) {
+      case "AniWatch":
+        searchResults = response?.data;
+        console.log("H!ANIME RESULTS", searchResults);
+      case "Gogoanime":
+        searchResults = response?.data;
+        console.log("GOGO RESULTS", searchResults);
+      default:
+        break;
+    }
+  }
 };
 
 const safeRequest = async (
@@ -157,6 +197,7 @@ const safeRequest = async (
         ? retryAfter * 3000
         : resetTime * 1000 - Date.now();
       if (delay > 0) {
+        console.log("Rate limit reached. Waiting for", delay, "ms");
         await new Promise((resolve) => setTimeout(resolve, delay));
       }
       if (retries < 15) {
@@ -178,6 +219,7 @@ const save = (data: any, filename: string) => {
   const ids = await getAnilistIds();
   console.log("DONE FETCHING IDS");
   for (const id of ids) {
-    await getAnilistMetaFromId(id);
+    const animeMeta = await getAnilistMetaFromId(id);
+    const mappings = await genMappings(animeMeta);
   }
 })();
