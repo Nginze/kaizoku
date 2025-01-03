@@ -1,6 +1,11 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { writeFileSync, readFileSync, existsSync } from "fs";
+import { load, CheerioAPI } from "cheerio";
+import stringSimilarity from "string-similarity";
 import path from "path";
+import { connectDB } from "./config/db";
+import "dotenv/config";
+import Anime from "./models/anime";
 
 const ANILIST_URL = "https://graphql.anilist.co";
 const QUERY = `
@@ -85,7 +90,10 @@ const QUERY = `
 const getAnilistIds = async (): Promise<string[]> => {
   const filePath = path.join(__dirname, "anilist-ids.json");
 
+  console.log("filePath", filePath);
+
   if (existsSync(filePath)) {
+    console.log("READING IDS FROM FILE");
     const data = readFileSync(filePath, "utf-8");
     return JSON.parse(data);
   }
@@ -135,7 +143,13 @@ const getAnilistMetaFromId = async (id: string) => {
     data: args,
   });
 
-  return response?.data?.data?.Media;
+  const media = response?.data?.data?.Media;
+  if (media) {
+    media.idAnilist = media.id;
+    delete media.id;
+  }
+
+  return media;
 };
 
 const genMappings = async (animeMeta: any) => {
@@ -162,19 +176,94 @@ const genMappings = async (animeMeta: any) => {
       },
     });
 
-    let searchResults;
+    let html;
+    let searchResults: any[] = [];
+    let $: CheerioAPI;
 
     switch (provider.name) {
       case "AniWatch":
-        searchResults = response?.data;
-        console.log("H!ANIME RESULTS", searchResults);
+        html = response?.data;
+        $ = load(html);
+        searchResults = [];
+
+        $("div.film_list-wrap > div.flw-item").each((i, el) => {
+          const title = $(el)
+            .find("div.film-detail h3.film-name a.dynamic-name")
+            .attr("title")!
+            .trim()
+            .replace(/\\n/g, "");
+          const id = $(el).find("div:nth-child(1) > a").last().attr("href")!;
+          const img = $(el).find("img").attr("data-src")!;
+
+          const altTitles: string[] = [];
+          const jpName = $(el)
+            .find("div.film-detail h3.film-name a.dynamic-name")
+            .attr("data-jname")!
+            .trim()
+            .replace(/\\n/g, "");
+          altTitles.push(jpName);
+
+          const format: string = $(el)
+            .find("div.film-detail div.fd-infor span.fdi-item")
+            ?.first()
+            ?.text()
+            .toUpperCase();
+
+          searchResults.push({
+            title,
+            id,
+            img,
+            altTitles,
+            format,
+          });
+        });
+
+        const bestMatch = findBestMatch(animeMeta, searchResults);
+        if (bestMatch) {
+          mappings.push({
+            provider: provider.name,
+            id: bestMatch.id,
+            title: bestMatch.title,
+          });
+        }
+        console.log("H!ANIME RESULTS");
       case "Gogoanime":
-        searchResults = response?.data;
-        console.log("GOGO RESULTS", searchResults);
+        html = response?.data;
+        $ = load(html);
+        searchResults = [];
+
+      // const bestMatch = findBestMatch(animeMeta, searchResults);
+      // if (bestMatch) {
+      //   mappings.push({
+      //     provider: provider.name,
+      //     id: bestMatch.id,
+      //     title: bestMatch.title,
+      //   });
+      // }
       default:
         break;
     }
+
+    return mappings;
   }
+};
+
+const findBestMatch = (animeMeta: any, searchResults: any): any => {
+  let bestMatch = null;
+  let highestSimilarity = 0;
+
+  for (const result of searchResults) {
+    const similarity = stringSimilarity.compareTwoStrings(
+      animeMeta.title.romaji,
+      result.title
+    );
+    if (similarity > highestSimilarity && animeMeta.format === result.format) {
+      highestSimilarity = similarity;
+      bestMatch = result;
+    }
+  }
+
+  return bestMatch;
 };
 
 const safeRequest = async (
@@ -218,8 +307,14 @@ const save = (data: any, filename: string) => {
   console.log("FETCHING IDS ....");
   const ids = await getAnilistIds();
   console.log("DONE FETCHING IDS");
+  connectDB();
+  console.log("CONNECTED TO MONGO DB");
   for (const id of ids) {
     const animeMeta = await getAnilistMetaFromId(id);
+    console.log(animeMeta);
+    await Anime.create(animeMeta);
+    console.log("INSERTED RECORD DONE", id);
     const mappings = await genMappings(animeMeta);
+    console.log(mappings);
   }
 })();
