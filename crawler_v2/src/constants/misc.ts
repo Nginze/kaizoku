@@ -4,4 +4,5 @@ export const SERVER_MAP = {
 	"3": "streamtape",
 	"4": "vidstreaming",
 	"5": "streamsb",
+	"6": "unknown",
 };

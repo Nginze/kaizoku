@@ -45,6 +45,37 @@ export class AnilistService {
 		return media;
 	};
 
+	getAnilistMetaFromMalId = async (malId: string) => {
+		const args = {
+			query: `
+        query ($idMal: Int) {
+            Media (idMal: $idMal) {
+                ${QUERY_GET_ANIME_META}
+            }
+        }
+    `,
+			variables: {
+				idMal: parseInt(malId),
+			},
+		};
+
+		const response = await safeRequest(ANILIST_URL, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			data: args,
+		});
+
+		const media = response?.data?.data?.Media;
+		if (media) {
+			media.idAnilist = media.id;
+			delete media.id;
+		}
+
+		return media;
+	};
+
 	getAnilistIds = async (): Promise<string[]> => {
 		const filePath = path.join(__dirname, "../anilist-ids.json");
 

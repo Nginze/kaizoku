@@ -242,4 +242,133 @@ export class HianimeService {
 			return null;
 		}
 	}
+
+	getStreamingEpisodeEmbedById = async (epNo: number, anilistId: string) => {
+		try {
+			// Get mappings from Redis cache
+			const mappingsData = await redis.get(`mappings:${anilistId}`);
+			if (!mappingsData) {
+				throw new Error(`No mappings found for Anilist ID: ${anilistId}`);
+			}
+
+			const mappings = JSON.parse(mappingsData);
+			if (!mappings.aniwatch) {
+				throw new Error(`No aniwatch mapping found for Anilist ID: ${anilistId}`);
+			}
+
+			// Use the aniwatch mapping to get anime ID
+			const aniwatchId = mappings.aniwatch.split("-").pop();
+			
+			// Get episode embeds for the specific episode
+			const watchPageUrl = `https://hianime.to/ajax/v2/episode/list/${aniwatchId}`;
+			const response = await safeRequest(watchPageUrl, {
+				method: "GET",
+			});
+
+			const html = response?.data.html;
+			const $: CheerioAPI = load(html);
+
+			// Find the specific episode
+			let targetEpId = null;
+			$("div.ss-list > a.ssl-item.ep-item").each((i, el) => {
+				const epId = $(el).attr("data-id");
+				const episodeNo = parseInt($(el).attr("data-number") || "0");
+				
+				if (episodeNo === epNo) {
+					targetEpId = epId;
+					return false; // Break the loop
+				}
+			});
+
+			if (!targetEpId) {
+				throw new Error(`Episode ${epNo} not found for Anilist ID: ${anilistId}`);
+			}
+
+			// Get servers for this specific episode
+			const serversUrl = `https://hianime.to/ajax/v2/episode/servers?episodeId=${targetEpId}`;
+			const serversResponse = await safeRequest(serversUrl, {
+				method: "GET",
+			});
+
+			const servers: any[] = [];
+			const serversHtml = serversResponse?.data.html;
+			const $servers = load(serversHtml);
+
+			// Get SUB servers
+			$servers(
+				"div.ps_-block.ps_-block-sub.servers-sub > div.ps__-list > div.item.server-item",
+			).each((i, el) => {
+				const serverId = $servers(el).attr("data-id");
+				const serverName =
+					SERVER_MAP[$servers(el).attr("data-server-id") as keyof typeof SERVER_MAP];
+				const type = "SUB";
+
+				servers.push({
+					epNo,
+					serverName,
+					serverId,
+					type,
+				});
+			});
+
+			// Get DUB servers
+			$servers(
+				"div.ps_-block.ps_-block-sub.servers-dub > div.ps__-list > div.item.server-item",
+			).each((i, el) => {
+				const serverId = $servers(el).attr("data-id");
+				const serverName =
+					SERVER_MAP[$servers(el).attr("data-server-id") as keyof typeof SERVER_MAP];
+				const type = "DUB";
+
+				servers.push({
+					epNo,
+					serverName,
+					serverId,
+					type,
+				});
+			});
+
+			// Get embeds for each server
+			const embeds = [];
+			for (const server of servers) {
+				const embedUrl = `https://hianime.to/ajax/v2/episode/sources?id=${server.serverId}`;
+				const embedResponse = await safeRequest(embedUrl, {
+					method: "GET",
+				});
+
+				const data = embedResponse?.data;
+				const embed = {
+					...server,
+					embedLink: data.link,
+					serverIdx: data.server,
+				};
+
+				embeds.push(embed);
+			}
+
+			// Save embeds to Redis using the same format as getStreamingEpisodeEmbeds
+			if (embeds.length > 0) {
+				// Group embeds by type
+				const subEmbeds = embeds.filter(embed => embed.type === "SUB");
+				const dubEmbeds = embeds.filter(embed => embed.type === "DUB");
+
+				// Save SUB embeds if any
+				if (subEmbeds.length > 0) {
+					await cache(`anime:${anilistId}:SUB:${epNo}`, subEmbeds);
+				}
+
+				// Save DUB embeds if any
+				if (dubEmbeds.length > 0) {
+					await cache(`anime:${anilistId}:DUB:${epNo}`, dubEmbeds);
+				}
+
+				console.log(`💾 Saved ${embeds.length} embeds for Anilist ID ${anilistId}, Episode ${epNo}`);
+			}
+
+			return embeds;
+		} catch (error) {
+			console.error(`Error getting episode embeds for Anilist ID ${anilistId}, Episode ${epNo}:`, error);
+			throw error;
+		}
+	};
 }

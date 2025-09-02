@@ -1,8 +1,8 @@
 import { Schema, model } from "mongoose";
 
 const AnimeSchema = new Schema({
-	idAnilist: { type: Number },
-	idMal: { type: Number },
+	idAnilist: { type: Number, unique: true },
+	idMal: { type: Number, unique: true },
 	title: {
 		romaji: { type: String },
 		english: { type: String },

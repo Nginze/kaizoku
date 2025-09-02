@@ -19,7 +19,8 @@
 		"dotenv": "^16.4.7",
 		"ioredis": "^5.4.2",
 		"mongoose": "^8.9.3",
-		"string-similarity": "^4.0.4"
+		"string-similarity": "^4.0.4",
+		"winston": "^3.17.0"
 	},
 	"devDependencies": {
 		"@types/crypto-js": "^4.2.2",

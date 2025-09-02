@@ -2,74 +2,61 @@ import { HianimeService } from "./services/hianime.services";
 import { AnilistService } from "./services/anilist.services";
 import { MappingService } from "./services/mapping.service";
 import { connectDB } from "./config/mongo";
-import { loadConfig } from "./utils/load-config";
+import { loadConfig, updateConfig } from "./utils/load-config";
 import "dotenv/config";
+import { appendToFile } from "./config/file";
+import Anime from "./models/anime.ts";
+import { logger } from "./config/logger";
+import { initializeJobs } from "./jobs";
 
-(async function main() {
+async function seed() {
 	const anilistService = new AnilistService();
 	const hianimeService = new HianimeService();
 	const mappingService = new MappingService();
 
 	try {
-		connectDB();
+		await connectDB();
 		const config = loadConfig();
-		console.log("📋 Config loaded:", config);
+		logger.info(`📋 Config loaded: ${JSON.stringify(config)}`);
 
 		const anilistIds = await anilistService.getAnilistIds();
-		console.log(`🎯 Found ${anilistIds.length} anime IDs`);
 
-		// Process first 5 IDs for testing
-		const testIds = anilistIds.slice(0, 1);
+		const startingIdx = config.lastIdx ?? 0;
+		const seedLimit = config.limit ?? anilistIds.length;
 
-		for (const id of testIds) {
-			console.log(`\n🔄 Processing anime ID: ${id}`);
+		console.log(startingIdx, seedLimit);
 
-			// Step 1: Fetch metadata from AniList
-			console.log("📊 Fetching metadata from AniList...");
-			const animeMeta = await anilistService.getAnilistMetaFromId(id);
-			if (!animeMeta) {
-				console.log("❌ No metadata found, skipping...");
-				continue;
+		for (let index = startingIdx; index < seedLimit; index++) {
+			try {
+				const anilistId = anilistIds[index];
+
+				logger.info(`Processing index = ${index}, anlist-id = ${anilistId}`);
+
+				const animeMetaData =
+					await anilistService.getAnilistMetaFromId(anilistId);
+
+				appendToFile("anilist-metadata.json", animeMetaData);
+				await Anime.insertOne(animeMetaData);
+
+				const mappings = await mappingService.genMappings(animeMetaData); // this should map to all relevant providers(aniwatch, animepahe, gogo, livechart)
+
+				//We need to get servers -> embeds -> srcs + captions(vtt)
+				//We'll only store embeds and srcs will be decrypted on client (coz decryption strategies are ephemeral)
+				await hianimeService.getStreamingEpisodeEmbeds(anilistId);
+
+				updateConfig({ lastIdx: index + 1 });
+			} catch (error) {
+				updateConfig({ lastIdx: index + 1 });
+				throw error;
 			}
-			console.log("✅ Metadata fetched:", {
-				title: animeMeta.title?.romaji || "Unknown",
-				episodes: animeMeta.episodes,
-				status: animeMeta.status,
-			});
-
-			// Step 2: Generate mappings
-			console.log("🗺 Generating mappings...");
-			const mappings = await mappingService.genMappings(animeMeta);
-			console.log("✅ Mappings generated:", mappings);
-
-			// Step 3: Get episode sources if mappings exist
-			if (mappings) {
-				const hiAnimeMapping = mappings.aniwatch;
-
-				if (hiAnimeMapping) {
-					console.log("🎬 Fetching episode sources...");
-					try {
-						await hianimeService.getStreamingEpisodeEmbeds(id);
-						await hianimeService.extractSourcesFromEmbeds(id);
-						console.log("✅ Episode sources processed");
-					} catch (error) {
-						console.log(error);
-						// console.log(
-						// 	"❌ Error fetching episode sources:",
-						// 	(error as Error).message,
-						// );
-					}
-				} else {
-					console.log("! No HiAnime mapping found, skipping episode sources");
-				}
-			} else {
-				console.log("! No mappings found, skipping episode sources");
-			}
-
-			console.log("🎉 Completed processing anime ID:", id);
 		}
 	} catch (error) {
-		console.log("Something went wrong", (error as unknown as Error).message);
-		console.log("Stack trace", (error as unknown as Error).stack);
+		console.log(error);
 	}
+}
+
+(async function main() {
+	await seed();
+	// await connectDB();
+	// await initializeJobs();
 })().then(() => {});
