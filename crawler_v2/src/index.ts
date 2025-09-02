@@ -5,7 +5,7 @@ import { connectDB } from "./config/mongo";
 import { loadConfig, updateConfig } from "./utils/load-config";
 import "dotenv/config";
 import { appendToFile } from "./config/file";
-import Anime from "./models/anime.ts";
+import Anime from "./models/anime";
 import { logger } from "./config/logger";
 import { initializeJobs } from "./jobs";
 
@@ -56,7 +56,7 @@ async function seed() {
 }
 
 (async function main() {
-	await seed();
-	// await connectDB();
-	// await initializeJobs();
+	// await seed();
+	await connectDB();
+	await initializeJobs();
 })().then(() => {});

@@ -1,0 +1,60 @@
+@import '@vidstack/react/player/styles/default/theme.css';
+@import '@vidstack/react/player/styles/default/layouts/video.css';
+
+:root{
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e3b5cd;
+    --red: #dc3545;
+    --orange: #fd9c46;
+    --yellow: #ffc107;
+    --green: #b0e3af;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c6c6c;
+    --gray-dark: #343434;
+    --primary: #95b6d0;
+    --primary1: #b1c9dd;
+    --primary2: #79a3c3;
+    --secondary: #3a3a3a;
+    --secondary1: #4c4c4c;
+    --secondary2: #202020;
+    --success: #b0e3af;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #ececec;
+    --dark: #343434;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1400px;
+}
+
+body {
+  font-family: "Lexend Deca", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+    scroll-behavior: smooth;
+    overscroll-behavior: none;
+    scrollbar-color: var(--secondary) var(--secondary2);
+    scrollbar-width: thin;
+}
+
+.ani-search-card:hover{
+  transform: scale(0.97);
+}
+
+.ani-search-card-play{
+  transform: scale(4);
+}
+
+

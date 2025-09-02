@@ -4,7 +4,7 @@ import { RedisStore } from "connect-redis";
 
 const REDIS_STORE = new RedisStore({
 	client: redis,
-	prefix: "savvy:",
+	prefix: "anidb:",
 });
 
 const session: SessionOptions = {
