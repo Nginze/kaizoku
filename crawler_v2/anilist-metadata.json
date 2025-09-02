@@ -15511,5 +15511,4628 @@
       }
     ],
     "idAnilist": 100256
+  },
+  {
+    "idMal": 36246,
+    "title": {
+      "romaji": "Monster Strike: Kieyuku Uchuu-hen",
+      "english": "Monster Strike the Animation: The Fading Cosmos",
+      "native": "モンスターストライク「消えゆく宇宙編」",
+      "userPreferred": "Monster Strike: Kieyuku Uchuu-hen"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100262-1VMMC4Usz9Ft.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100262-1VMMC4Usz9Ft.jpg"
+    },
+    "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100262-6hpQHZe84FgZ.jpg",
+    "startDate": {
+      "year": 2017,
+      "month": 10,
+      "day": 7
+    },
+    "endDate": {
+      "year": 2018,
+      "month": 1,
+      "day": 6
+    },
+    "description": "Second part to Monster Strike 2.<br><br>\nRen and his friends race to save the world from the apocalypse prophesied by the monster Nostradamus. When Mana discovers the truth about her origins and her role in the events to come, she becomes the key that could change everything...for better or for worse.<br><br>\nUnlike its predecessor, <i>The Fading Cosmos</i> is not animated in full CG, returning to the 2D/CG mix used in the first <i>Monster Strike</i> season.\n",
+    "season": "FALL",
+    "seasonYear": 2017,
+    "type": "ANIME",
+    "format": "ONA",
+    "status": "FINISHED",
+    "episodes": 13,
+    "duration": 13,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Action",
+      "Fantasy"
+    ],
+    "synonyms": [
+      "Monster Strike 3",
+      "Monster Strike the Animation: : The Fading Cosmos",
+      "Monster Strike the Anime: The Fading Cosmos",
+      "Monster Strike 2017"
+    ],
+    "source": "VIDEO_GAME",
+    "isAdult": false,
+    "meanScore": 61,
+    "averageScore": 58,
+    "popularity": 1447,
+    "favourites": 10,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 21284,
+          "relationType": "PREQUEL",
+          "node": {
+            "id": 98069,
+            "title": {
+              "userPreferred": "Monster Strike 2"
+            },
+            "format": "ONA",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx98069-9KME3HrudKR3.jpg"
+            }
+          }
+        },
+        {
+          "id": 24632,
+          "relationType": "CHARACTER",
+          "node": {
+            "id": 103744,
+            "title": {
+              "userPreferred": "Haitoku Pistols: Wishing"
+            },
+            "format": "MUSIC",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/103744-yUHfs7bBNOIA.png",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx103744-KRTC6rYXsM4t.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [
+      {
+        "title": "Episode 1 - The First Strike!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/064a572386a811d42de55e2c35735af11480889520_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRNQM4QJR/the-first-strike",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 2 - Slingshot Away! Call Me Oragon!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/3c58d57ce5d1f318cc0a564282fcafc11480890113_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYMGM9GPY/slingshot-away-call-me-oragon",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 3 - Aoi Mizusawa's Secret",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/6a2adae6f5b263239b12994c494e0feb1480890037_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY3VJ2VDR/aoi-mizusawas-secret",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 4 - A Night At The Colloseum",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/d38db1b1d869ba8a71b042486957be891480890079_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G62PN3P06/a-night-at-the-colloseum",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 5 - Mall Brawl",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/bdb04083efe792c86ae08ba11649c2e61480890188_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6ZX5NXGR/mall-brawl",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 6 - The Glinting Blade",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/e3a93da0c8f8ee926dcafe63a271e9021480890062_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYQ48V4Z6/the-glinting-blade",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 7 - Operation Recruit Akira",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/1bdd289eb7165d48ec28659de645c5721480890215_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G63VE48WY/operation-recruit-akira",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 8 - Evil Eye Minami - A mild and ditzy girl? -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/218b56bb2c293d5c8c89a38f9b7854f71480890093_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR2P0KZER/evil-eye-minami-a-mild-and-ditzy-girl-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 9 - SOS! A Shocking Video?! - If you want to erase it... -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b0313b065c10d3198d1cb9daa23947bd1480890070_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRZXK3P9Y/sos-a-shocking-video-if-you-want-to-erase-it-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 10 - Shopfront Shocker - Leave this to me! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/83938b4278019b8938eb2dac256d7a011480892506_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6Q43GX3R/shopfront-shocker-leave-this-to-me-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 11 - Welcome, Minami! - Enter a new comrade—but she's an airhead? -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/b33b5ce1c1ba1c4bf1ab63dfd07be4fe1480895778_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYWEKGPQY/welcome-minami-enter-a-new-comradebut-shes-an-airhead-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 12 - Ora-gone?! - No more secrets. Ora ora ora! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/5828db51e3ccacfcb9c5a475aa88412f1480891108_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR09WV8ER/ora-gone-no-more-secrets-ora-ora-ora-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 13 - Impossible Task - Are they serious?! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/4ac1db26b6acdf6f59344db84ad65db11480894657_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR754V8JY/impossible-task-are-they-serious-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 14 - Izanami - Past despair, there was... -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/c6016d554ea95e659c729db3d463d1361480891119_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6X027ZKY/izanami-past-despair-there-was-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 15 - Beware the Warrior God - You end here! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/da20f410adf2f6c09f066b57a50eb2d81480892313_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYWEK8WMY/beware-the-warrior-god-you-end-here-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 16 - Counter! A Strike Shot for the Ages! - There's always an answer! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/3d419a527b94f56ce7777e142b77070c1480892368_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR09WE5GR/counter-a-strike-shot-for-the-ages-theres-always-an-answer-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 17 - Pieces of Memories - We played MS in the past? -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/2a47fbdc57c8b6308770ba2621741e491480892410_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR754NXMY/pieces-of-memories-we-played-ms-in-the-past-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 18 - Where Art Thou, Haruma? - You're not even on the same level. Begone! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/21b2bdfe29dcce516bcaa2cf045e1c0a1480892505_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6X028G2Y/where-art-thou-haruma-youre-not-even-on-the-same-level-begone-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 19 - Lucy the Annihilator - Bow before the lord of the fallen! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/6b88da7f76e2415119bca02fdab4034e1480892495_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY19G7WZR/lucy-the-annihilator-bow-before-the-lord-of-the-fallen-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 20 - From the Ring, Hope - A new monster takes the stage! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/96a963b90282ac014def990387a21ef41480892784_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYQ43ZDZ6/from-the-ring-hope-a-new-monster-takes-the-stage-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 21 - Come One and All: MS Club - Defeat the top four! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/231fdca2f3e2e8cbe0915de1e77220281480893097_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6Q437N3R/come-one-and-all-ms-club-defeat-the-top-four-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 22 - The Saber Amid the Blossoms - Impossible's just a ten letter word! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/63505e23476277906283367fc1cf6abe1480893150_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYWEKN5QY/the-saber-amid-the-blossoms-impossibles-just-a-ten-letter-word-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 23 - Dark Usurper Zeus - From the heavens... -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/49e1e7115ed3f3e9b3192769c900c0b51480898986_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR09W4KER/dark-usurper-zeus-from-the-heavens-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 24 - Melodious Snow Bow - Here's a bow, tied right on your heart. -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/75d0f1c5370a5d65dfd0b5dd383f70de1480894487_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR7543GJY/melodious-snow-bow-heres-a-bow-tied-right-on-your-heart-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 25 - Nirvana, Inferno of War - It's always a party! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/054a694b5833ea4172b37e6324daed601480894193_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6X02KWKY/nirvana-inferno-of-war-its-always-a-party-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 26 - Assemble, Assault, and Assail - It's always a party! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d1d7ce42b4b682e948316bce1610d6971480952216_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY19G1D2R/assemble-assault-and-assail-its-always-a-party-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 27 - An Accidental Double Date",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/1ea2636e29d2e477a946e54d98e0c3cb1480895054_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYQ4377G6/an-accidental-double-date",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 28 - Booya! Return to Shibuya - Don't even think about touching Haruma! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d49c97e94ab1ac69be49486b02ab99371480893515_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR09WPVPR/booya-return-to-shibuya-dont-even-think-about-touching-haruma-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 29 - Alice in a Mad Wonderland - I'll cut you into cute, tiny, bite-sized pieces. -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/697b626fcc6ed5dd86dead8f623a09001480895230_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR7540PVY/alice-in-a-mad-wonderland-ill-cut-you-into-cute-tiny-bite-sized-pieces-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 30 - The Scarlet Shrine Maiden - Divine words hold great power! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/f4a26f1a12f6630bf001edd0298d4a191480893517_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6X02P90Y/the-scarlet-shrine-maiden-divine-words-hold-great-power-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 31 - Blade Versus Gun - Return to ash... -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/6fb94b6f28ed39e7d8747559f5f547f41480893600_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY19G24QR/blade-versus-gun-return-to-ash-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 32 - The Flock of Bahamut - One thousand?! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/da66c629856de0e51036457f557b36151480896033_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYQ431JQ6/the-flock-of-bahamut-one-thousand-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 33 - The Indomitable Dragon - I'll protect my friends and Haruma! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/ef3058dd0af32dd08ae0e54ef88a1b7a1480893715_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRWEK3D0R/the-indomitable-dragon-ill-protect-my-friends-and-haruma-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 34 - Ryoma VS Lucy - I've trained—and now I'm here to see you again. -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/d1891b5dafa67f21fde517394e04dbb31480952361_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G609WPDW6/ryoma-vs-lucy-ive-trainedand-now-im-here-to-see-you-again-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 35 - Death's Embrace - He's the one who killed me, your mother... -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/199fa38f99cd9034c1482e5b300d2e2d1480896523_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR2P03D8R/deaths-embrace-hes-the-one-who-killed-me-your-mother-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 36 - The Imprisoned Lily - I will not let you have Haruma... -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/e240b4073d427f6e90dfa8d9956f01141480894146_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR19GM3Z6/the-imprisoned-lily-i-will-not-let-you-have-haruma-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 37 - In Darkness, Ryoma - Come to your senses, Haruma Kagutsuchi! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/676de3f9ebb71e5faf710b5c9c06df901480894323_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYNQ345ZY/in-darkness-ryoma-come-to-your-senses-haruma-kagutsuchi-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 38 - The Truth of K - We were friends... -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/371ad8e4d641f4d1b0ecbdaec4493ec91480894253_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYWEK7QMY/the-truth-of-k-we-were-friends-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 39 - Akira and Haruma - I wanted to apologize for that time... -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/3d788b19de8362ceee9e040e7c0b8d3b1480895801_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6Q43V24R/akira-and-haruma-i-wanted-to-apologize-for-that-time-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 40 - Gather in Kaminohara! - You need help? I'm there! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/49f8fd24d4eecbc2de32a40df892fe581480895871_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR09WN2GR/gather-in-kaminohara-you-need-help-im-there-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 41 - Off-the-Charts Performance!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/3134dc285cfbeaf076bcb3d7f0bb7d881480894412_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G69P5420Y/off-the-charts-performance",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 42 - The Sun Sets on Orochi",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/7733961c7f4e8c0a7ec9e95760459cb11480896185_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR193KMV6/the-sun-sets-on-orochi",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 43 - An Offering to Orochi - Dance until you break! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/e10802dad6ddf2ff1a74524c2266cab11480894539_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYNQ5043Y/an-offering-to-orochi-dance-until-you-break-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 44 - An End to the Past - We've been here in the past. -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/f30d20bd7cc94980e2904cabb206c6561480894919_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6MGQ4926/an-end-to-the-past-weve-been-here-in-the-past-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 45 - World Ender Babel - A despair deeper than death... -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/d27418a75a3e92e84ef7819eaefd3d081480895900_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G63VP42XY/world-ender-babel-a-despair-deeper-than-death-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 46 - The Descent of Angels - These memories... they're ours! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/da58fec276b1fcbabe4b300dc5699f3c1480895394_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR2PDK37R/the-descent-of-angels-these-memories-theyre-ours-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 47 - Ziggurat of Chaos - Feel the pain that I have felt! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/48d952dda082239a4aa116c270bb84d91480895537_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRZXW3NVY/ziggurat-of-chaos-feel-the-pain-that-i-have-felt-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 48 - Oraternative Memories - Do you believe in destiny? -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/5793559d32db3bac54f354ba0c4e3f061480895692_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6Q40GV1R/oraternative-memories-do-you-believe-in-destiny-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 49 - Karma, Light of War - The memories of humans are so beautiful... -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/e736e175db12f60a26ced49e09bebd7c1480895071_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR9PWP5D6/karma-light-of-war-the-memories-of-humans-are-so-beautiful-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 50 - Of Light and Flame - Harken the light! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/c40cb6677ad51e7b45cbf2eaf8397e0f1480895604_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR49397P6/of-light-and-flame-harken-the-light-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 51 - [Finale] Strike Shot! An End and New Beginnings - We'll defeat you and reclaim everything! -",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/8a54f0550387ecc317f85e67ffa459e41485238247_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRJQ8QNVY/finale-strike-shot-an-end-and-new-beginnings-well-defeat-you-and-reclaim-everything-",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 52 - An Encore and Continuance: Pandora's Box",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/58ad6fc1bdb1ca806185b25eb694efe01493404037_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYJQJKV56/an-encore-and-continuance-pandoras-box",
+        "site": "Crunchyroll"
+      }
+    ],
+    "trailer": {
+      "id": "yy3qLNDwm0Y",
+      "site": "youtube"
+    },
+    "tags": [
+      {
+        "id": 308,
+        "name": "Video Games"
+      },
+      {
+        "id": 66,
+        "name": "Super Power"
+      },
+      {
+        "id": 144,
+        "name": "Meta"
+      },
+      {
+        "id": 259,
+        "name": "Monster Girl"
+      }
+    ],
+    "idAnilist": 100262
+  },
+  {
+    "idMal": 36538,
+    "title": {
+      "romaji": "Natsume Yuujinchou: Utsusemi ni Musubu",
+      "english": "Natsume's Book of Friends the Movie: Ephemeral Bond",
+      "native": "劇場版 夏目友人帳 ～うつせみに結ぶ～",
+      "userPreferred": "Natsume Yuujinchou: Utsusemi ni Musubu"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100268-SUZCprpenPzC.png",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx100268-SUZCprpenPzC.png"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2018,
+      "month": 9,
+      "day": 29
+    },
+    "endDate": {
+      "year": 2018,
+      "month": 9,
+      "day": 29
+    },
+    "description": "The film features an original story written under Midorikawa's supervision.<br>\n<br>\n(Source: Anime News Network, edited)",
+    "season": "SUMMER",
+    "seasonYear": 2018,
+    "type": "ANIME",
+    "format": "MOVIE",
+    "status": "FINISHED",
+    "episodes": 1,
+    "duration": 104,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "synonyms": [],
+    "source": "MANGA",
+    "isAdult": false,
+    "meanScore": 83,
+    "averageScore": 82,
+    "popularity": 16529,
+    "favourites": 197,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 47202,
+          "relationType": "PARENT",
+          "node": {
+            "id": 97983,
+            "title": {
+              "userPreferred": "Natsume Yuujinchou Roku"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97983-gnWWi3k6xstM.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx97983-Uqn04SR6hVW9.jpg"
+            }
+          }
+        },
+        {
+          "id": 57280,
+          "relationType": "ADAPTATION",
+          "node": {
+            "id": 133938,
+            "title": {
+              "userPreferred": "Natsume Yuujinchou: Utsusemi ni Musubu"
+            },
+            "format": "NOVEL",
+            "type": "MANGA",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx133938-UygXTKW2yTSh.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": {
+      "id": "18cHHCJ_C2E",
+      "site": "youtube"
+    },
+    "tags": [
+      {
+        "id": 233,
+        "name": "Youkai"
+      },
+      {
+        "id": 365,
+        "name": "Memory Manipulation"
+      },
+      {
+        "id": 250,
+        "name": "Rural"
+      },
+      {
+        "id": 53,
+        "name": "Shoujo"
+      },
+      {
+        "id": 82,
+        "name": "Male Protagonist"
+      },
+      {
+        "id": 772,
+        "name": "Shapeshifting"
+      },
+      {
+        "id": 1052,
+        "name": "Adoption"
+      },
+      {
+        "id": 81,
+        "name": "Iyashikei"
+      },
+      {
+        "id": 321,
+        "name": "Urban Fantasy"
+      }
+    ],
+    "idAnilist": 100268
+  },
+  {
+    "idMal": 38897,
+    "title": {
+      "romaji": "Fate/kaleid liner Prisma☆Illya: Prisma☆Phantasm",
+      "english": "Fate/kaleid liner Prisma☆Illya: Prisma☆Phantasm",
+      "native": "Fate/kaleid liner プリズマ☆イリヤ~プリズマ☆ファンタズム~",
+      "userPreferred": "Fate/kaleid liner Prisma☆Illya: Prisma☆Phantasm"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100269-V8Z7e1OXrDBZ.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx100269-V8Z7e1OXrDBZ.jpg"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2019,
+      "month": 6,
+      "day": 14
+    },
+    "endDate": {
+      "year": 2019,
+      "month": 6,
+      "day": 14
+    },
+    "description": "If there's one thing that the long-running <i>Fate/stay night</i> franchise has always been noted for, it's the creative freedom that allows every new installment to develop its own unique take on the overall concept and base set of continuing characters. However, no matter how diverse many of the previous installments have been, you're almost certainly not going to be prepared for the non-stop surreal silliness and fever dream alternative concepts unleashed in this demented new OVA installment. From a surreal talk show where a berserker hostess puts her hapless assassin brother co-host through an increasingly grueling wringer, to spicy ramen endurance tests, magical girls gone wild and wholesale gender-swapping for no apparent reason, you've never seen anything like this!<br>\n<br>\n(Source: Sentai Filmworks)",
+    "season": "SPRING",
+    "seasonYear": 2019,
+    "type": "ANIME",
+    "format": "OVA",
+    "status": "FINISHED",
+    "episodes": 1,
+    "duration": 62,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Action",
+      "Comedy",
+      "Fantasy",
+      "Mahou Shoujo"
+    ],
+    "synonyms": [
+      "Fate/kaleid liner Prisma☆Illya OVA"
+    ],
+    "source": "ORIGINAL",
+    "isAdult": false,
+    "meanScore": 66,
+    "averageScore": 65,
+    "popularity": 9527,
+    "favourites": 72,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 21293,
+          "relationType": "SOURCE",
+          "node": {
+            "id": 66131,
+            "title": {
+              "userPreferred": "Fate/kaleid liner Prisma☆Illya 3rei!!"
+            },
+            "format": "MANGA",
+            "type": "MANGA",
+            "status": "RELEASING",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/66131-Tk90Z41YIVar.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/nx66131-w94lTVMjhs6R.png"
+            }
+          }
+        },
+        {
+          "id": 42339,
+          "relationType": "CHARACTER",
+          "node": {
+            "id": 14829,
+            "title": {
+              "userPreferred": "Fate/kaleid liner Prisma☆Illya"
+            },
+            "format": "ONA",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/14829-BkeJaqab8coy.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx14829-PZVOr1ZxwOJV.png"
+            }
+          }
+        },
+        {
+          "id": 42344,
+          "relationType": "PARENT",
+          "node": {
+            "id": 97757,
+            "title": {
+              "userPreferred": "Fate/kaleid liner Prisma☆Illya: Sekka no Chikai"
+            },
+            "format": "MOVIE",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97757-NAbK3w90qKOq.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b97757-BWFRkX81LpGS.png"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": {
+      "id": "VxFWkE-uIcA",
+      "site": "youtube"
+    },
+    "tags": [
+      {
+        "id": 39,
+        "name": "Parody"
+      },
+      {
+        "id": 99,
+        "name": "Henshin"
+      },
+      {
+        "id": 86,
+        "name": "Primarily Female Cast"
+      },
+      {
+        "id": 29,
+        "name": "Magic"
+      },
+      {
+        "id": 779,
+        "name": "Kuudere"
+      },
+      {
+        "id": 244,
+        "name": "Isekai"
+      },
+      {
+        "id": 144,
+        "name": "Meta"
+      },
+      {
+        "id": 446,
+        "name": "Primarily Child Cast"
+      }
+    ],
+    "idAnilist": 100269
+  },
+  {
+    "idMal": 36536,
+    "title": {
+      "romaji": "Star Mu 3",
+      "english": "STARMYU 3",
+      "native": "スタミュ 3",
+      "userPreferred": "Star Mu 3"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100280-QDCfgTispP0Q.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx100280-QDCfgTispP0Q.jpg"
+    },
+    "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100280-ifZysb3UO5WI.jpg",
+    "startDate": {
+      "year": 2019,
+      "month": 7,
+      "day": 1
+    },
+    "endDate": {
+      "year": 2019,
+      "month": 9,
+      "day": 16
+    },
+    "description": "\"I don't know how to give up on a dream...\"<br>\n<br>Hoshitani Yuuta's dream of performing on stage with Ootori Itsuki, his admired senior, finally came true; and, now, Yuuta focuses on his next dream, spending his days working hard in musical training at Ayanagi Academy's musical department. However, another new trial awaits him!<br>\n<br>The start of the second semester brings with it the impending class performance at the Ayanagi Festival. This will be the first stage performance the boys will have to tackle without the help of a senior leader to guide them. Yuuta and the others throw themselves eagerly into overcoming their team boundaries, joining forces to form a new company to put on the best show ever. But the Kao Council suddenly makes an appearance and stands in the way of the second years!<br>\n<br>As a part of their plan to reform the Ayanagi Festival the Kao Council is producing a fresh new program called the opening ceremony. The students selected for this performance will go on to be the prime candidates for next Kao Council, but it will come at the expense of not being able to perform in the class production. And thus, the final curtain rises on the tale of the youthful, comedic musical.<br>\n<br>(Source: Crunchyroll)",
+    "season": "SUMMER",
+    "seasonYear": 2019,
+    "type": "ANIME",
+    "format": "TV",
+    "status": "FINISHED",
+    "episodes": 12,
+    "duration": 24,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Comedy",
+      "Music",
+      "Slice of Life"
+    ],
+    "synonyms": [
+      "High School Star Musical S3"
+    ],
+    "source": "ORIGINAL",
+    "isAdult": false,
+    "meanScore": 68,
+    "averageScore": 66,
+    "popularity": 2765,
+    "favourites": 30,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 21301,
+          "relationType": "PREQUEL",
+          "node": {
+            "id": 97820,
+            "title": {
+              "userPreferred": "Star Mu 2"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97820-Cfsch6cKSllk.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b97820-NvvzeY5AYGnz.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [
+      {
+        "title": "Episode 1 - Act 1",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/b2b5c29af65947d28cbc87ffd8c12b6d1491212072_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRQ40D83Y/act-1",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 2 - Act 2",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/b58d3d7346b0533f8a01d20106a2df451491809180_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRMGQ932R/act-2",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 3 - Act 3",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/49a5f46abec129af8cc762d6b1e7e5981491860279_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G65VZ28G6/act-3",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 4 - Act 4",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/a78cc563b7928d58bfd0a61ad6e7ed431493020441_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6X0504PY/act-4",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 5 - Act 5",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/57462a450273e9c827e4cfd7f3ff3f231493145905_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRK52KMW6/act-5",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 6 - Act 6",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/0cd83c102a3fd05b183a07107b4296aa1494221911_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRZXGD9VY/act-6",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 7 - Act 7",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/6b028e5583785001e52737274285d0651494840844_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYWEQX82Y/act-7",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 8 - Act 8",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/fe6cd830988e011b46fe6ef22f71f3fb1495433422_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR5VZ303R/act-8",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 9 - Act 9",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/24135d664eb56af10eba6c1ea00d3e471496040085_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRVN28J0Y/act-9",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 10 - Act 10",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/15c8d7ebf3ced00f98a64747759fb3681496647631_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYWEQJE8Y/act-10",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 11 - Act 11",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/af45a9ddf1d3541adbcdb25dc5e8780b1497246877_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY5VZWMPY/act-11",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 12 - Act 12",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9d93d7c481ba99846df8c97a28bec7cc1497936116_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRP8938MR/act-12",
+        "site": "Crunchyroll"
+      }
+    ],
+    "trailer": {
+      "id": "3xwabIKTHRk",
+      "site": "youtube"
+    },
+    "tags": [
+      {
+        "id": 265,
+        "name": "Musical Theater"
+      },
+      {
+        "id": 82,
+        "name": "Male Protagonist"
+      },
+      {
+        "id": 1228,
+        "name": "Primarily Teen Cast"
+      },
+      {
+        "id": 209,
+        "name": "Dancing"
+      },
+      {
+        "id": 595,
+        "name": "Urban"
+      },
+      {
+        "id": 102,
+        "name": "Coming of Age"
+      },
+      {
+        "id": 46,
+        "name": "School"
+      },
+      {
+        "id": 88,
+        "name": "Primarily Male Cast"
+      },
+      {
+        "id": 1063,
+        "name": "Cute Boys Doing Cute Things"
+      },
+      {
+        "id": 115,
+        "name": "Idol"
+      },
+      {
+        "id": 105,
+        "name": "Ensemble Cast"
+      },
+      {
+        "id": 779,
+        "name": "Kuudere"
+      },
+      {
+        "id": 164,
+        "name": "Tsundere"
+      }
+    ],
+    "idAnilist": 100280
+  },
+  {
+    "idMal": 36166,
+    "title": {
+      "romaji": "Fireball Humorous",
+      "english": "Fireball Humorous",
+      "native": "ファイアボール ユーモラス",
+      "userPreferred": "Fireball Humorous"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100282-vLo96yvYezTW.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100282-vLo96yvYezTW.jpg"
+    },
+    "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100282-BNO3i0ZfCNpi.jpg",
+    "startDate": {
+      "year": 2017,
+      "month": 10,
+      "day": 6
+    },
+    "endDate": {
+      "year": 2017,
+      "month": 12,
+      "day": 18
+    },
+    "description": "On an ordinary planet in the distant future. Humans have long been at war with the mechanical aristocrats called \"Hyperion.\" This is the story of Drossel, a Hyperion and the daughter of the Duke von Flügel, and her butler Gedächtnis in the Tower of Tempest, isolated from the outside world. Their daily tasks revolve around managing problems that occur in their high-rising castle-tower while awaiting the day the stars realign themselves.<br><br>\n(Source: Disney+)",
+    "season": "FALL",
+    "seasonYear": 2017,
+    "type": "ANIME",
+    "format": "TV_SHORT",
+    "status": "FINISHED",
+    "episodes": 3,
+    "duration": 3,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "synonyms": [
+      "파이어볼 유어러스"
+    ],
+    "source": "ORIGINAL",
+    "isAdult": false,
+    "meanScore": 54,
+    "averageScore": 53,
+    "popularity": 1264,
+    "favourites": 2,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 48716,
+          "relationType": "SEQUEL",
+          "node": {
+            "id": 10348,
+            "title": {
+              "userPreferred": "Fireball Charming"
+            },
+            "format": "TV_SHORT",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/10348-vNMoILNeJhMU.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/10348.jpg"
+            }
+          }
+        },
+        {
+          "id": 50138,
+          "relationType": "PREQUEL",
+          "node": {
+            "id": 125491,
+            "title": {
+              "userPreferred": "Gebaude=Baude"
+            },
+            "format": "TV_SHORT",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/125491-2lhE0HClnYXa.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx125491-8DuV6JfT3KkM.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 175,
+        "name": "Robots"
+      },
+      {
+        "id": 217,
+        "name": "Dystopian"
+      },
+      {
+        "id": 89,
+        "name": "Full CGI"
+      }
+    ],
+    "idAnilist": 100282
+  },
+  {
+    "idMal": 36275,
+    "title": {
+      "romaji": "Natsume Yuujinchou Roku Specials",
+      "english": "Natsume's Book of Friends Season 6 Specials",
+      "native": "夏目友人帳 陸 特別編",
+      "userPreferred": "Natsume Yuujinchou Roku Specials"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100283-R41Jk9AHLuXj.png",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx100283-R41Jk9AHLuXj.png"
+    },
+    "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100283-rIiiC4d63JZ4.png",
+    "startDate": {
+      "year": 2017,
+      "month": 9,
+      "day": 27
+    },
+    "endDate": {
+      "year": 2017,
+      "month": 10,
+      "day": 25
+    },
+    "description": "New unaired episodes included in 4th and 5th DVD volumes of Natsume Yuujinchou Roku.",
+    "season": "FALL",
+    "seasonYear": 2017,
+    "type": "ANIME",
+    "format": "SPECIAL",
+    "status": "FINISHED",
+    "episodes": 2,
+    "duration": 24,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Slice of Life",
+      "Supernatural"
+    ],
+    "synonyms": [
+      "Natsume Yujin-cho 6 Specials"
+    ],
+    "source": "MANGA",
+    "isAdult": false,
+    "meanScore": 82,
+    "averageScore": 81,
+    "popularity": 11137,
+    "favourites": 100,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 21303,
+          "relationType": "SOURCE",
+          "node": {
+            "id": 88203,
+            "title": {
+              "userPreferred": "Natsume Yuujinchou"
+            },
+            "format": "NOVEL",
+            "type": "MANGA",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/88203-lc7DYn0aogEI.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx88203-8oEIA4nmMCkV.png"
+            }
+          }
+        },
+        {
+          "id": 21305,
+          "relationType": "PARENT",
+          "node": {
+            "id": 97983,
+            "title": {
+              "userPreferred": "Natsume Yuujinchou Roku"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97983-gnWWi3k6xstM.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx97983-Uqn04SR6hVW9.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [
+      {
+        "title": "Episode 12 - From the Path of Dreams",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/fbb405085d2f2e4d56e3491c2f8088a31734964676_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GG1UXW01Z/from-the-path-of-dreams",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 11 - Tell Me Your Name",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/a9184f5f2c95de5b746cfa0b03876fd81734365689_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GWDU7VG0D/tell-me-your-name",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 10 - The House Where a Promise Remains",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/0275159a878c72ef76574d8aa5a0331f1733766915_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G50UMKWGQ/the-house-where-a-promise-remains",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 9 - That Which Blocks The Ceremony",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/dc61ad03c1a1559e239d7b71b58e1eca1733152852_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GQJUMN7WJ/that-which-blocks-the-ceremony",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 8 - Natsume on the Moonlit Night",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/54f8d2f229aa20e42d0ad281b8faa1e01732549904_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GD9UE9D7J/natsume-on-the-moonlit-night",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 7 - A Difficult Two",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/d3768d70db3ee277b1da76084dc2e0f01731948687_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GZ7UDQJ90/a-difficult-two",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 6 - The Abandoned Station, Two Wheels",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/bede253cb1bfd0610c2ff6a4490085151731346633_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G8WU73E5E/the-abandoned-station-two-wheels",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 5 - Chobi's Treasure",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/ecb42d78c08a1fe16a755de295a894fa1730742107_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G2XUNXJ93/chobis-treasure",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 4 - Depths of the Page",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/5c2950c4c3dd90c88b72191024e931ed1730133068_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GPWU8NEM0/depths-of-the-page",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 3 - Tookanya",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/eb91887f32d210be696bbf71505baef11729520281_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G31UVKQ8P/tookanya",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 2 - Someday's Garden",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/90ed48cc0c6887d8c39aa6cadf47abd91728915064_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GVWU8NJ1D/somedays-garden",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 1 - The Fragment's Lament",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/14c9bff26e5adf4de8b0d52b77cc63551728317971_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GMKUE9W0N/the-fragments-lament",
+        "site": "Crunchyroll"
+      }
+    ],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 233,
+        "name": "Youkai"
+      },
+      {
+        "id": 81,
+        "name": "Iyashikei"
+      },
+      {
+        "id": 53,
+        "name": "Shoujo"
+      },
+      {
+        "id": 1052,
+        "name": "Adoption"
+      },
+      {
+        "id": 250,
+        "name": "Rural"
+      },
+      {
+        "id": 82,
+        "name": "Male Protagonist"
+      },
+      {
+        "id": 321,
+        "name": "Urban Fantasy"
+      }
+    ],
+    "idAnilist": 100283
+  },
+  {
+    "idMal": 36288,
+    "title": {
+      "romaji": "Glamorous Heroes",
+      "english": null,
+      "native": "グラマラスヒーローズ",
+      "userPreferred": "Glamorous Heroes"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100287-lJ1lA8Taxv2H.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100287-lJ1lA8Taxv2H.jpg"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2017,
+      "month": 10,
+      "day": 7
+    },
+    "endDate": {
+      "year": 2017,
+      "month": 12,
+      "day": 9
+    },
+    "description": "A hot-blooded anime on the topic of e-sports based on the real Chinese online game 300 Da Zuozhan (300 Heroes).<br>\n<br>\nFormer top professional gamer Aoba Kaito returns to the gaming circle to regain his professional qualification which was deprived due to a doping suspicion. He and his friends confront against the conspiracy and rise to the top of the leaderboards.\n",
+    "season": "FALL",
+    "seasonYear": 2017,
+    "type": "ANIME",
+    "format": "TV_SHORT",
+    "status": "FINISHED",
+    "episodes": 10,
+    "duration": 6,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "synonyms": [],
+    "source": "ORIGINAL",
+    "isAdult": false,
+    "meanScore": 34,
+    "averageScore": 35,
+    "popularity": 1364,
+    "favourites": 3,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": []
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 308,
+        "name": "Video Games"
+      },
+      {
+        "id": 112,
+        "name": "Virtual World"
+      },
+      {
+        "id": 240,
+        "name": "Amnesia"
+      },
+      {
+        "id": 43,
+        "name": "Swordplay"
+      },
+      {
+        "id": 157,
+        "name": "Guns"
+      },
+      {
+        "id": 792,
+        "name": "E-Sports"
+      }
+    ],
+    "idAnilist": 100287
+  },
+  {
+    "idMal": 31978,
+    "title": {
+      "romaji": "Crayon Shin-chan: Bakusui! Yumemi World Dai Totsugeki",
+      "english": "Crayon Shin-chan Movie 24: Bakusui! Yumemi World Dai Totsugeki",
+      "native": "クレヨンしんちゃん 爆睡!ユメミーワールド大突撃",
+      "userPreferred": "Crayon Shin-chan: Bakusui! Yumemi World Dai Totsugeki"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100289-azWAQip0SRbc.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx100289-azWAQip0SRbc.jpg"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2016,
+      "month": 4,
+      "day": 4
+    },
+    "endDate": {
+      "year": 2016,
+      "month": 4,
+      "day": 4
+    },
+    "description": "A story set in the dream world, depicting the Kasukabe Defense Forces and the Nohara Family fighting against a nightmare trouble. One day the people in Kasukabe come to be able to have dreams they want in their sleep, after having a strange dream in which a giant fish swallows them. The people enjoy having their own distinctive dream in the dream world, but the world gradually changes into a nightmare world. Shinnosuke Nohara and Kasukabe Defense Forces members let Saki Nubatama, a girl who moves in Kasukabe, join the group, and they go into the dream world to explore the cause of the nightmare.\n\n(Source: Manabu Tsuribe)",
+    "season": "SPRING",
+    "seasonYear": 2016,
+    "type": "ANIME",
+    "format": "MOVIE",
+    "status": "FINISHED",
+    "episodes": 1,
+    "duration": 96,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Comedy"
+    ],
+    "synonyms": [
+      "Shin-chan y el mundo de los sueños"
+    ],
+    "source": "MANGA",
+    "isAdult": false,
+    "meanScore": 72,
+    "averageScore": 70,
+    "popularity": 1412,
+    "favourites": 14,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 21309,
+          "relationType": "SOURCE",
+          "node": {
+            "id": 32435,
+            "title": {
+              "userPreferred": "Crayon Shin-chan"
+            },
+            "format": "MANGA",
+            "type": "MANGA",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/32435-DefrPa6rbQrR.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx32435-9lY7xiwr7VQL.jpg"
+            }
+          }
+        },
+        {
+          "id": 21311,
+          "relationType": "PARENT",
+          "node": {
+            "id": 966,
+            "title": {
+              "userPreferred": "Crayon Shin-chan"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "RELEASING",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/966-J5CwLLTBs4OO.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b966-QUCdKAk4ls9J.jpg"
+            }
+          }
+        },
+        {
+          "id": 50640,
+          "relationType": "SEQUEL",
+          "node": {
+            "id": 100290,
+            "title": {
+              "userPreferred": "Crayon Shin-chan: Shuurai!! Uchuujin Shiriri"
+            },
+            "format": "MOVIE",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100290-P4R8MUvxxwv2.jpg"
+            }
+          }
+        },
+        {
+          "id": 50641,
+          "relationType": "PREQUEL",
+          "node": {
+            "id": 98744,
+            "title": {
+              "userPreferred": "Crayon Shin-chan: Ora no Hikkoshi Monogatari! Saboten Daisuugeki"
+            },
+            "format": "MOVIE",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b98744-gh8o2Xio5oAM.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [],
+    "idAnilist": 100289
+  },
+  {
+    "idMal": 10029,
+    "title": {
+      "romaji": "Coquelicot-zaka kara",
+      "english": "From Up on Poppy Hill",
+      "native": "コクリコ坂から",
+      "userPreferred": "Coquelicot-zaka kara"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx10029-R7iZdjWuzeYq.png",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx10029-R7iZdjWuzeYq.png"
+    },
+    "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/10029-U4tY2KezjAc5.jpg",
+    "startDate": {
+      "year": 2011,
+      "month": 7,
+      "day": 16
+    },
+    "endDate": {
+      "year": 2011,
+      "month": 7,
+      "day": 16
+    },
+    "description": "Yokohama, 1963. Umi is a high school student living in her family's hillside home overlooking the sea. Every morning she hoists two signal flags towards the bay, sending out a message. A poem about the flags is published in the school newspaper. Could the author be Shun, the daring newspaper editor who has drawn Umi's attention?<br>\n<br>\nWhile the two teenagers join in the campaign to save their school's old clubhouse, their budding relationship takes an unexpected turn when they discover a secret surrounding their past. In a Japan at the crossroads of tradition and modernization, Umi and Shun share a moving story of friendship, love and hope.<br>\n<br>\n(Source: New Video Group)",
+    "season": "SUMMER",
+    "seasonYear": 2011,
+    "type": "ANIME",
+    "format": "MOVIE",
+    "status": "FINISHED",
+    "episodes": 1,
+    "duration": 95,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Drama",
+      "Romance",
+      "Slice of Life"
+    ],
+    "synonyms": [
+      "Kokuriko-saka kara",
+      "Kokuriko-zaka kara",
+      "La Colina de las Amapolas",
+      "Da Colina Kokuriko",
+      "La collina dei papaveri",
+      "A Colina das Papoilas",
+      "La Colline aux coquelicots",
+      "Der Mohnblumenberg",
+      "Makowe wzgórze",
+      "من أعلى تلة الخشخاش",
+      "Møte på valmueåsen",
+      "Uppe på vallmokullen"
+    ],
+    "source": "MANGA",
+    "isAdult": false,
+    "meanScore": 75,
+    "averageScore": 75,
+    "popularity": 56375,
+    "favourites": 1205,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 6946,
+          "relationType": "SOURCE",
+          "node": {
+            "id": 53614,
+            "title": {
+              "userPreferred": "Coquelicot-zaka kara"
+            },
+            "format": "MANGA",
+            "type": "MANGA",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/53614-jQY1LPoEB7Xx.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx53614-byDK2VyhSLHx.png"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": {
+      "id": "9nzpk_Br6yo",
+      "site": "youtube"
+    },
+    "tags": [
+      {
+        "id": 46,
+        "name": "School"
+      },
+      {
+        "id": 25,
+        "name": "Historical"
+      },
+      {
+        "id": 53,
+        "name": "Shoujo"
+      },
+      {
+        "id": 1228,
+        "name": "Primarily Teen Cast"
+      },
+      {
+        "id": 1537,
+        "name": "Coastal"
+      },
+      {
+        "id": 102,
+        "name": "Coming of Age"
+      },
+      {
+        "id": 1045,
+        "name": "Heterosexual"
+      },
+      {
+        "id": 98,
+        "name": "Female Protagonist"
+      },
+      {
+        "id": 84,
+        "name": "School Club"
+      },
+      {
+        "id": 305,
+        "name": "Ships"
+      },
+      {
+        "id": 262,
+        "name": "Outdoor Activities"
+      },
+      {
+        "id": 87,
+        "name": "Family Life"
+      },
+      {
+        "id": 1052,
+        "name": "Adoption"
+      }
+    ],
+    "idAnilist": 10029
+  },
+  {
+    "idMal": 34244,
+    "title": {
+      "romaji": "Crayon Shin-chan: Shuurai!! Uchuujin Shiriri",
+      "english": null,
+      "native": "映画 クレヨンしんちゃん 襲来!!宇宙人シリリ",
+      "userPreferred": "Crayon Shin-chan: Shuurai!! Uchuujin Shiriri"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100290-P4R8MUvxxwv2.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100290-P4R8MUvxxwv2.jpg"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2017,
+      "month": 4,
+      "day": 15
+    },
+    "endDate": {
+      "year": 2017,
+      "month": 4,
+      "day": 15
+    },
+    "description": "The film's story begins when Shiriri, an alien, arrives and turns Hiroshi and Misae into children. To turn them back, Shinnosuke must travel the length of Japan with Shiriri hidden in his butt. Meanwhile, Shiriri's father is moving forward with a huge conspiracy.\n\n\n<br><br>\n(Source: Anime News Network)",
+    "season": "SPRING",
+    "seasonYear": 2017,
+    "type": "ANIME",
+    "format": "MOVIE",
+    "status": "FINISHED",
+    "episodes": 1,
+    "duration": 120,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Comedy"
+    ],
+    "synonyms": [
+      "Crayon Shin-chan Movie 25",
+      "Shin-chan y kulETe el extraterrestre"
+    ],
+    "source": "MANGA",
+    "isAdult": false,
+    "meanScore": 70,
+    "averageScore": 68,
+    "popularity": 1372,
+    "favourites": 9,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 21312,
+          "relationType": "SOURCE",
+          "node": {
+            "id": 32435,
+            "title": {
+              "userPreferred": "Crayon Shin-chan"
+            },
+            "format": "MANGA",
+            "type": "MANGA",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/32435-DefrPa6rbQrR.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx32435-9lY7xiwr7VQL.jpg"
+            }
+          }
+        },
+        {
+          "id": 21314,
+          "relationType": "PARENT",
+          "node": {
+            "id": 966,
+            "title": {
+              "userPreferred": "Crayon Shin-chan"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "RELEASING",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/966-J5CwLLTBs4OO.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b966-QUCdKAk4ls9J.jpg"
+            }
+          }
+        },
+        {
+          "id": 50638,
+          "relationType": "SEQUEL",
+          "node": {
+            "id": 103690,
+            "title": {
+              "userPreferred": "Crayon Shin-chan: Bakumori! Kung Fu Boys - Ramen Tairan"
+            },
+            "format": "MOVIE",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx103690-zlhPdGJV63jB.jpg"
+            }
+          }
+        },
+        {
+          "id": 50639,
+          "relationType": "PREQUEL",
+          "node": {
+            "id": 100289,
+            "title": {
+              "userPreferred": "Crayon Shin-chan: Bakusui! Yumemi World Dai Totsugeki"
+            },
+            "format": "MOVIE",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx100289-azWAQip0SRbc.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [],
+    "idAnilist": 100290
+  },
+  {
+    "idMal": 25383,
+    "title": {
+      "romaji": "Doraemon: Nobita no Space Heroes",
+      "english": "Doraemon: Nobita no Space Heroes",
+      "native": "ドラえもん のび太の宇宙英雄記",
+      "userPreferred": "Doraemon: Nobita no Space Heroes"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100291-it9jcpdWucA3.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx100291-it9jcpdWucA3.jpg"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2015,
+      "month": 3,
+      "day": 3
+    },
+    "endDate": {
+      "year": 2015,
+      "month": 3,
+      "day": 3
+    },
+    "description": null,
+    "season": "WINTER",
+    "seasonYear": 2015,
+    "type": "ANIME",
+    "format": "MOVIE",
+    "status": "FINISHED",
+    "episodes": 1,
+    "duration": 100,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Fantasy"
+    ],
+    "synonyms": [
+      "Doraemon Movie 35: Nobita no Space Heroes"
+    ],
+    "source": "MANGA",
+    "isAdult": false,
+    "meanScore": 70,
+    "averageScore": 68,
+    "popularity": 2228,
+    "favourites": 16,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 21315,
+          "relationType": "PARENT",
+          "node": {
+            "id": 8687,
+            "title": {
+              "userPreferred": "Doraemon (2005)"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "RELEASING",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/8687-aa3QbJjGfy3B.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b8687-bBnJMGnih4PT.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 28,
+        "name": "Kids"
+      },
+      {
+        "id": 446,
+        "name": "Primarily Child Cast"
+      }
+    ],
+    "idAnilist": 100291
+  },
+  {
+    "idMal": 36318,
+    "title": {
+      "romaji": "Quanzhi Fashi 2",
+      "english": "Full-Time Magister S2",
+      "native": "全职法师 第2季",
+      "userPreferred": "Quanzhi Fashi 2"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100294-Am3ipeQmJEkM.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx100294-Am3ipeQmJEkM.jpg"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2017,
+      "month": 9,
+      "day": 15
+    },
+    "endDate": {
+      "year": 2017,
+      "month": 12,
+      "day": 1
+    },
+    "description": "Second season of Quanzhi Fashi.",
+    "season": null,
+    "seasonYear": null,
+    "type": "ANIME",
+    "format": "ONA",
+    "status": "FINISHED",
+    "episodes": 12,
+    "duration": 18,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Romance"
+    ],
+    "synonyms": [
+      "Full-Time Magister 2"
+    ],
+    "source": "WEB_NOVEL",
+    "isAdult": false,
+    "meanScore": 66,
+    "averageScore": 65,
+    "popularity": 17869,
+    "favourites": 210,
+    "countryOfOrigin": "CN",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 21318,
+          "relationType": "PREQUEL",
+          "node": {
+            "id": 99200,
+            "title": {
+              "userPreferred": "Quanzhi Fashi"
+            },
+            "format": "ONA",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx99200-DuLcVrpoGq8w.png"
+            }
+          }
+        },
+        {
+          "id": 25558,
+          "relationType": "SEQUEL",
+          "node": {
+            "id": 104745,
+            "title": {
+              "userPreferred": "Quanzhi Fashi 3"
+            },
+            "format": "ONA",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx104745-nhUQ61TomI4D.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 29,
+        "name": "Magic"
+      },
+      {
+        "id": 46,
+        "name": "School"
+      },
+      {
+        "id": 82,
+        "name": "Male Protagonist"
+      },
+      {
+        "id": 244,
+        "name": "Isekai"
+      },
+      {
+        "id": 243,
+        "name": "Reincarnation"
+      }
+    ],
+    "idAnilist": 100294
+  },
+  {
+    "idMal": 36440,
+    "title": {
+      "romaji": "Ku Pao Yingxiong",
+      "english": "The Running Heroes",
+      "native": "酷跑英雄",
+      "userPreferred": "Ku Pao Yingxiong"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100295-owui37hyOOP6.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx100295-owui37hyOOP6.jpg"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2017,
+      "month": 9,
+      "day": 2
+    },
+    "endDate": {
+      "year": 2018,
+      "month": 2,
+      "day": 17
+    },
+    "description": "The animation tells the story of Xiao Shuai who accidentally ends up in a fantasy world and gets embroiled in a dispute between parkour colleges.<br>\n<br>\nBased off the Tencent mobile game Parkour Everyday.\n",
+    "season": null,
+    "seasonYear": null,
+    "type": "ANIME",
+    "format": "ONA",
+    "status": "FINISHED",
+    "episodes": 26,
+    "duration": 15,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "synonyms": [
+      "Parkour Hero"
+    ],
+    "source": "VIDEO_GAME",
+    "isAdult": false,
+    "meanScore": 45,
+    "averageScore": 44,
+    "popularity": 777,
+    "favourites": 6,
+    "countryOfOrigin": "CN",
+    "isLicensed": true,
+    "relations": {
+      "edges": []
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 949,
+        "name": "Parkour"
+      },
+      {
+        "id": 308,
+        "name": "Video Games"
+      },
+      {
+        "id": 29,
+        "name": "Magic"
+      },
+      {
+        "id": 244,
+        "name": "Isekai"
+      },
+      {
+        "id": 82,
+        "name": "Male Protagonist"
+      },
+      {
+        "id": 324,
+        "name": "Chibi"
+      }
+    ],
+    "idAnilist": 100295
+  },
+  {
+    "idMal": 36455,
+    "title": {
+      "romaji": "Wo de Tian Jie Nüyou",
+      "english": null,
+      "native": "我的天劫女友",
+      "userPreferred": "Wo de Tian Jie Nüyou"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100296-5nXlg3HVC7PS.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx100296-5nXlg3HVC7PS.jpg"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2017,
+      "month": 9,
+      "day": 20
+    },
+    "endDate": {
+      "year": 2018,
+      "month": 1,
+      "day": 4
+    },
+    "description": "In the modern cultivation world, everywhere is law of the jungle, everyone feels insecure. After saving a cultivatior girl, the security guard Ma Yingxiong accidentally starts the journey of practice cultivation.",
+    "season": null,
+    "seasonYear": null,
+    "type": "ANIME",
+    "format": "ONA",
+    "status": "FINISHED",
+    "episodes": 15,
+    "duration": 13,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Romance"
+    ],
+    "synonyms": [
+      "My Cultivator Girlfriend"
+    ],
+    "source": "MANGA",
+    "isAdult": false,
+    "meanScore": 60,
+    "averageScore": 60,
+    "popularity": 9867,
+    "favourites": 104,
+    "countryOfOrigin": "CN",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 40636,
+          "relationType": "SOURCE",
+          "node": {
+            "id": 117062,
+            "title": {
+              "userPreferred": "Wo de Tian Jie Nüyou"
+            },
+            "format": "MANGA",
+            "type": "MANGA",
+            "status": "RELEASING",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/b117062-rMJipUXHWVFg.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 326,
+        "name": "Cultivation"
+      },
+      {
+        "id": 82,
+        "name": "Male Protagonist"
+      },
+      {
+        "id": 66,
+        "name": "Super Power"
+      },
+      {
+        "id": 98,
+        "name": "Female Protagonist"
+      },
+      {
+        "id": 85,
+        "name": "Tragedy"
+      }
+    ],
+    "idAnilist": 100296
+  },
+  {
+    "idMal": 36291,
+    "title": {
+      "romaji": "Ling Yu",
+      "english": null,
+      "native": "灵域",
+      "userPreferred": "Ling Yu"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100297-CN99UPINmm2O.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100297-CN99UPINmm2O.jpg"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2015,
+      "month": 10,
+      "day": 22
+    },
+    "endDate": {
+      "year": 2015,
+      "month": 12,
+      "day": 24
+    },
+    "description": "Thirty thousand years ago, the Heaven Fighting Race who called themselves “Gods” invaded the Spirit Realm. Hundreds of races rose up in resistance, but ultimately suffered a crushing defeat. The Human Race was the first to concede, and the rest of the Hundred Races soon followed in succession.\n<br><br>\nDuring the subsequent ten thousand years, all of the races were enslaved by the Heaven Fighting Race. They were cruelly treated, and lived beneath the shadow of terror.\n<br><br>\nThe Heaven Fighting Race’s march of conquest did not stop there. With the Spirit Realm as the starting point, they invaded other secret dimensions, and spread war to all corners of existence. After greatly exhausting their combat strength, they were finally defeated by the Hundred Races who took advantage of this opportunity. With no other choice, they fled to the starry skies outside the realm.\n<br><br>\nThirty thousand years later, in an era where the Heaven Fighting Race has already faded to become ancient legend, an amnesiac youth possessing the Heaven Fighting Race’s bloodline is being fostered in an insignificant household. Whilst struggling to live on, he silently awaits the day of the bloodline’s awakening.\n",
+    "season": null,
+    "seasonYear": null,
+    "type": "ANIME",
+    "format": "ONA",
+    "status": "FINISHED",
+    "episodes": 10,
+    "duration": 12,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Fantasy"
+    ],
+    "synonyms": [
+      "Spirit Realm",
+      "Spiritual Field",
+      "Wonderland"
+    ],
+    "source": "WEB_NOVEL",
+    "isAdult": false,
+    "meanScore": 60,
+    "averageScore": 58,
+    "popularity": 1254,
+    "favourites": 19,
+    "countryOfOrigin": "CN",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 23063,
+          "relationType": "SEQUEL",
+          "node": {
+            "id": 101877,
+            "title": {
+              "userPreferred": "Ling Yu 2"
+            },
+            "format": "ONA",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/101877-mfurRpqDUIcn.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 326,
+        "name": "Cultivation"
+      }
+    ],
+    "idAnilist": 100297
+  },
+  {
+    "idMal": 36563,
+    "title": {
+      "romaji": "Megalo Box",
+      "english": "Megalobox",
+      "native": "メガロボクス",
+      "userPreferred": "Megalo Box"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b100298-A5VQUcw7ZC64.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b100298-A5VQUcw7ZC64.jpg"
+    },
+    "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100298-vOjmw7DvMns3.jpg",
+    "startDate": {
+      "year": 2018,
+      "month": 4,
+      "day": 6
+    },
+    "endDate": {
+      "year": 2018,
+      "month": 6,
+      "day": 29
+    },
+    "description": "\"To be quiet and do as you're told, that's the cowardly choice.\" These are the words of Junk Dog, an underground fighter of Megalo Box, an evolution of boxing that utilizes mechanical limbs known as Gear to enhance the speed and power of its users. Despite the young man's brimming potential as a boxer, the illegal nature of his participation forces him to make a living off of throwing matches as dictated by his boss Gansaku Nanbu. However, this all changes when the Megalo Box champion Yuuri enters his shabby ring under the guise of just another challenger. Taken out in a single round, Junk Dog is left with a challenge: \"If you're serious about fighting me again, then fight your way up to me and my ring.\"<br>\n<br>\nFilled with overwhelming excitement and backed by the criminal syndicate responsible for his thrown matches, Junk Dog enters Megalonia: a world-spanning tournament that will decide the strongest Megalo Boxer of them all. Having no name of his own, he takes on the moniker of \"Joe\" as he begins his climb from the very bottom of the ranked list of fighters. With only three months left to qualify, Joe must face off against opponents the likes of which he has never fought in order to meet the challenge of his rival.<br>\n<br>\n(Source: MAL Rewrite)",
+    "season": "SPRING",
+    "seasonYear": 2018,
+    "type": "ANIME",
+    "format": "TV",
+    "status": "FINISHED",
+    "episodes": 13,
+    "duration": 25,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Action",
+      "Drama",
+      "Sci-Fi",
+      "Sports"
+    ],
+    "synonyms": [],
+    "source": "ORIGINAL",
+    "isAdult": false,
+    "meanScore": 77,
+    "averageScore": 77,
+    "popularity": 126798,
+    "favourites": 2714,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 23423,
+          "relationType": "SIDE_STORY",
+          "node": {
+            "id": 102309,
+            "title": {
+              "userPreferred": "Megalo Box Specials"
+            },
+            "format": "SPECIAL",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx102309-Oqt0sXQoJwN4.jpg"
+            }
+          }
+        },
+        {
+          "id": 26746,
+          "relationType": "ADAPTATION",
+          "node": {
+            "id": 105354,
+            "title": {
+              "userPreferred": "Megalo Box: Shukumei no Souken"
+            },
+            "format": "MANGA",
+            "type": "MANGA",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/n105354-Lffa17NMd1xK.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx105354-Ab6YdgRaoHfC.png"
+            }
+          }
+        },
+        {
+          "id": 36656,
+          "relationType": "SEQUEL",
+          "node": {
+            "id": 113359,
+            "title": {
+              "userPreferred": "NOMAD: Megalo Box 2"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/113359-caNHB85WjZcC.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx113359-FnjG2VppJF9f.png"
+            }
+          }
+        },
+        {
+          "id": 37222,
+          "relationType": "PARENT",
+          "node": {
+            "id": 31303,
+            "title": {
+              "userPreferred": "Ashita no Joe"
+            },
+            "format": "MANGA",
+            "type": "MANGA",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/1303-0YcHdL7MyKFB.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx31303-l21HJn9AXl7w.jpg"
+            }
+          }
+        },
+        {
+          "id": 56230,
+          "relationType": "PARENT",
+          "node": {
+            "id": 2402,
+            "title": {
+              "userPreferred": "Ashita no Joe"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/2402-SgRt5yp35i1Y.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx2402-hbo1SbfcM5hm.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [
+      {
+        "title": "Episode 1 - Buy or Die?",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/1ef31245eaa5f92c5ce2750f348aca641522942585_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G9DUE73E3/buy-or-die",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 2 - The Man Only Dies Once",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/788d0f773441d584e45ba9c59cd86c731523549999_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GX9UQ90QZ/the-man-only-dies-once",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 3 - Gear Is Dead",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/385f4e236bb4c6c3e3fdcaab3464edad1524133624_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G4VUQZ2Q1/gear-is-dead",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 4 - Let’s Dance With Death",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/76f887b0441e2fbdc7fc4485a74649241524696962_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G14U42M41/lets-dance-with-death",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 5 - The Man From Death",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/14c6280ea0127a1ecbc19f820ad35cf51525366795_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GJWU28V2W/the-man-from-death",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 6 - Until the Last Dog Dies",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/efb9425d9071df408f918b62627643171525957298_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GN7UDG4NX/until-the-last-dog-dies",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 7 - The Road to Death",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/7a755e2f47b198c9959183c5eea1f7a41526566492_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GK9U3QXG2/the-road-to-death",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 8 - Deadline of the Dream",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/f9de79799789b241781ce2b980384eb91527179551_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GPWUKEG8M/deadline-of-the-dream",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 9 - A Dead Flower Shall Never Bloom",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/038ce8b245594ed792a83d7c5d95664e1527765174_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G8WUNEM7K/a-dead-flower-shall-never-bloom",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 10 - The Die Is Cast",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/4f40c20a50d70b08c2882b590f934deb1528370354_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GQJUG72ME/the-die-is-cast",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 11 - A Deadmarch",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/becf9808326d62770b820dc4aebbd2841528989255_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GWDU8GD7G/a-deadmarch",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 12 - Leap Over the Edge of Death",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/bee8acedf04a6f939460aaa6b032ef5a1529579314_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GEVUZKEWM/leap-over-the-edge-of-death",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 13 - Born to Die",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/1ff9f7dc3c1710b4790078d5c690274c1530180439_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G9DUE7393/born-to-die",
+        "site": "Crunchyroll"
+      }
+    ],
+    "trailer": {
+      "id": "Trs1rCoLKLc",
+      "site": "youtube"
+    },
+    "tags": [
+      {
+        "id": 169,
+        "name": "Boxing"
+      },
+      {
+        "id": 30,
+        "name": "Martial Arts"
+      },
+      {
+        "id": 82,
+        "name": "Male Protagonist"
+      },
+      {
+        "id": 264,
+        "name": "Athletics"
+      },
+      {
+        "id": 88,
+        "name": "Primarily Male Cast"
+      },
+      {
+        "id": 252,
+        "name": "Revenge"
+      },
+      {
+        "id": 109,
+        "name": "Primarily Adult Cast"
+      },
+      {
+        "id": 108,
+        "name": "Cyberpunk"
+      },
+      {
+        "id": 1219,
+        "name": "Disability"
+      },
+      {
+        "id": 217,
+        "name": "Dystopian"
+      },
+      {
+        "id": 199,
+        "name": "Yakuza"
+      },
+      {
+        "id": 517,
+        "name": "Artificial Intelligence"
+      },
+      {
+        "id": 335,
+        "name": "Tanned Skin"
+      },
+      {
+        "id": 395,
+        "name": "Delinquents"
+      },
+      {
+        "id": 153,
+        "name": "Time Skip"
+      },
+      {
+        "id": 173,
+        "name": "Motorcycles"
+      },
+      {
+        "id": 489,
+        "name": "Drugs"
+      }
+    ],
+    "idAnilist": 100298
+  },
+  {
+    "idMal": 1003,
+    "title": {
+      "romaji": "Aa! Megami-sama! Specials",
+      "english": "Oh! My Goddess Specials",
+      "native": "ああっ女神さまっ",
+      "userPreferred": "Aa! Megami-sama! Specials"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/1003.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/1003.jpg"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2005,
+      "month": 9,
+      "day": 22
+    },
+    "endDate": {
+      "year": 2006,
+      "month": 9,
+      "day": 29
+    },
+    "description": "Due to the recent events that happened at the end of season 1, the Goddesses are having some stability problems with their body systems. The always adult-looking Urd becomes a little girl and has a fateful encounter with a boy, whereas little Skuld becomes an adult and wants to experiment adulthood together with Keiichi.<br>\n<br>\nEpisodes 25 and 26 of Aa! Megami-sama! (TV) that aired separately from it's season 1 original broadcast.",
+    "season": "FALL",
+    "seasonYear": 2005,
+    "type": "ANIME",
+    "format": "SPECIAL",
+    "status": "FINISHED",
+    "episodes": 2,
+    "duration": 24,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Comedy",
+      "Romance",
+      "Supernatural"
+    ],
+    "synonyms": [
+      "Ah! My Goddess! Specials",
+      "Aa! Megami-sama! Episodes 12.5",
+      "Aa! Megami-sama! (TV) episodes 25 and 26"
+    ],
+    "source": "MANGA",
+    "isAdult": false,
+    "meanScore": 72,
+    "averageScore": 72,
+    "popularity": 4140,
+    "favourites": 24,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 1800,
+          "relationType": "SOURCE",
+          "node": {
+            "id": 30446,
+            "title": {
+              "userPreferred": "Aa! Megami-sama!"
+            },
+            "format": "MANGA",
+            "type": "MANGA",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30446-ENGqX6imAo2b.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx30446-jZGZDauOOb8Q.png"
+            }
+          }
+        },
+        {
+          "id": 1801,
+          "relationType": "PARENT",
+          "node": {
+            "id": 50,
+            "title": {
+              "userPreferred": "Aa! Megami-sama! (TV)"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx50-OdzAFLX6X6Hf.png"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 253,
+        "name": "Gods"
+      },
+      {
+        "id": 50,
+        "name": "Seinen"
+      },
+      {
+        "id": 321,
+        "name": "Urban Fantasy"
+      },
+      {
+        "id": 109,
+        "name": "Primarily Adult Cast"
+      },
+      {
+        "id": 29,
+        "name": "Magic"
+      },
+      {
+        "id": 404,
+        "name": "College"
+      },
+      {
+        "id": 779,
+        "name": "Kuudere"
+      },
+      {
+        "id": 488,
+        "name": "Age Regression"
+      }
+    ],
+    "idAnilist": 1003
+  },
+  {
+    "idMal": 10030,
+    "title": {
+      "romaji": "Bakuman. 2",
+      "english": null,
+      "native": "バクマン。2",
+      "userPreferred": "Bakuman. 2"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx10030-EsnaZOM25Jcc.png",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx10030-EsnaZOM25Jcc.png"
+    },
+    "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/10030-QiRMSckmsboa.jpg",
+    "startDate": {
+      "year": 2011,
+      "month": 10,
+      "day": 1
+    },
+    "endDate": {
+      "year": 2012,
+      "month": 3,
+      "day": 24
+    },
+    "description": "After the decision to serialize Moritaka and Akito has been made, they are introduced to Miura, their new manager. At first, the two thought it was a joke, but Hattori gives them a pep talk before leaving. While Miura doesn't seem like a bad person, he is given to rudeness and seems to be worried about the duo's future. In addition, the duo are given three assistants to work on their manuscript, and with the assistance of Ogawa, an experienced assistant, their work progresses well. <br><br>\nAt the start of the new year, Moritaka and Akito both attend Shonen Jack's New Year Party. There, they meet Hiramaru Kazuya, said to be a genius of a whole different level from Eiji. ",
+    "season": "FALL",
+    "seasonYear": 2011,
+    "type": "ANIME",
+    "format": "TV",
+    "status": "FINISHED",
+    "episodes": 25,
+    "duration": 24,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance",
+      "Slice of Life"
+    ],
+    "synonyms": [],
+    "source": "MANGA",
+    "isAdult": false,
+    "meanScore": 82,
+    "averageScore": 81,
+    "popularity": 58372,
+    "favourites": 728,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 6947,
+          "relationType": "PREQUEL",
+          "node": {
+            "id": 7674,
+            "title": {
+              "userPreferred": "Bakuman."
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/7674-MRQY8iwj5cEP.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx7674-J0QHrtN50kzj.png"
+            }
+          }
+        },
+        {
+          "id": 6948,
+          "relationType": "SEQUEL",
+          "node": {
+            "id": 12365,
+            "title": {
+              "userPreferred": "Bakuman. 3"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/12365-icejvUdmnD8D.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx12365-G5nFzWm2mIwz.png"
+            }
+          }
+        },
+        {
+          "id": 6949,
+          "relationType": "SOURCE",
+          "node": {
+            "id": 39711,
+            "title": {
+              "userPreferred": "Bakuman."
+            },
+            "format": "MANGA",
+            "type": "MANGA",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/39711-CMASBll19Ltj.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx39711-tjPWXT1AW321.jpg"
+            }
+          }
+        },
+        {
+          "id": 6950,
+          "relationType": "SUMMARY",
+          "node": {
+            "id": 15711,
+            "title": {
+              "userPreferred": "Bakuman. Special: Deraman."
+            },
+            "format": "SPECIAL",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/15711.jpg"
+            }
+          }
+        },
+        {
+          "id": 23709,
+          "relationType": "SIDE_STORY",
+          "node": {
+            "id": 102609,
+            "title": {
+              "userPreferred": "Bakuman. 2nd Season Special"
+            },
+            "format": "SPECIAL",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/102609-neU4UYPVuSpR.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 145,
+        "name": "Work"
+      },
+      {
+        "id": 144,
+        "name": "Meta"
+      },
+      {
+        "id": 82,
+        "name": "Male Protagonist"
+      },
+      {
+        "id": 139,
+        "name": "Love Triangle"
+      },
+      {
+        "id": 118,
+        "name": "Drawing"
+      },
+      {
+        "id": 102,
+        "name": "Coming of Age"
+      },
+      {
+        "id": 1045,
+        "name": "Heterosexual"
+      },
+      {
+        "id": 105,
+        "name": "Ensemble Cast"
+      },
+      {
+        "id": 56,
+        "name": "Shounen"
+      },
+      {
+        "id": 394,
+        "name": "Writing"
+      },
+      {
+        "id": 46,
+        "name": "School"
+      },
+      {
+        "id": 85,
+        "name": "Tragedy"
+      }
+    ],
+    "idAnilist": 10030
+  },
+  {
+    "idMal": 36539,
+    "title": {
+      "romaji": "Tsuki ga Kirei Special",
+      "english": null,
+      "native": "月がきれい",
+      "userPreferred": "Tsuki ga Kirei Special"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx100305-CRu6RZ5eINHP.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx100305-CRu6RZ5eINHP.jpg"
+    },
+    "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100305-Z6cZFkrwzf2L.jpg",
+    "startDate": {
+      "year": 2017,
+      "month": 9,
+      "day": 27
+    },
+    "endDate": {
+      "year": 2017,
+      "month": 9,
+      "day": 27
+    },
+    "description": "A series of unaired comedic shorts released with Blu-ray and DVD boxes of Tsuki ga Kirei.",
+    "season": "SUMMER",
+    "seasonYear": 2017,
+    "type": "ANIME",
+    "format": "SPECIAL",
+    "status": "FINISHED",
+    "episodes": 1,
+    "duration": 15,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Comedy",
+      "Romance",
+      "Slice of Life"
+    ],
+    "synonyms": [
+      "as the moon so beautiful"
+    ],
+    "source": "ORIGINAL",
+    "isAdult": false,
+    "meanScore": 71,
+    "averageScore": 71,
+    "popularity": 12108,
+    "favourites": 75,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 21332,
+          "relationType": "PARENT",
+          "node": {
+            "id": 98202,
+            "title": {
+              "userPreferred": "Tsuki ga Kirei"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/98202-JlZYSjYB8pux.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx98202-H6RtsIMZPALF.png"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 46,
+        "name": "School"
+      },
+      {
+        "id": 102,
+        "name": "Coming of Age"
+      },
+      {
+        "id": 1045,
+        "name": "Heterosexual"
+      },
+      {
+        "id": 139,
+        "name": "Love Triangle"
+      }
+    ],
+    "idAnilist": 100305
+  },
+  {
+    "idMal": 36565,
+    "title": {
+      "romaji": "Major 2nd",
+      "english": "MAJOR 2nd",
+      "native": "メジャー2nd",
+      "userPreferred": "Major 2nd"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100306-picxGtylsEST.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx100306-picxGtylsEST.jpg"
+    },
+    "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100306-15AYgi4A4ghv.jpg",
+    "startDate": {
+      "year": 2018,
+      "month": 4,
+      "day": 7
+    },
+    "endDate": {
+      "year": 2018,
+      "month": 9,
+      "day": 22
+    },
+    "description": "Shigeno Daigo is an elementary student whose father, Goro, is a professional baseball player. Inspired by his father, who was once a Major League player, Daigo started playing baseball with the Mifune Dolphins, a youth team. However, he was unable to live up to the expectations of being the son of a professional, and quit baseball after less than a year. Then, in the spring of his sixth-grade year, Daigo's school welcomes a transfer student, Sato Hikaru, whose father is Sato Toshiya, a former Major League player and Goro's close friend. The fate of these two young men begins to move forward!<br><br>(Source: Crunchyroll)",
+    "season": "SPRING",
+    "seasonYear": 2018,
+    "type": "ANIME",
+    "format": "TV",
+    "status": "FINISHED",
+    "episodes": 25,
+    "duration": 24,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Sports"
+    ],
+    "synonyms": [
+      "メジャーセカンド"
+    ],
+    "source": "MANGA",
+    "isAdult": false,
+    "meanScore": 72,
+    "averageScore": 72,
+    "popularity": 9195,
+    "favourites": 68,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 21333,
+          "relationType": "SOURCE",
+          "node": {
+            "id": 86144,
+            "title": {
+              "userPreferred": "Major 2nd"
+            },
+            "format": "MANGA",
+            "type": "MANGA",
+            "status": "RELEASING",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx86144-H6HmEdTaAu8O.jpg"
+            }
+          }
+        },
+        {
+          "id": 21335,
+          "relationType": "PREQUEL",
+          "node": {
+            "id": 9890,
+            "title": {
+              "userPreferred": "Major: Message"
+            },
+            "format": "OVA",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx9890-Z1Kz2GqDLfB4.png"
+            }
+          }
+        },
+        {
+          "id": 35434,
+          "relationType": "SEQUEL",
+          "node": {
+            "id": 112302,
+            "title": {
+              "userPreferred": "Major 2nd Season 2"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/112302-kbVmGx7EgmCg.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx112302-VZZnJ1NY0waA.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [
+      {
+        "title": "Episode 1 - Daigo's Dream",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/b31dbbda4e52cc264a1342fc6dd05ba31523087741_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY8DWGP0Y/daigos-dream",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 2 - If I Wasn't the Second",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/0bd3dfb5650acba8b5c5569f7bcdf1e41523700809_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G65P08NK6/if-i-wasnt-the-second",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 3 - The Two Juniors",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b0fca72001bb88c6937675fbb1eb5a581524306282_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6EXVQMQR/the-two-juniors",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 4 - The Talent of Loving Baseball",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/3de9812f217e7e723fe6a62b616ba6631524768819_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYXJ9G4E6/the-talent-of-loving-baseball",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 5 - Commence Special Training!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/c091e974626d42cb7008159183be03231525510920_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY0XDN276/commence-special-training",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 6 - Catch",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/3cac7dfefa91a4c452d0f55a4aecf8171526114508_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G64P9V00R/catch",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 7 - Some Day, For Sure",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/d5bef1e78dc5678bfe1a91e40167fb2b1526719126_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYXJ00W06/some-day-for-sure",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 8 - Toshiya's Personal Training",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/03cb538190b4fefb079b7b2a88ba31461527275731_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY0X973G6/toshiyas-personal-training",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 9 - Hikaru's Feelings",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/2707970f6f3e6d09b12913a8eb9553b81528437860_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRG5G9N1R/hikarus-feelings",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 10 - The Summer Tournament Begins!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/2ef3287e196bcf1167bc23d707f10fd01528515344_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRJ0Q214Y/the-summer-tournament-begins",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 11 - Now I've Done It!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/47df68be959f078404fe5f58f80a43b31529144638_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G65PVN406/now-ive-done-it",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 12 - Battery Debut!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/faa6244e368c76b06134ce15ce07fefb1529694202_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRVDNZ1ZR/battery-debut",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 13 - Mutsuko's Melancholy",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/5b63182270c8b79f6f1b078a1ef7d91e1530352794_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR5PV9W0R/mutsukos-melancholy",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 14 - The Experience Level of the Catcher",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/436204672eb5106c844fd5f8da01787e1530951040_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR795Q0V6/the-experience-level-of-the-catcher",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 15 - The Key to Success",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/e50204c808731f4e315664434aa6f2801531616857_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6EX53M1R/the-key-to-success",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 16 - All-Out Battle",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/52631ddb15adcce90342e1bbfd40e1a71532167738_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRDKQ2E3Y/all-out-battle",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 17 - I Don't Want to Lose",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/0cb12042471292c442127cea3f6b3d881532769982_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYXJ0WKP6/i-dont-want-to-lose",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 18 - The Mayumura Siblings",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/5995dbab6a1315cc7f518cd852d808fc1533373618_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRZJJ3Z36/the-mayumura-siblings",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 19 - Before the Big Game",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/7aa338b93115d029cdfa90f9537a524d1533972963_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR9VVMV86/before-the-big-game",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 20 - The Touto Match – Play Ball!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/5f4ccbcb69cacc67f1599df9414f5d5a1534569999_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G68DDQ386/the-touto-match-play-ball",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 21 - Daigo and Hikaru",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/8a920e9213c3a904a86662bb272ebd4b1535177113_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRMEE2ZVY/daigo-and-hikaru",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 22 - Ace on the Mound",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/5bf05cd39a7464b7462d8cb4b752e11f1535789045_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRNVVZWW6/ace-on-the-mound",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 23 - The Hit of Destiny",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/c1f1d6af5e44b3b2e40e199417549ed91536399743_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY8DDN9WY/the-hit-of-destiny",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 24 - No way...!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/9f77304ed8878f947a58bee0430bf8d01537002010_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6G55M4D6/no-way",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 25 - The Promise",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/836ee2910f7f53c8e102a2845eb6ebe81537612398_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G64PP5DER/the-promise",
+        "site": "Crunchyroll"
+      }
+    ],
+    "trailer": {
+      "id": "tk4rmNvDgLI",
+      "site": "youtube"
+    },
+    "tags": [
+      {
+        "id": 149,
+        "name": "Baseball"
+      },
+      {
+        "id": 56,
+        "name": "Shounen"
+      },
+      {
+        "id": 446,
+        "name": "Primarily Child Cast"
+      },
+      {
+        "id": 46,
+        "name": "School"
+      }
+    ],
+    "idAnilist": 100306
+  },
+  {
+    "idMal": 36339,
+    "title": {
+      "romaji": "Nissin no Donbei x Kemono Friends: Fukkura",
+      "english": null,
+      "native": "日清のどん兵衛 × けものフレンズ 「ふっくら」",
+      "userPreferred": "Nissin no Donbei x Kemono Friends: Fukkura"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100328-mOIZ9lSaP9Ry.png",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100328-mOIZ9lSaP9Ry.png"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2017,
+      "month": 9,
+      "day": 19
+    },
+    "endDate": {
+      "year": 2017,
+      "month": 9,
+      "day": 19
+    },
+    "description": "A collaboration between Kemono Friends and Nissin. They promote the latter's Donbei Kitsune Udon product with the Silver Fox and the Ezo Red Fox. In the first episode the duo are trying to figure out how to eat it as well as finding an old pay-per-view TV, putting money in it, and watching an \"old\" live-action Nissin Donbei Kitsune Udon commercial (said commercial is real and was created this year).\n",
+    "season": "SUMMER",
+    "seasonYear": 2017,
+    "type": "ANIME",
+    "format": "ONA",
+    "status": "FINISHED",
+    "episodes": 1,
+    "duration": 1,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Comedy"
+    ],
+    "synonyms": [
+      "Nissin no Donbei x Kemono Friends: Soft",
+      "Nissin Donbei Udon"
+    ],
+    "source": "ORIGINAL",
+    "isAdult": false,
+    "meanScore": 57,
+    "averageScore": 55,
+    "popularity": 1047,
+    "favourites": 5,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 21345,
+          "relationType": "PARENT",
+          "node": {
+            "id": 87496,
+            "title": {
+              "userPreferred": "Kemono Friends"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/87496-OR27I0tcbgzc.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx87496-pB2CXbFGucn0.png"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 505,
+        "name": "Advertisement"
+      },
+      {
+        "id": 254,
+        "name": "Kemonomimi"
+      }
+    ],
+    "idAnilist": 100328
+  },
+  {
+    "idMal": 10033,
+    "title": {
+      "romaji": "Toriko",
+      "english": null,
+      "native": "トリコ",
+      "userPreferred": "Toriko"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx10033-V7xnlgAVtaVR.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx10033-V7xnlgAVtaVR.jpg"
+    },
+    "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n10033-u9ROjiLizrd4.jpg",
+    "startDate": {
+      "year": 2011,
+      "month": 4,
+      "day": 3
+    },
+    "endDate": {
+      "year": 2014,
+      "month": 3,
+      "day": 30
+    },
+    "description": "In the world where the taste and texture of food are very important there is Toriko, a hunter of precious foods regularly hired by restaurants and the rich. A man with inhuman skills to capture the ferocious, evasive and rare animals to complete his ultimate dinner course and then the chef Komatsu, his current accomplice: a weak timid person who was inspired by Toriko's greatness and accompanies him on all his journeys on his quest for the course of his life.",
+    "season": "SPRING",
+    "seasonYear": 2011,
+    "type": "ANIME",
+    "format": "TV",
+    "status": "FINISHED",
+    "episodes": 147,
+    "duration": 24,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Fantasy"
+    ],
+    "synonyms": [
+      "Toriko (2011)",
+      "Toriko (TV)",
+      "Toriko x One Piece Collabo Special"
+    ],
+    "source": "MANGA",
+    "isAdult": false,
+    "meanScore": 70,
+    "averageScore": 69,
+    "popularity": 24068,
+    "favourites": 368,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 6951,
+          "relationType": "PREQUEL",
+          "node": {
+            "id": 10074,
+            "title": {
+              "userPreferred": "Toriko 3D: Kaimaku Gourmet Adventure!!"
+            },
+            "format": "MOVIE",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n10074-Xq9zlRSzWPxX.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/10074.jpg"
+            }
+          }
+        },
+        {
+          "id": 6952,
+          "relationType": "SOURCE",
+          "node": {
+            "id": 37887,
+            "title": {
+              "userPreferred": "Toriko"
+            },
+            "format": "MANGA",
+            "type": "MANGA",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/37887-Qfm2dsjWMHdR.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx37887-eYfLTjygqwK8.png"
+            }
+          }
+        },
+        {
+          "id": 6953,
+          "relationType": "SIDE_STORY",
+          "node": {
+            "id": 17699,
+            "title": {
+              "userPreferred": "Toriko Movie: Bishokushin no Special Menu"
+            },
+            "format": "MOVIE",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n17699-1ZGLVyZQrw00.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/n17699-AemUkaxHWeiq.jpg"
+            }
+          }
+        },
+        {
+          "id": 6956,
+          "relationType": "ALTERNATIVE",
+          "node": {
+            "id": 6941,
+            "title": {
+              "userPreferred": "Toriko: Jump Super Anime Tour 2009 Special"
+            },
+            "format": "SPECIAL",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n6941-Azv0bT4Ha0y9.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/6941.jpg"
+            }
+          }
+        },
+        {
+          "id": 26644,
+          "relationType": "SIDE_STORY",
+          "node": {
+            "id": 11787,
+            "title": {
+              "userPreferred": "Toriko: Barbarian Ivy wo Hokaku Seyo!"
+            },
+            "format": "SPECIAL",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n11787-s5C0q6vY8PZv.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/11787.jpg"
+            }
+          }
+        },
+        {
+          "id": 39682,
+          "relationType": "CHARACTER",
+          "node": {
+            "id": 21,
+            "title": {
+              "userPreferred": "ONE PIECE"
+            },
+            "format": "TV",
+            "type": "ANIME",
+            "status": "RELEASING",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx21-ELSYx3yMPcKM.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [
+      {
+        "title": "Episode 1 - Arrival on the Gourmet Island! The Gourmet Hunter Toriko Appears!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/247ecda9f81c66d9867878f1619aaa6b1395389842_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G69PX4XEY/arrival-on-the-gourmet-island-the-gourmet-hunter-toriko-appears",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 2 - The Undiscovered Giant Beast! Toriko, Capture a Gararagator!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/7d8e6fce1165bb430b80489be3694bb81395389826_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G649GZGEY/the-undiscovered-giant-beast-toriko-capture-a-gararagator",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 3 - The Well Mellowed 7-Colored Fruit Juice! Pick the Rainbow Fruit!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/190ff5baae330b1d9b651caf708405e71395389867_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6JQK5K5R/the-well-mellowed-7-colored-fruit-juice-pick-the-rainbow-fruit",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 4 - Prepare It! the Poisonous Puffer Whale! the Heavenly King Coco Appears!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/ec396603c458d6db2023020e2ab838b61395389867_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6K5KG39Y/prepare-it-the-poisonous-puffer-whale-the-heavenly-king-coco-appears",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 5 - The Deadly Cave Battle! Fire, Five-Fold Spiked Punch!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/e870ed5ef9ec4e08fbf6aa230f46b5641395389900_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRVNM03DY/the-deadly-cave-battle-fire-five-fold-spiked-punch",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 6 - The Knocking Master! Time to Taste the Puffer Whale!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/31cde5e969e232baffefc266611aebe51395389898_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6P8PKDD6/the-knocking-master-time-to-taste-the-puffer-whale",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 7 - The Strongest Wolf That Ever Lived! The Battle Wolf Is Reborn!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/91e7c901eb3e32fa9076fccb27ee54591395389925_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY8VM91JY/the-strongest-wolf-that-ever-lived-the-battle-wolf-is-reborn",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 8 - The Threat Appears! Rumble at the Gourmet Coliseum!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/fd75e7b03db06ffc0b89eff5d621eaa81395389929_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRDQV1D7Y/the-threat-appears-rumble-at-the-gourmet-coliseum",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 9 - That Which Is Passed Down! Activate, Gourmet Cells!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/cca3ff6436fb2a2f1e05609169ff2c821395389957_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G65VJ5K36/that-which-is-passed-down-activate-gourmet-cells",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 10 - The Man Who Has an Invincible Domain! His Name Is Sunny!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/e88540a63431d10ec7fc181f7de1e8871395390001_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYGGV34DY/the-man-who-has-an-invincible-domain-his-name-is-sunny",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 11 - Regal Isle Dash! Search for the Jewel Meat!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/f586ff38e9b787bce741b9496adddeef1395390029_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYE5MN10R/regal-isle-dash-search-for-the-jewel-meat",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 12 - The Devils' Game! Clear the Devils' Playground!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/91e529617216dc12c42cb966dbddfa311395390053_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR9PX43E6/the-devils-game-clear-the-devils-playground",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 13 - The Ultimate Backup! Clash, Coco Vs. GT Robot!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/7da5a303ac7dda93da94373f871820b11395390088_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR49GZ1E6/the-ultimate-backup-clash-coco-vs-gt-robot",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 14 - The Threat Of Deadly Poison! Coco's Formula For Victory!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/61203436b2320d85e29c2132f550816c1395390845_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRJQK5V5Y/the-threat-of-deadly-poison-cocos-formula-for-victory",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 15 - The Unyielding aesthetic! Sunny's Manly Battle!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/e76cc1188df45db5eaebf4940de982591395391128_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY5VJ5X0Y/the-unyielding-aesthetic-sunnys-manly-battle",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 16 - Rin's Final Wish! Awaken, Super Toriko!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/d72602a8f53b37adf9455f538745460e1395390135_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRGGV395R/rins-final-wish-awaken-super-toriko",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 17 - Super Toriko, the Fists of Anger! This Is the Strongest Spike Punch!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/0aedb75664a4a3b2fd41e1fc6b427d971395390103_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRE5MNK16/super-toriko-the-fists-of-anger-this-is-the-strongest-spike-punch",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 18 - The Taste Written in His DNA! Toriko, Search for the BB Corn!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/e6b74c70e89f0ac1776a40243e48410f1395390138_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G69PX4MJY/the-taste-written-in-his-dna-toriko-search-for-the-bb-corn",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 19 - The Talent of Battle! Show Me, Terry, King in the Making!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/5f7b6164a6a8ac594a6b8c0d5a5bf6921395391438_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G649GZMJY/the-talent-of-battle-show-me-terry-king-in-the-making",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 20 - For Terry's Sake! Burst by Broiling Heat, BB Corn!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/7e31ba8ca596c258805fbc4de088a2b71395390171_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6JQK518R/for-terrys-sake-burst-by-broiling-heat-bb-corn",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 21 - The Gourmet Corp. Assassin! the Moment Toriko's Techniques Evolve!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/b509eb6d6037e27421da087aa2563ecc1395390804_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6K5KGXWY/the-gourmet-corp-assassin-the-moment-torikos-techniques-evolve",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 22 - Pressure of Madness! Grinpatch vs. Toriko!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/a22e4c8d82eb0853521dc18549d8685c1395390166_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRVNM0E7Y/pressure-of-madness-grinpatch-vs-toriko",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 23 - The Amusement Park of Eating! the Bellyfull City, Gourmet Town!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/1de7cfeb3bc32b6ed09ed90e2bb96fcd1395390192_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6P8PKXJ6/the-amusement-park-of-eating-the-bellyfull-city-gourmet-town",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 24 - Dreamtime! Setsuno's Century Soup!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/132c14e59e25d2e5787b434564ea899c1395392638_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY8VM9X4Y/dreamtime-setsunos-century-soup",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 25 - Meeting at the Saloon! Rivalry Between Gourmet Hunters!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b3f95e0455465aeeed9fb8c744dae7e31395391226_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRDQV1N1Y/meeting-at-the-saloon-rivalry-between-gourmet-hunters",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 26 - Challenge of the Gourmet Hunter Army! Disembarking at Freezing Hell!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/38f42b5cfb6356e4594f8099df0689241395392411_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G65VJ5E06/challenge-of-the-gourmet-hunter-army-disembarking-at-freezing-hell",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 27 - Hurry While It's Hot! a Survival Race On Ice!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/609db5a53434f57339b84d2a085d78ee1395390815_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYGGV3P5Y/hurry-while-its-hot-a-survival-race-on-ice",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 28 - The Explosive Fire Shakes Ice Mountain! the Identity of the Masked Man!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/a50d2a3954621a4746e661ab4e485c541395390822_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYE5MNP1R/the-explosive-fire-shakes-ice-mountain-the-identity-of-the-masked-man",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 29 - Glorious Bug Tamer! Tommyrod vs Toriko!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/19087dd2721b9e0fd5f77855da98012c1395390861_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR9PX4JJ6/glorious-bug-tamer-tommyrod-vs-toriko",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 30 - Gratitude and Pride! Takimaru's Full-Out Corkscrew Shot!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/f0e0459ce6e25626a3081ded59ce10211395390859_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR49GZ0J6/gratitude-and-pride-takimarus-full-out-corkscrew-shot",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 31 - Settled! Match and Takimaru's Desperate Attacks!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/2e393b0f2be0f439ea41d7662c0506311395391044_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRJQK528Y/settled-match-and-takimarus-desperate-attacks",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 32 - The Gourmet Reviver and the Legendary Soup's Location!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/39f956576a65814774b11126e3564bed1395390949_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRK5KGPW6/the-gourmet-reviver-and-the-legendary-soups-location",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 33 - Head-on Fight! Fierce Battle! Toriko vs. Tommyrod!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/a13b1d44c8687118d53c9afb788b4a0d1395390965_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYVNM0X76/head-on-fight-fierce-battle-toriko-vs-tommyrod",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 34 - Ultimate Desperation! Tommyrod's Full-Power Mode Explodes!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/dfd550d11accdc821198600a7e3c85411395393208_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRP8PK1JR/ultimate-desperation-tommyrods-full-power-mode-explodes",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 35 - Wondrous Power! Gourmet Reviver Teppei Joins the Battle!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/0aa5b44c8b5d38bd98cbf7d99142dccb1395391139_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G68VM9J46/wondrous-power-gourmet-reviver-teppei-joins-the-battle",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 36 - The Last Drop! Who Will Get the Century Soup?!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/aec3e86df33ff27cd1da0d988181862a1395391755_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYDQV1416/the-last-drop-who-will-get-the-century-soup",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 37 - Farewell, Ice Hell! Granny Setsu's Hidden Power!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/15750983fa741d06275f188a9d4d4b851395391182_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR5VJ5N0R/farewell-ice-hell-granny-setsus-hidden-power",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 38 - Splendid Healing! Here Comes the Gourmet Reviver, Yosaku!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/6a405162e42a7c0c11ab58a3308c64a41395391239_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6GGV3056/splendid-healing-here-comes-the-gourmet-reviver-yosaku",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 39 - Race to Finish! Will It Be Toriko's Recovery, or Komatsu's Soup?!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/2287c82f59d16d0f26ba7ea7f9539c421395391155_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6E5MNW1Y/race-to-finish-will-it-be-torikos-recovery-or-komatsus-soup",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 40 - To the World of Ultimate Bliss! Taste the Century Soup!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/6d4ac6f81896c0b1c7f787bfa920c56d1395391242_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY9PX4NJR/to-the-world-of-ultimate-bliss-taste-the-century-soup",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 41 - Housewarming Party! Everyone Gather at the Sweets House!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/a98412f9c939b755200900acf1964dc91395391142_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY49GZNJR/housewarming-party-everyone-gather-at-the-sweets-house",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 42 - The Gourmet King Championship! Search for the Ultimate Sweets!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/4f619263aaa4ef823782dfe0b5478b1d1395391845_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYJQK5986/the-gourmet-king-championship-search-for-the-ultimate-sweets",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 43 - Bonding Dish! Partners Are Forever!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/92928fe0f5b68f35bde1fe98300310f11395392215_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYK5KGNWR/bonding-dish-partners-are-forever",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 44 - White Hot! Toriko vs. the IGO President!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/6389efa6167b521ffac0b8b29e4e0ec81395391942_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6VNM0G7R/white-hot-toriko-vs-the-igo-president",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 45 - Vegetable Garden in the Heavens! Vegetable Sky!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/0d36bebc533e80cf520bc84939c6e2121395391908_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYP8PKNJY/vegetable-garden-in-the-heavens-vegetable-sky",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 46 - Discovery! the King of Vegetables, Ozone Grass!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/7347dc94fe314d9b017e4f5f79b09bf01395393311_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR8VM934R/discovery-the-king-of-vegetables-ozone-grass",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 47 - Confession in the Heavens! the Formation of the Invincible Duo!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/c74ddcd278b9dba8098a90a0d4981a791395391768_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6DQV151R/confession-in-the-heavens-the-formation-of-the-invincible-duo",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 48 - Shocking Encounter! a Mysterious Life Form Appears!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/3c282723af7914f67de7406026d162471395391924_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY5VJ5Q0Y/shocking-encounter-a-mysterious-life-form-appears",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 49 - Toriko Rushes in! the Truth of the Gourmet World!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/f063290153eae5cb6c0dea91affad8101395391858_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRGGV325R/toriko-rushes-in-the-truth-of-the-gourmet-world",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 50 - Enter the Astounding Ringer! The True Meaning of a Partner!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/b8e01e037b0f387eb5bf8a49374626711395391955_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRE5MN916/enter-the-astounding-ringer-the-true-meaning-of-a-partner",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 51 - The Reunion of Toriko and Luffy! Find the Seafood Fruit!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/7e9eeff161ebda26e5d461175099c9f21416967112_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G69PX40JY/the-reunion-of-toriko-and-luffy-find-the-seafood-fruit",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 52 - Shock! the Broken Kitchen Knife and Cutler Melk!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/1a593c51f3ccdf2f2ddf1cdc5fa65e6f1395392734_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G649GZJJY/shock-the-broken-kitchen-knife-and-cutler-melk",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 53 - Tension! Toriko's Knife Versus Melk's Knife!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/719c883f44bfb9b00f8a90bd44609d7c1395392038_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6JQK538R/tension-torikos-knife-versus-melks-knife",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 54 - Supergravity! Conquer Heavy Hole!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/63a8a8aa3eac3a7d9c33dbcd64fa2d3b1395392050_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6K5KGMWY/supergravity-conquer-heavy-hole",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 55 - Hidden Truth! the First Melk Appears!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/ccc985482059ef86a95be264293166a31395392950_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRVNM0Z7Y/hidden-truth-the-first-melk-appears",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 56 - Debut! the Second Generation's Succession and Melk Stardust!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/cf7fb45afbed676d8f698de125f976411395392226_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6P8PKVJ6/debut-the-second-generations-succession-and-melk-stardust",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 57 - A Work Made With All Her Might! the Completed Melk Knife!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/e224b0b55fef70bad3bdf64cba133c831395392919_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY8VM9G4Y/a-work-made-with-all-her-might-the-completed-melk-knife",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 58 - Super Celeb! Once in a Lifetime Gourmet Carriage Journey!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/98aba9225ed198abb1529157639eae851395393027_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRDQV171Y/super-celeb-once-in-a-lifetime-gourmet-carriage-journey",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 59 - Finally, He Appears! the Last of the Four Kings, Zebra!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/dae7eb38a7015417dd593b3788dfe8cb1395392424_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G65VJ5906/finally-he-appears-the-last-of-the-four-kings-zebra",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 60 - Unleashed Roar! Death Row Zebra's Release!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/fc85c856a72b2b912fee1b8e233e5a7f1395394398_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYGGV3K5Y/unleashed-roar-death-row-zebras-release",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 61 - Warning! Zebra Has Disembarked at the Sand Garden!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/129a9a3f93ed91433ae670c56d3871f11395392659_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYE5MNJ1R/warning-zebra-has-disembarked-at-the-sand-garden",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 62 - Komatsu Disappears! Devilish Desert Labyrinth!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/6b41de086327640680a006272fed024a1395393473_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR9PX45J6/komatsu-disappears-devilish-desert-labyrinth",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 63 - The Sealed Voice! The Other-Dimensional Gourmet Pyramid!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/45e8bb30b1303c9f095113ec783917241395392721_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR49GZ7J6/the-sealed-voice-the-other-dimensional-gourmet-pyramid",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 64 - Astounding! the Mysterious Ancient Manuscript and the Creature Inside the Coffin!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/021393a7a6706bd2fc179ebb1f82000c1395392863_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRJQK5N8Y/astounding-the-mysterious-ancient-manuscript-and-the-creature-inside-the-coffin",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 65 - Shocking Showdown! Salamander Sphinx!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/efc55aa3059ca4f21e6b811b5224ab311395393311_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY5VJ598Y/shocking-showdown-salamander-sphinx",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 66 - Cooperative Cooking! Komatsu Manages Toriko and Zebra!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/ac72430cd9980acaff8935d1d76508c71395394120_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRGGV3K7R/cooperative-cooking-komatsu-manages-toriko-and-zebra",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 67 - Explosion of Combination Techniques! We Get the World's Best Cola!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/5418fe477962fe48f84496d5dd739d9d1395392935_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRE5MNJQ6/explosion-of-combination-techniques-we-get-the-worlds-best-cola",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 68 - The Truth Revealed! Komatsu's Will and the Identity of the Mysterious Creature!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/9f676b3c40dc452de7b557e7953809741395394191_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G69PX451Y/the-truth-revealed-komatsus-will-and-the-identity-of-the-mysterious-creature",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 69 - Surpass Dad! Midsummer Gobbling Katsu Curry!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/7f3e51fcd95dd34a9c0d1ede133815f51395392963_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G649GZ7ZY/surpass-dad-midsummer-gobbling-katsu-curry",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 70 - The Ties That Bind! Superb Gobbling Katsu Curry",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/c0cb4c453d26d80517a215ee74a010c21395394255_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6JQK58WR/the-ties-that-bind-superb-gobbling-katsu-curry",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 71 - New Phase! Toriko's Decision and the Reunion With 'Him'!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/cdf1c27a5741417c738918911d2dff7b1395393867_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6K5KG8EY/new-phase-torikos-decision-and-the-reunion-with-him",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 72 - Food Luck Runneth Over! Pilgrimage to the Gourmet Shrine!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/b05d8841abe79b523eb02a93a6ad53cd1395393039_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRVNM043Y/food-luck-runneth-over-pilgrimage-to-the-gourmet-shrine",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 73 - Uwaaa! Astonishing Stun Apple!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/07e13f785fa70f3467ebb50831d9b3401395393222_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6P8PKG16/uwaaa-astonishing-stun-apple",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 74 - Chicken Beast's Egg! the Memories of Old Man Yocchi and His Wife!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/0ebe4b96c3c983ed3493153f1b3225f21395393963_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY8VM95GY/chicken-beasts-egg-the-memories-of-old-man-yocchi-and-his-wife",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 75 - Glittering Crystal! Shining Gourami!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/3bf8d3d30b6d6f7e53f39d30e26fe9e21395393856_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRDQV188Y/glittering-crystal-shining-gourami",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 76 - Shocking Rapids! Giant Waterfall, Death Falls!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/2f149ef308abc9e1f09096558993326a1395393323_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G65VJ5386/shocking-rapids-giant-waterfall-death-falls",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 77 - Sunny's New Attack! the Result of Gorgeous Training!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/c644b5cb205e5242531ee781d4362ddd1395393324_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYGGV387Y/sunnys-new-attack-the-result-of-gorgeous-training",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 78 - Thirty Times Combo! Thirty-Six-Fold Twin Spiked Punch!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/a945fd1dc891ab14e7107404dc6db71a1395395056_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYE5MN8QR/thirty-times-combo-thirty-six-fold-twin-spiked-punch",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 79 - Cooking by Intuition! Komatsu and the Shining Gourami!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/e36e980c52a181b963ec15947dac17e61395393484_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR9PX4W16/cooking-by-intuition-komatsu-and-the-shining-gourami",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 80 - Flashy Presentation! Supreme Service With a Meal!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/f3dc1c18273c1df89d445800349ab71c1395395286_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR49GZ3Z6/flashy-presentation-supreme-service-with-a-meal",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 81 - Supreme Chitose Ame! Komatsu and Yun's Tale!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/26e18b53f303093a0eac1aa55fb9c7091395394382_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRJQK5JWY/supreme-chitose-ame-komatsu-and-yuns-tale",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 82 - Assemble On Autumn Mountain! Terry, Yun, Kiss, Queen!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/7cdfab4daaff3e3faf65f4004c00ed081395393867_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRK5KG2E6/assemble-on-autumn-mountain-terry-yun-kiss-queen",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 83 - Reunion! Take-chan of Fairytale Castle!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/a56eb9bb83eb4e20f07ba858068c9a6c1395393879_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYVNM0236/reunion-take-chan-of-fairytale-castle",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 84 - Crossroads! a Chef's Destination!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/1f18df538028822100385cfd4f2669981395393977_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRP8PK21R/crossroads-a-chefs-destination",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 85 - Dramatic Transformation! Hair Salon Barber Gourmet!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/ea7db847c2b6faf7568e113dfe2db4601395394581_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G68VM9ZG6/dramatic-transformation-hair-salon-barber-gourmet",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 86 - Gathering of the Four Kings! a Midwinter Night's Miracle!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/79e4b1bb957d66d91456811cb6d0e7711395394132_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYDQV1E86/gathering-of-the-four-kings-a-midwinter-nights-miracle",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 87 - Merry Feastmas! Gourmet Santa's Present!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/eb33ea6e785e7ab05ab7a5b42b3aa00a1395394745_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR5VJ5Z8R/merry-feastmas-gourmet-santas-present",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 88 - Heaven or Hell?! Storming Into the Gourmet Casino!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/df8b104eb7d9525c1bccf869825880fb1395394205_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6GGV3X76/heaven-or-hell-storming-into-the-gourmet-casino",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 89 - Enter: The Boss of the Underground Cooking World, Livebearer!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/339be3cd0bd1039a534df2e522a985111395394659_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6E5MN7QY/enter-the-boss-of-the-underground-cooking-world-livebearer",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 90 - Life and Death Card Game! Gourmet Tasting!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/ab72f63745cd046712bb61a1b2ee877f1395394269_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY9PX4Z1R/life-and-death-card-game-gourmet-tasting",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 91 - Dead Heat! Coco vs. Livebearer!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/1249f6ca9309f7397b8b0a5570e44db31395394408_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY49GZDZR/dead-heat-coco-vs-livebearer",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 92 - Coco’s Gambit! the Ingredients That Determine Victory or Defeat!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/e38e0a06ccc880b6b9970c1380e948d51395394394_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYJQK5DW6/cocos-gambit-the-ingredients-that-determine-victory-or-defeat",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 93 - Eat or Be Eaten! Toriko vs. Hanya Panda!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/90b8a1ef7c80737f7c04846d2469f4e21395396333_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYK5KGWER/eat-or-be-eaten-toriko-vs-hanya-panda",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 94 - Climax! the Last, Most Terrible Ingredients!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/80d465853ebc6a336bba244f39e5bece1395395336_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6VNM0P3R/climax-the-last-most-terrible-ingredients",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 95 - The Moment of Truth! Coco's Daring Scenario!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/19551066a08d5e70e34d4a65f41003cd1395395879_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYP8PK91Y/the-moment-of-truth-cocos-daring-scenario",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 96 - A Taste That's Out of This World! Eating the Meteor Garlic!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/0979e9ae6ccad5a638d647fa77903b521395396379_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR8VM98GR/a-taste-thats-out-of-this-world-eating-the-meteor-garlic",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 97 - Showdown at the Summit! Ichiryu Versus Midora of the Gourmet Corp.!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/3707e3c07d445190163d9ef0eea632301395394592_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6DQV1Z8R/showdown-at-the-summit-ichiryu-versus-midora-of-the-gourmet-corp",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 98 - Hidden Training Ingredient! Emergency Instruction from Ichiryu!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/4420f4ebbf1e23d61dc81960c86e6cfa1395394671_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY5VJ588Y/hidden-training-ingredient-emergency-instruction-from-ichiryu",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 100 - The Four Kings Assemble to Mark the 100th Episode!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/b8fdf9b5134a5f1286cb96efcf1d15521395396288_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRGGV3D7R/the-four-kings-assemble-to-mark-the-100th-episode",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 101 - Toriko Faints in Agony?! Capture the World's Stinkiest Ingredient!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/987f915b50c0151f7cdc239ca6359c6a1395394757_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRE5MN3Q6/toriko-faints-in-agony-capture-the-worlds-stinkiest-ingredient",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 102 - Too Huge! The Giant Fortune Roll, Completed with a Pro Wrestling Move!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/b92724b59900a1eda3f7335b3450016b1395396727_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G69PX481Y/too-huge-the-giant-fortune-roll-completed-with-a-pro-wrestling-move",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 103 - Put Your Hands Together and Bow! Gourmet National Treasure, Chin Chin-Chin, Appears!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/76747744f52f702a9d9030c50e4534b71395395491_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G649GZ8ZY/put-your-hands-together-and-bow-gourmet-national-treasure-chin-chin-chin-appears",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 104 - People Without Gratitude Aren't Welcome! Terrifying Chowlin Temple!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/dd199ee32f07689a0be72539e647ca331395395580_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6JQK5ZWR/people-without-gratitude-arent-welcome-terrifying-chowlin-temple",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 105 - Toriko Totally Defeated?! The Delicate and Dynamic Power of Honoring the Food!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/21a7ac902d0ecc91c943b9c35818549e1395395663_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6K5KGZEY/toriko-totally-defeated-the-delicate-and-dynamic-power-of-honoring-the-food",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 106 - Gratitude is What Counts! The Secret to Honoring the Food!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/817d454a5e41b55854e645484e078f311395395065_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRVNM083Y/gratitude-is-what-counts-the-secret-to-honoring-the-food",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 107 - Approaching Threat! Hurry, Toriko! The Path to the Bubble Fruit!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/4cfe1feb9811e10774e1826223d00bf51395404646_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6P8PKZ16/approaching-threat-hurry-toriko-the-path-to-the-bubble-fruit",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 108 - Tragedy! The End of Chowlin Temple! Farewell, Komatsu!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/d67f27fe13da2450ef7e0244a8d223ba1395395301_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY8VM9KGY/tragedy-the-end-of-chowlin-temple-farewell-komatsu",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 109 - Unrivaled Strength! The One who Mastered Honoring the Food!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/06ec82a13518265fd0d7a5922ef743c31395395350_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRDQV128Y/unrivaled-strength-the-one-who-mastered-honoring-the-food",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 110 - \"National Treasure Class\" One Stroke 100 Million Yen Technique! Toriko vs Granny Chiyo!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/316649bcc083fb37df9bf4f6bc5c96fd1395397100_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G65VJ5186/national-treasure-class-one-stroke-100-million-yen-technique-toriko-vs-granny-chiyo",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 111 - The Legendary Ingredient, \"Center\"! Ichiryu and the Strongest Biotope, 0!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/6ea4b683096d4ba07c73c9f91d7225391395396379_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYGGV3Z7Y/the-legendary-ingredient-center-ichiryu-and-the-strongest-biotope-0",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 112 - Legendary Bee, Infinibee! Toriko vs New-style GT Robot!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/cbcbdf8b9ed26d71c2a0809bd4e280e11395395873_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYE5MNZQR/legendary-bee-infinibee-toriko-vs-new-style-gt-robot",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 113 - Showing True Ability! A Taste of Komatsu's Honoring the Food! The \"Phantom Noodles\", All-Noodles!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/a56a5133875f840cc58ecbcd7fd06e451395395502_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR9PX4216/showing-true-ability-a-taste-of-komatsus-honoring-the-food-the-phantom-noodles-all-noodles",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 114 - The Four Kings Assemble! The Gourmet World Monsters, the Four-Beasts, Awaken!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/77d8996f1f6a8b826e734671b357afdf1395395593_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR49GZ4Z6/the-four-kings-assemble-the-gourmet-world-monsters-the-four-beasts-awaken",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 115 - A Battle with the Existence of the Human Race on the Line! The Four-Beasts vs. the Four Kings!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/6fba665dc9678084e465cf11bbf1569a1395396441_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRJQK54WY/a-battle-with-the-existence-of-the-human-race-on-the-line-the-four-beasts-vs-the-four-kings",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 116 - Toriko, Coco, Sunny, Zebra! The Four Kings' Storming Onslaught!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/d8e6ae1b39a0f5f9f3249a94107bb7b91395395674_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY5VJ5GPY/toriko-coco-sunny-zebra-the-four-kings-storming-onslaught",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 117 - Toriko's New Crisis! The Creeping Main Body of the Four-Beasts!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/e090532230cf33a0c1115b0d78ea09061395396445_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRGGV374R/torikos-new-crisis-the-creeping-main-body-of-the-four-beasts",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 118 - The Four-Beasts' Shocking Combined Form and Green Rain!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/f71d34d23bfba035d00dc12a336a0c231395396429_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRE5MN0P6/the-four-beasts-shocking-combined-form-and-green-rain",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 119 - The Four Kings' Toughest Predicament! Komatsu's Resolve!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/35f5e4fe7e9ef40f58e45b1fac59129b1395395891_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G69PX490Y/the-four-kings-toughest-predicament-komatsus-resolve",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 120 - Save Humankind with Miraculous Gourmet Luck!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/f115935656d1757a3888094482e08c4d1395395885_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G649GZW3Y/save-humankind-with-miraculous-gourmet-luck",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 121 - Burst! Curiosity about the Flavor! The Four Kings' Combined Skill!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/3e30bbaf1f89ba3cc82c2364fff063f11395396926_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6JQK54DR/burst-curiosity-about-the-flavor-the-four-kings-combined-skill",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 122 - Secret Technique: Meal Fit for a King",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/db8f859e18877425e61d91fff2b72a281395396890_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6K5KG11Y/secret-technique-meal-fit-for-a-king",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 123 - The Upcoming Festival! Dangerous Wriggling Critters!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/b820e33db48e9b4b5cbb3601c7adefa81395396301_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRVNM07QY/the-upcoming-festival-dangerous-wriggling-critters",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 124 - Toriko vs. the Monster of the Gourmet World, Mon Plan!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/792f6e7e68d739fb1c1574c52f19bd371395396370_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6P8PKQM6/toriko-vs-the-monster-of-the-gourmet-world-mon-plan",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 125 - Toriko's New Attack, \"Nail Gun\"",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/36828e851c1105f9f307d31b8e58f2cd1395396401_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY8VM979Y/torikos-new-attack-nail-gun",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 126 - Inevitable Turmoil?! The Cooking Fest Begins!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/a73e8663066eb40ff542650cb9d46d001395396392_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRDQV1X9Y/inevitable-turmoil-the-cooking-fest-begins",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 127 - Komatsu is in a Pinch?! Triathlon Cooking!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/25503befcb4fc5774287f19b184be4181395397947_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G65VJ54P6/komatsu-is-in-a-pinch-triathlon-cooking",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 128 - Enter Legendary Chef Brunch the Tengu!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/7f9b9f1086132642301b950b324a4fd21395396438_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYGGV3J4Y/enter-legendary-chef-brunch-the-tengu",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 129 - Playing Dirty! Roaring Ahead! Brunch Overtakes Everybody in a Single Spurt!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/546ffcbbb96d15effcbce42691a2fbda1395396453_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYE5MN4PR/playing-dirty-roaring-ahead-brunch-overtakes-everybody-in-a-single-spurt",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 130 - Live or Die? Death in the Balance Cooking!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/5d77d15bf31ffc96172a1bc4e64f49cf1384755578_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR9PX4K06/live-or-die-death-in-the-balance-cooking",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 131 - Who are the Strongest Partners? Whole Island Cooking!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/093c5ec5d6652d007b12c10df394bdf01385356558_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR49GZX36/who-are-the-strongest-partners-whole-island-cooking",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 132 - The Outbreak of War! Gourmet Corp.'s Fierce Full-scale Offensive!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/8b463aff55c5dcf71680390556b6adcb1385975459_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRJQK5MDY/the-outbreak-of-war-gourmet-corps-fierce-full-scale-offensive",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 133 - Protect Komatsu! Toriko vs. Starjun!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/c92b64964f092981b2fee22f649bfe251386586362_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRK5KGV16/protect-komatsu-toriko-vs-starjun",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 134 - Savage Battle! Toriko's Strongest Attack!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/aedacd0bc04c02a42f85decc2d09547e1387182520_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYVNM01Q6/savage-battle-torikos-strongest-attack",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 135 - Climactic Battle! IGO versus Gourmet Corp.!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/a11ad467ccc9f82dbb12ac0a8340c3371387851916_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GRP8PK0MR/climactic-battle-igo-versus-gourmet-corp",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 136 - Worst Trump Card! The Gourmet World Monster, \"Nitro\"!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/1e94f1f3d6d80adada547cd0274c16101389034721_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G68VM9N96/worst-trump-card-the-gourmet-world-monster-nitro",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 137 - Mortal Combat! Coco vs. Grinpatch!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/9f6af1e35c29be7bc273e155f145f5281389665870_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYDQV1396/mortal-combat-coco-vs-grinpatch",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 138 - Duel! Sunny vs. Tommyrod!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/bd064afbdcd666f0f7d3f07208b66e691390226614_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR5VJ5DPR/duel-sunny-vs-tommyrod",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 139 - The End is Here! Sunny's Final Power!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/b85d84f2ab7ac840a658a2b2d108a5af1390807212_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6GGV3W46/the-end-is-here-sunnys-final-power",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 140 - Counterattack! Zebra Starts Up!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/6b5cd36ccf29a05b23465d06a73148d81391393406_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6E5MNQPY/counterattack-zebra-starts-up",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 141 - Toriko Strikes Back! Ultimate Routine!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/fd6968f6f7a6b75016a40d903bb973211392038894_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY9PX4E0R/toriko-strikes-back-ultimate-routine",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 142 - The Greatest Enemy in History! \"Joie\" Appears!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/77a3f6a5e2797768a653a5ff5072347c1392617517_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY49GZQ3R/the-greatest-enemy-in-history-joie-appears",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 143 - Shock! The True Identity of the Mastermind, \"Joie\"!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/61ab3a27a32705d74276e63b2821c2821393223956_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYJQK5ED6/shock-the-true-identity-of-the-mastermind-joie",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 144 - The Beginning of the End! Toriko vs. Joie!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/68baa3c09a98cd5eeb23eb547b67c4251393835577_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYK5KG71R/the-beginning-of-the-end-toriko-vs-joie",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 145 - Resuscitation Strike! The Four Kings' Ultimate Skill!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire4-tmb/65581a350380fdbb9b828591ab4fa5c61395027907_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6VNM0QQR/resuscitation-strike-the-four-kings-ultimate-skill",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 146 - Be Heard, Komatsu's Scream! Toriko is Revived!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/f9a2e7e06769b98947f7e9a4ab4d0dd71395637582_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYP8PKJMY/be-heard-komatsus-scream-toriko-is-revived",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 147 - Toriko and Komatsu Embark on a New Voyage!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/b28c5105682a3697e6ffeb2ace00bad51396243726_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR8VM909R/toriko-and-komatsu-embark-on-a-new-voyage",
+        "site": "Crunchyroll"
+      }
+    ],
+    "trailer": null,
+    "tags": [
+      {
+        "id": 142,
+        "name": "Food"
+      },
+      {
+        "id": 1310,
+        "name": "Travel"
+      },
+      {
+        "id": 433,
+        "name": "Animals"
+      },
+      {
+        "id": 276,
+        "name": "Kaiju"
+      },
+      {
+        "id": 66,
+        "name": "Super Power"
+      },
+      {
+        "id": 143,
+        "name": "Survival"
+      },
+      {
+        "id": 56,
+        "name": "Shounen"
+      },
+      {
+        "id": 82,
+        "name": "Male Protagonist"
+      },
+      {
+        "id": 342,
+        "name": "Environmental"
+      },
+      {
+        "id": 175,
+        "name": "Robots"
+      },
+      {
+        "id": 30,
+        "name": "Martial Arts"
+      },
+      {
+        "id": 199,
+        "name": "Yakuza"
+      },
+      {
+        "id": 158,
+        "name": "Crossover"
+      },
+      {
+        "id": 99,
+        "name": "Henshin"
+      },
+      {
+        "id": 291,
+        "name": "Samurai"
+      },
+      {
+        "id": 91,
+        "name": "Gambling"
+      }
+    ],
+    "idAnilist": 10033
+  },
+  {
+    "idMal": 32311,
+    "title": {
+      "romaji": "Beautiful World",
+      "english": null,
+      "native": "ビューティフル・ワールド",
+      "userPreferred": "Beautiful World"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100330-UKBfb9nc9QR1.png",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx100330-UKBfb9nc9QR1.png"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2014,
+      "month": 12,
+      "day": 2
+    },
+    "endDate": {
+      "year": 2014,
+      "month": 12,
+      "day": 2
+    },
+    "description": "A music video directed by Tsurumaki Kazuya to promote the movies of Rebuild of Evangelion and the main music theme, \"Beautiful World.\" The video includes both new animation and animation from the film.\n",
+    "season": null,
+    "seasonYear": null,
+    "type": "ANIME",
+    "format": "MUSIC",
+    "status": "FINISHED",
+    "episodes": 1,
+    "duration": 3,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Action",
+      "Drama",
+      "Mecha",
+      "Sci-Fi"
+    ],
+    "synonyms": [
+      "عالم جميل"
+    ],
+    "source": "ORIGINAL",
+    "isAdult": false,
+    "meanScore": 68,
+    "averageScore": 67,
+    "popularity": 4419,
+    "favourites": 36,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 25278,
+          "relationType": "CHARACTER",
+          "node": {
+            "id": 2759,
+            "title": {
+              "userPreferred": "Evangelion Shin Movie: Jo"
+            },
+            "format": "MOVIE",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/2759-EzK5WpFQz5ZT.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx2759-S0ATamQtDwlW.jpg"
+            }
+          }
+        },
+        {
+          "id": 63040,
+          "relationType": "CHARACTER",
+          "node": {
+            "id": 3784,
+            "title": {
+              "userPreferred": "Evangelion Shin Movie: Ha"
+            },
+            "format": "MOVIE",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/3784-OYyfe6vR2687.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx3784-TGCsqLryKJ2R.jpg"
+            }
+          }
+        },
+        {
+          "id": 63042,
+          "relationType": "CHARACTER",
+          "node": {
+            "id": 3785,
+            "title": {
+              "userPreferred": "Evangelion Shin Movie: Kyuu"
+            },
+            "format": "MOVIE",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/3785-UyfunULvn6PQ.jpg",
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx3785-a28lDzqtlfjB.png"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [],
+    "trailer": {
+      "id": "jmKRgqWGrWc",
+      "site": "youtube"
+    },
+    "tags": [
+      {
+        "id": 108,
+        "name": "Cyberpunk"
+      },
+      {
+        "id": 1228,
+        "name": "Primarily Teen Cast"
+      },
+      {
+        "id": 122,
+        "name": "Trains"
+      }
+    ],
+    "idAnilist": 100330
+  },
+  {
+    "idMal": 31471,
+    "title": {
+      "romaji": "MILPOM★",
+      "english": "Milpom",
+      "native": "MILPOM★",
+      "userPreferred": "MILPOM★"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx100339-62UC6t29izPM.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx100339-62UC6t29izPM.jpg"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2015,
+      "month": 3,
+      "day": 20
+    },
+    "endDate": {
+      "year": 2017,
+      "month": 9,
+      "day": 29
+    },
+    "description": "The story takes place in a certain ordinary town where it is natural for everyone to wear an animal costume head. It depicts the everyday life of the main character MILPOM and her friends who live there, filled with the essence of Kawaii and a little bit cynical girls.<br>\n<br>\n(Source: Crunchyroll)",
+    "season": "SUMMER",
+    "seasonYear": 2015,
+    "type": "ANIME",
+    "format": "ONA",
+    "status": "FINISHED",
+    "episodes": 6,
+    "duration": 5,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Comedy"
+    ],
+    "synonyms": [
+      "Milpom Star"
+    ],
+    "source": "ORIGINAL",
+    "isAdult": false,
+    "meanScore": 41,
+    "averageScore": 41,
+    "popularity": 557,
+    "favourites": 8,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": [
+        {
+          "id": 66996,
+          "relationType": "PREQUEL",
+          "node": {
+            "id": 143305,
+            "title": {
+              "userPreferred": "MILPOM★ Pilot"
+            },
+            "format": "ONA",
+            "type": "ANIME",
+            "status": "FINISHED",
+            "bannerImage": null,
+            "coverImage": {
+              "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b143305-AvXLUAOm8irX.jpg"
+            }
+          }
+        }
+      ]
+    },
+    "streamingEpisodes": [
+      {
+        "title": "Episode 1 - Pumpkin Pie is Hard to Say!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/b8f757ccec8d54978158a3b3bdd092491441392084_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYP8X37KY/pumpkin-pie-is-hard-to-say",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 2 - What Kind of Bird is a Turkey Anyway?!",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/df8a0b3e90d0121c074498e00a37bc361446773473_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GR8VXQWWR/what-kind-of-bird-is-a-turkey-anyway",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 3 - The Person You Fall for Is Your Type. Isn't That an Urban Legend?",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire3-tmb/1462dced4d4ddef0404e6226bdc6f8891456960274_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G6DQNM9KR/the-person-you-fall-for-is-your-type-isnt-that-an-urban-legend",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 4 - Isn't It A Reality That You'll Be Likened To A Smartmouthed Adolescent If You Speak Of Your Dreams And That You'll Be Shunned For Being Snobbish If You Talk About Your Future?",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire2-tmb/365eb1f5ab2a42270e436b83646cce471467855952_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GY5VX90KY/isnt-it-a-reality-that-youll-be-likened-to-a-smartmouthed-adolescent-if-you-speak-of-your-dreams-and-that-youll-be-shunned-for-being-snobbish-if-you-talk-about-your-future",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 5 - Doesn't Simply Watching Cooking Videos Make You Feel Like You're a Master Chef?",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/0be146111a5cc3b103b2f1fa0b21c3db1480458263_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/G65VQ12P6/doesnt-simply-watching-cooking-videos-make-you-feel-like-youre-a-master-chef",
+        "site": "Crunchyroll"
+      },
+      {
+        "title": "Episode 6 - When You Start to Wonder About Your Roots, Is Thinking 24/7 Ever Enough?",
+        "thumbnail": "https://img1.ak.crunchyroll.com/i/spire1-tmb/23f3213116d268e1dea7735b288249221506746648_full.jpg",
+        "url": "http://www.crunchyroll.com/watch/GYWE9ZJ3Y/when-you-start-to-wonder-about-your-roots-is-thinking-247-ever-enough",
+        "site": "Crunchyroll"
+      }
+    ],
+    "trailer": {
+      "id": "71zu9rUyhYA",
+      "site": "youtube"
+    },
+    "tags": [
+      {
+        "id": 281,
+        "name": "Surreal Comedy"
+      },
+      {
+        "id": 86,
+        "name": "Primarily Female Cast"
+      },
+      {
+        "id": 323,
+        "name": "Stop Motion"
+      },
+      {
+        "id": 356,
+        "name": "Gyaru"
+      },
+      {
+        "id": 1140,
+        "name": "Makeup"
+      },
+      {
+        "id": 410,
+        "name": "Fashion"
+      }
+    ],
+    "idAnilist": 100339
+  },
+  {
+    "idMal": 34003,
+    "title": {
+      "romaji": "nameless",
+      "english": "Nameless",
+      "native": "nameless",
+      "userPreferred": "nameless"
+    },
+    "coverImage": {
+      "extraLarge": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100340-GD9IrOOVPPFY.jpg",
+      "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/100340-GD9IrOOVPPFY.jpg"
+    },
+    "bannerImage": null,
+    "startDate": {
+      "year": 2016,
+      "month": 8,
+      "day": 11
+    },
+    "endDate": {
+      "year": 2016,
+      "month": 8,
+      "day": 11
+    },
+    "description": "Music video for the single \"nameless\" by Kano.\n",
+    "season": null,
+    "seasonYear": null,
+    "type": "ANIME",
+    "format": "MUSIC",
+    "status": "FINISHED",
+    "episodes": 1,
+    "duration": 4,
+    "chapters": null,
+    "volumes": null,
+    "genres": [
+      "Romance"
+    ],
+    "synonyms": [],
+    "source": "ORIGINAL",
+    "isAdult": false,
+    "meanScore": 61,
+    "averageScore": 58,
+    "popularity": 733,
+    "favourites": 2,
+    "countryOfOrigin": "JP",
+    "isLicensed": true,
+    "relations": {
+      "edges": []
+    },
+    "streamingEpisodes": [],
+    "trailer": {
+      "id": "im2tTHtR5YU",
+      "site": "youtube"
+    },
+    "tags": [],
+    "idAnilist": 100340
   }
 ]
