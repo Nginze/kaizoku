@@ -113,17 +113,65 @@ const processRecentReleases = async (feedData: any[]) => {
 				anilistId = anime.idAnilist!.toString();
 			}
 
-			logger.info(
-				`Processing ${title} - Episode ${epNo} (AnilistID: ${anilistId})`,
-			);
-
-			// Get episode embeds
-			await hianimeService.getStreamingEpisodeEmbedById(epNo, anilistId);
+			// logger.info(
+			// 	`Processing ${title} - Episode ${epNo} (AnilistID: ${anilistId})`,
+			// );
+			//
+			// // Get episode embeds
+			// await hianimeService.getStreamingEpisodeEmbedById(epNo, anilistId);
 
 			logger.info(`✅ Processed embeds for ${title} Episode ${epNo}`);
 		} catch (error) {
-			logger.error(`Error processing release ${release.title}:`, error);
+			// logger.error(`Error processing release ${release.title}:`, error);
+			console.log(error);
 		}
+	}
+};
+
+const processAiringList = async () => {
+	try {
+		logger.info("🔄 Fetching airing list from kuroiru.co");
+
+		const response = await axios.get("https://kuroiru.co/app");
+		const $ = cheerio.load(response.data);
+
+		// Find script tags and extract airingList variable
+		let airingList = null;
+		$("script").each((_, element) => {
+			const scriptContent = $(element).html();
+			if (scriptContent && scriptContent.includes("var airingList")) {
+				// Extract the airingList object from the script
+				const match = scriptContent.match(/var airingList\s*=\s*({.*?});/s);
+				if (match) {
+					try {
+						const airingListData = JSON.parse(match[1]);
+						airingList = airingListData.airing;
+					} catch (parseError) {
+						logger.error("Failed to parse airingList JSON:", parseError);
+					}
+				}
+			}
+		});
+
+		if (!airingList || !Array.isArray(airingList)) {
+			logger.warn("No airing list found or invalid format");
+			return;
+		}
+
+		// Process the airing list to prepend base URL to picture paths
+		const processedAiringList = airingList.map((item: any) => ({
+			...item,
+			picture: item.picture
+				? `https://static.kuroiru.co${item.picture}`
+				: item.picture,
+		}));
+
+		// Store in Redis cache
+		await cache("airing-list", processedAiringList);
+		logger.info(`✅ Airing list cached: ${processedAiringList.length} items`);
+	} catch (error) {
+		logger.error("Failed to process airing list:", error);
+		throw error;
 	}
 };
 
@@ -160,6 +208,15 @@ const processScheduledJob = async (job: any) => {
 			}
 			break;
 
+		case "airing-list-task":
+			logger.info("🔄 Running airing list fetch task");
+			try {
+				await processAiringList();
+			} catch (error) {
+				logger.error("Airing list task failed:", error);
+			}
+			break;
+
 		default:
 			logger.warn(`Unknown job type: ${name}`);
 	}
@@ -186,7 +243,7 @@ const scheduleHourlyTask = async () => {
 		{ rssUrl: "https://kuroiru.co/feeds/kuroiruanime.xml" },
 		{
 			repeat: {
-				pattern: "* * * * *", // Every hour at minute 0
+				pattern: "*/30 * * * *", // Every hour at minute 0
 			},
 			removeOnComplete: 10, // Keep only 10 completed jobs
 			removeOnFail: 5, // Keep only 5 failed jobs
@@ -194,6 +251,16 @@ const scheduleHourlyTask = async () => {
 	);
 
 	logger.info("📅 RSS feed task scheduled successfully");
+
+	await schedulerQueue.add("airing-list-task", null, {
+		repeat: {
+			pattern: "*/30 * * * *",
+		},
+		removeOnComplete: 10,
+		removeOnFail: 5,
+	});
+
+	logger.info("Airing list task scheduled successfully");
 };
 
 export { schedulerQueue, worker, scheduleHourlyTask };

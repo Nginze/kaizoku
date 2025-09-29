@@ -77,6 +77,23 @@ export const QUERY_GET_ANIME_META = `
     }
 `;
 
+export const QUERY_GET_BATCH_ANIME_META = `
+  query ($ids: [Int], $malIds: [Int], $perPage: Int = 50) {
+    Page(perPage: $perPage) {
+      pageInfo {
+        total
+        perPage
+        currentPage
+        lastPage
+        hasNextPage
+      }
+      media(id_in: $ids, idMal_in: $malIds) {
+        ${QUERY_GET_ANIME_META}
+      }
+    }
+  }
+`;
+
 export const QUERY_GET_FEATURED_LIST = `
   query ($page: Int = 1, $id: Int, $type: MediaType, $isAdult: Boolean = false, $search: String, $format: [MediaFormat], $status: MediaStatus, $countryOfOrigin: CountryCode, $source: MediaSource, $season: MediaSeason, $seasonYear: Int, $year: String, $onList: Boolean, $yearLesser: FuzzyDateInt, $yearGreater: FuzzyDateInt, $episodeLesser: Int, $episodeGreater: Int, $durationLesser: Int, $durationGreater: Int, $chapterLesser: Int, $chapterGreater: Int, $volumeLesser: Int, $volumeGreater: Int, $licensedBy: [Int], $isLicensed: Boolean, $genres: [String], $excludedGenres: [String], $tags: [String], $excludedTags: [String], $minimumTagRank: Int, $sort: [MediaSort] = [POPULARITY_DESC, SCORE_DESC]) {
     Page(page: $page, perPage: 20) {

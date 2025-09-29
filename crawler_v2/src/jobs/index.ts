@@ -5,7 +5,7 @@ export const initializeJobs = async () => {
 	try {
 		// Schedule the hourly task
 		await scheduleHourlyTask();
-		
+
 		logger.info("🚀 Job scheduler initialized");
 	} catch (error) {
 		logger.error("Failed to initialize job scheduler:", error);
@@ -14,3 +14,4 @@ export const initializeJobs = async () => {
 };
 
 export { worker };
+
