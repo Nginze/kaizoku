@@ -1,8 +1,10 @@
 import { cn } from "@/lib/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { ChartNoAxesColumn, Star } from "lucide-react";
+import { ChartNoAxesColumn, Star, Tag, Tags } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { getFeaturedListOptions } from "../queries/get-featured-list";
+import formatRating from "../utils/format-rating";
+import formatPopularity from "../utils/format-popularity";
 
 type HomeFeaturedContainerProps = {};
 
@@ -30,7 +32,7 @@ export const HomeFeaturedContainer: React.FC<
           key={index}
           className={cn(
             "w-full h-full overflow-hidden flex items-center gap-5 absolute inset-0 transition duration-1000",
-            currentSlideIdx === index ? "opacity-100" : "opacity-0",
+            currentSlideIdx === index ? "opacity-100" : "opacity-0"
           )}
         >
           <img
@@ -53,12 +55,16 @@ export const HomeFeaturedContainer: React.FC<
             <div className="flex flex-col items-start gap-2 mb-2">
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1">
-                  <Star size={13} fill="white" />
-                  <span className="text-sm">{anime.averageScore! / 10}</span>
+                  <Star size={13} fill="#ffc107" color="#ffc107" />
+                  <span className="text-sm">
+                    {formatRating(anime.averageScore!)}
+                  </span>
                 </div>
                 <div className="flex items-center gap-1">
                   <ChartNoAxesColumn size={13} />
-                  <span className="text-sm">{anime.popularity}</span>
+                  <span className="text-sm">
+                    {formatPopularity(anime.popularity!)}
+                  </span>
                 </div>
               </div>
               <div
@@ -69,7 +75,10 @@ export const HomeFeaturedContainer: React.FC<
               ></div>
             </div>
             <div className="w-full text-xs opacity-45 flex items-center justify-between">
-              <span>{anime.genres?.join(", ")}</span>
+              <div className="flex items-center">
+                <Tags size={16} fillRule="nonzero" className="mr-2" />
+                <span>{anime.genres?.join(", ")}</span>
+              </div>
 
               <div className="flex justify-center items-center">
                 {featuredList.map((_: any, index: number) => (

@@ -8,7 +8,7 @@ export const Footer: React.FC<FooterProps> = () => {
   return (
     <footer className="w-full  bg-[#222222]">
       <div className="flex items-center justify-center  py-2.5 bg-secondary-2">
-        <div className="flex items-center justify-between w-[1270px]  mx-auto">
+        <div className="flex items-center justify-between w-[1200px]  mx-auto">
           <div>
             <span className="text-light opacity-40 text-sm">
               Copyright © kaiZen. All Rights Reserved
@@ -33,7 +33,6 @@ export const Footer: React.FC<FooterProps> = () => {
   );
 };
 
-
 export const FooterSkeleton: React.FC = () => {
   return (
     <footer className="w-full px-4 py-6 border-t border-secondary border-opacity-10 mt-8">
@@ -44,7 +43,7 @@ export const FooterSkeleton: React.FC = () => {
             <Skeleton key={index} className="h-4 w-16" />
           ))}
         </div>
-        
+
         {/* Copyright skeleton */}
         <Skeleton className="h-3 w-48" />
       </div>

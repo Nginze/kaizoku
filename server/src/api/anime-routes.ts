@@ -621,3 +621,86 @@ router.get(
     }
   },
 );
+
+// /anime/schedule - Get airing schedule grouped by days
+router.get("/schedule", async (req: Request, res: Response) => {
+  try {
+    const cacheKey = "airing-list";
+
+    // Get airing list from Redis cache
+    const cached = await redis.get(cacheKey);
+
+    if (!cached) {
+      res.status(404).json({
+        error: "Airing schedule not found",
+        message: "No airing schedule data available",
+      });
+
+      return
+    }
+
+    const airingList = JSON.parse(cached);
+
+    // Group anime by days
+    const groupedByDay: { [key: string]: any[] } = {};
+
+    airingList.forEach((anime: any) => {
+      if (anime.time) {
+        // Convert Unix timestamp to ISO string
+        const timestamp = parseInt(anime.time) * 1000; // Convert to milliseconds
+        const date = new Date(timestamp);
+        const dateString = date.toISOString();
+        const dayKey = date.toISOString().split('T')[0]; // Get YYYY-MM-DD format
+
+        // Add formatted timestamp to anime object
+        const animeWithFormattedTime = {
+          ...anime,
+          formattedTime: dateString,
+          airingTime: dateString
+        };
+
+        if (!groupedByDay[dayKey]) {
+          groupedByDay[dayKey] = [];
+        }
+
+        groupedByDay[dayKey].push(animeWithFormattedTime);
+      }
+    });
+
+    // Sort anime within each day by airing time
+    Object.keys(groupedByDay).forEach(day => {
+      groupedByDay[day].sort((a, b) => {
+        const timeA = new Date(a.formattedTime).getTime();
+        const timeB = new Date(b.formattedTime).getTime();
+        return timeA - timeB;
+      });
+    });
+
+    // Convert to array format with day labels and sort by date
+    const schedule = Object.keys(groupedByDay)
+      .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
+      .map(day => ({
+        date: day,
+        dateFormatted: new Date(day).toLocaleDateString('en-US', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }),
+        anime: groupedByDay[day]
+      }));
+
+    res.json({
+      schedule,
+      totalDays: schedule.length,
+      totalAnime: airingList.length
+    });
+
+  } catch (error: any) {
+    console.error("Schedule error:", error);
+    res.status(500).json({
+      error: "Failed to fetch airing schedule",
+      details: error.message,
+    });
+  }
+});

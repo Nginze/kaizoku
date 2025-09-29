@@ -7,6 +7,7 @@ import { getRecentReleasesOptions } from "../queries";
 import { Slideout } from "@/components/slideout";
 import { Button } from "@/components/ui/button";
 import { AnimeCard } from "./anime-card";
+import { ScheduleList } from "./schedule-list";
 
 type HomeMainContainerProps = {};
 
@@ -27,6 +28,7 @@ export const HomeMainContainer: React.FC<HomeMainContainerProps> = () => {
           </TabsList>
           <Slideout
             side="left"
+            className="p-0 w-[350px]"
             trigger={
               <Button>
                 <div className="flex items-center gap-2">
@@ -36,11 +38,11 @@ export const HomeMainContainer: React.FC<HomeMainContainerProps> = () => {
               </Button>
             }
           >
-            <div>Future Schedule here</div>
+            <ScheduleList />
           </Slideout>
         </div>
         <TabsContent value="all">
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(140px,1fr))] gap-1.5">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(135px,1fr))] gap-1">
             {recentReleases.map((anime: any, index: number) => (
               <AnimeCard anime={anime} key={index} />
             ))}

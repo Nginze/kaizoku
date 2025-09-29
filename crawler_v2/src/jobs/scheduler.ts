@@ -59,7 +59,49 @@ const parseRSSFeed = async (rssUrl: string) => {
 			}
 		});
 
-		return items;
+		// Augment items with database data
+		const augmentedItems = [];
+		for (const item of items) {
+			try {
+				// Query MongoDB for anime data using malId
+				const anime = await Anime.findOne({ idMal: parseInt(item.malId) });
+				
+				if (anime) {
+					const augmentedItem = {
+						...anime.toObject(),
+						extras: {
+							provider: "kuroiru",
+							title: item.title,
+							malId: item.malId,
+							image: item.image,
+							epInfo: item.epInfo,
+							pubDate: item.pubDate,
+							epNo: item.epNo
+						}
+					};
+					augmentedItems.push(augmentedItem);
+				} else {
+					// If no anime found in DB, use scraped data as main with empty extras
+					augmentedItems.push({
+						...item,
+						extras: {
+							provider: "kuroiru"
+						}
+					});
+				}
+			} catch (error) {
+				logger.warn(`Failed to augment item ${item.title} with database data:`, error);
+				// Add item without extras if database query fails
+				augmentedItems.push({
+					...item,
+					extras: {
+						provider: "kuroiru"
+					}
+				});
+			}
+		}
+
+		return augmentedItems;
 	} catch (error) {
 		logger.error("Failed to parse RSS feed:", error);
 		throw error;
@@ -158,17 +200,60 @@ const processAiringList = async () => {
 			return;
 		}
 
-		// Process the airing list to prepend base URL to picture paths
-		const processedAiringList = airingList.map((item: any) => ({
-			...item,
-			picture: item.picture
-				? `https://static.kuroiru.co${item.picture}`
-				: item.picture,
-		}));
+		// Process and augment the airing list
+		const augmentedAiringList = [];
+		for (const item of airingList) {
+			try {
+				// Process picture URL
+				const processedItem = {
+					...item,
+					picture: item.picture
+						? `https://static.kuroiru.co${item.picture}`
+						: item.picture,
+				};
+
+				// Query MongoDB for anime data using malId if available
+				let anime = null;
+				if (item.mal_id) {
+					anime = await Anime.findOne({ idMal: parseInt(item.mal_id) });
+				}
+
+				if (anime) {
+					const augmentedItem = {
+						...anime.toObject(),
+						extras: {
+							provider: "kuroiru",
+							...processedItem
+						}
+					};
+					augmentedAiringList.push(augmentedItem);
+				} else {
+					// If no anime found in DB, use scraped data as main with empty extras
+					augmentedAiringList.push({
+						...processedItem,
+						extras: {
+							provider: "kuroiru"
+						}
+					});
+				}
+			} catch (error) {
+				logger.warn(`Failed to augment airing item ${item.title || item.name} with database data:`, error);
+				// Add item without extras if database query fails
+				augmentedAiringList.push({
+					...item,
+					picture: item.picture
+						? `https://static.kuroiru.co${item.picture}`
+						: item.picture,
+					extras: {
+						provider: "kuroiru"
+					}
+				});
+			}
+		}
 
 		// Store in Redis cache
-		await cache("airing-list", processedAiringList);
-		logger.info(`✅ Airing list cached: ${processedAiringList.length} items`);
+		await cache("airing-list", augmentedAiringList);
+		logger.info(`✅ Airing list cached: ${augmentedAiringList.length} items`);
 	} catch (error) {
 		logger.error("Failed to process airing list:", error);
 		throw error;

@@ -78,7 +78,7 @@ export const HomeSideContainer: React.FC<HomeSideContainerProps> = () => {
     <div className="flex flex-col w-full gap-3">
       <div className="flex flex-col gap-2 px-2 py-2 items-center bg-[#222222] ">
         <span className="w-full text-left text-xs opacity-50">
-          Sign in to Aniplex
+          Sign in to kaizen
         </span>
         <button className="bg-blue flex items-center w-full overflow-hidden border border-secondary">
           <div className="bg-white p-3">

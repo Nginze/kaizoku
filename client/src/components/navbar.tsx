@@ -2,20 +2,15 @@ import React from "react";
 import { Search } from "lucide-react";
 import { Input } from "./ui/input";
 import { Flyout } from "./flyout";
-import { SearchResultListItem } from "./search-result-list-item";
+import { SearchResultListItem } from "../features/anime-browsing/components/search-result-list-item";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "./ui/skeleton";
 import axios from "axios";
+import { SearchInput } from "@/features/anime-browsing/components/search-input";
 
 type NavbarProps = {};
 
 export const Navbar: React.FC<NavbarProps> = () => {
-  // const { data: testDb } = useQuery({
-  //   queryKey: ["test-search"],
-  //   queryFn: async () => {
-  //     return (await axios.get("/db.json")).data;
-  //   },
-  // });
   return (
     <div className="flex items-center min-h-[55px]">
       <div className="w-[1200px] flex items-center mx-auto justify-between">
@@ -23,23 +18,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
           <div>
             <span className="text-2xl">改 kaiZen</span>
           </div>
-          <Flyout
-            align="start"
-            trigger={
-              <div className="flex bg-[#141414] items-center px-3 bg-bg-primary border border-slate-50/10 rounded-sm w-[350px]">
-                <Input className="text-sm" placeholder="Search" />
-                <Search size={18} />
-              </div>
-            }
-            className="rounded-sm w-[500px] border border-secondary bg-[#1b1918]"
-          >
-            <></>
-            {/* <div className="flex flex-col gap-1.5">
-              {testDb?.featured.map((anime: any, index: number) => (
-                <SearchResultListItem anime={anime} key={index} />
-              ))}
-            </div> */}
-          </Flyout>
+          <SearchInput />
         </div>
       </div>
     </div>
