@@ -1,6 +1,8 @@
 import { AnimeResult, AnimeSearchFilters } from "@/types/anime";
 import { api } from "./index";
 import { PaginatedResponse, PaginationParams } from "@/types/pagination";
+import { ScheduleResponse } from "@/types/schedule";
+import { WatchInfo } from "@/types/watch";
 
 
 export const anime = {
@@ -115,6 +117,22 @@ export const anime = {
 		const response = await api.get(`/anime/upcoming?${queryParams.toString()}`);
 		return response.data;
 	},
+
+	getSchedule: async (): Promise<ScheduleResponse> => {
+		const response = await api.get("/anime/schedule");
+		return response.data;
+	},
+
+	getWatchInfo: async ({ animeId, epNo }: {animeId: string, epNo: string }): Promise<WatchInfo> => {
+		const params = new URLSearchParams();
+		if (epNo) {
+			params.append('epNo', epNo);
+		}
+		
+		const response = await api.get(`/anime/watch/${animeId}${params.toString() ? `?${params.toString()}` : ''}`);
+		return response.data;
+	}
+
 };
 
 export default anime;

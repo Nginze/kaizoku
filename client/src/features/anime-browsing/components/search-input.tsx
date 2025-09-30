@@ -29,10 +29,20 @@ export const SearchInput: React.FC<SearchInputProps> = () => {
         align="start"
         disabled={query.length === 0}
         trigger={
-          <div className="flex bg-[#141414] items-center bg-bg-primary border border-slate-50/10 rounded-sm w-[250px]">
+          <div
+            className={`flex bg-[#141414] items-center bg-bg-primary border border-slate-50/10 rounded-sm transition-all ease-out duration-150 ${
+              query ? "w-[500px]" : "w-[250px]"
+            }`}
+          >
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => {
+                // Prevent space from triggering popover behavior
+                if (e.key === " ") {
+                  e.stopPropagation();
+                }
+              }}
               className="text-sm"
               placeholder="Search"
             />
@@ -54,9 +64,9 @@ export const SearchInput: React.FC<SearchInputProps> = () => {
             </>
           ) : (
             <>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 h-auto max-h-[400px] overflow-y-auto">
                 {searchResults?.results
-                  .slice(0, 7)
+                  .slice(0, 15)
                   .map((anime, index: number) => (
                     <SearchResultListItem anime={anime} key={index} />
                   ))}

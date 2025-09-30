@@ -1,6 +1,7 @@
 import { AnimeResult } from "@/types/anime";
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Link } from "react-router";
 
 type SearchResultListItemProps = {
   anime: AnimeResult;
@@ -10,27 +11,29 @@ export const SearchResultListItem: React.FC<SearchResultListItemProps> = ({
   anime,
 }) => {
   return (
-    <div className="flex items-start gap-3 cursor-pointer hover:bg-secondary-2  rounded-sm">
-      <div className="h-[70px] w-[55px]">
-        <img
-          className="w-full h-full object-cover"
-          src={anime.coverImage?.extraLarge}
-        />
+    <Link to={`/watch/${anime._id}?ep=1`}>
+      <div className="flex items-start gap-3 cursor-pointer hover:bg-secondary-2  rounded-sm">
+        <div className="h-[70px] w-[55px] min-w-[55px] bg-secondary-2">
+          <img
+            className="w-full h-full object-cover"
+            src={anime.coverImage?.extraLarge}
+          />
+        </div>
+        <div className="flex flex-col items-start gap-1">
+          <div className="text-sm text-primary line-clamp-1">
+            {anime.title.romaji}
+          </div>
+          <div className="text-xs line-clamp-1 opacity-80">
+            {anime.title.english || anime.title.userPreferred}
+          </div>
+          <div className="opacity-40 text-xs">
+            <span>
+              {anime.format} • {anime.seasonYear}
+            </span>
+          </div>
+        </div>
       </div>
-      <div className="flex flex-col items-start gap-1">
-        <div className="text-sm text-primary line-clamp-2">
-          {anime.title.romaji}
-        </div>
-        <div className="text-xs line-clamp-2 opacity-80">
-          {anime.title.english || anime.title.userPreferred}
-        </div>
-        <div className="opacity-40 text-xs">
-          <span>
-            {anime.format} • {anime.seasonYear}
-          </span>
-        </div>
-      </div>
-    </div>
+    </Link>
   );
 };
 

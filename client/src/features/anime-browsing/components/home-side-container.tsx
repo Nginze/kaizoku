@@ -11,68 +11,71 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ExpandableContainer } from "@/components/expandable-container";
+import { getPopularOptions, getTopAiringOptions } from "../queries";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 
 type HomeSideContainerProps = {};
 
-export const HomeSideContainer: React.FC<HomeSideContainerProps> = () => {
-  const genres = [
-    "Action",
-    "Adventure",
-    "Anti-Hero",
-    "CGDCT",
-    "College",
-    "Comedy",
-    "Drama",
-    "Dub",
-    "Ecchi",
-    "Fantasy",
-    "Gag Humor",
-    "Game",
-    "Harem",
-    "Historical",
-    "Horror",
-    "Idol",
-    "Isekai",
-    "Iyashikei",
-    "Josei",
-    "Kids",
-    "Magical Girl",
-    "Martial Arts",
-    "Mecha",
-    "Military",
-    "Movie",
-    "Music",
-    "Mythology",
-    "Mystery",
-    "Otaku",
-    "Parody",
-    "Police",
-    "Psychological",
-    "Racing",
-    "Revenge",
-    "Romance",
-    "Rural",
-    "Samurai",
-    "School",
-    "Sci-Fi",
-    "Seinen",
-    "Shoujo",
-    "Shoujo Ai",
-    "Shounen",
-    "Shounen Ai",
-    "Slice of Life",
-    "Space",
-    "Sports",
-    "Super Power",
-    "Supernatural",
-    "Survival",
-    "Suspense",
-    "Time Travel",
-    "Vampire",
-    "Work",
-  ];
+const genres = [
+  "Action",
+  "Adventure",
+  "Anti-Hero",
+  "CGDCT",
+  "College",
+  "Comedy",
+  "Drama",
+  "Dub",
+  "Ecchi",
+  "Fantasy",
+  "Gag Humor",
+  "Game",
+  "Harem",
+  "Historical",
+  "Horror",
+  "Idol",
+  "Isekai",
+  "Iyashikei",
+  "Josei",
+  "Kids",
+  "Magical Girl",
+  "Martial Arts",
+  "Mecha",
+  "Military",
+  "Movie",
+  "Music",
+  "Mythology",
+  "Mystery",
+  "Otaku",
+  "Parody",
+  "Police",
+  "Psychological",
+  "Racing",
+  "Revenge",
+  "Romance",
+  "Rural",
+  "Samurai",
+  "School",
+  "Sci-Fi",
+  "Seinen",
+  "Shoujo",
+  "Shoujo Ai",
+  "Shounen",
+  "Shounen Ai",
+  "Slice of Life",
+  "Space",
+  "Sports",
+  "Super Power",
+  "Supernatural",
+  "Survival",
+  "Suspense",
+  "Time Travel",
+  "Vampire",
+  "Work",
+];
 
+export const HomeSideContainer: React.FC<HomeSideContainerProps> = () => {
   const years = Array.from({ length: 2025 - 1980 + 1 }, (_, i) => 2025 - i);
+  const { data: topAiringList } = useSuspenseQuery(getTopAiringOptions());
 
   return (
     <div className="flex flex-col w-full gap-3">
@@ -142,7 +145,10 @@ export const HomeSideContainer: React.FC<HomeSideContainerProps> = () => {
                 className="flex items-center gap-3 cursor-pointer rounded-sm"
               >
                 <Checkbox id={genre} className="hover:none" />
-                <label htmlFor={genre} className="text-sm opacity-80">
+                <label
+                  htmlFor={genre}
+                  className="text-sm opacity-80 line-clamp-1"
+                >
                   {genre}
                 </label>
               </div>
@@ -171,9 +177,13 @@ export const HomeSideContainer: React.FC<HomeSideContainerProps> = () => {
               value="today"
               className="px-2 flex flex-col gap-1 w-full"
             >
-              {/* {Array.from({ length: 10 }).map((_, index) => (
-                <AnimeSideBarListItem key={index} />
-              ))} */}
+              {topAiringList?.results.slice(0, 8).map((anime, index) => (
+                <AnimeSideBarListItem
+                  ranking={index + 1}
+                  anime={anime}
+                  key={index}
+                />
+              ))}
             </TabsContent>
           </Tabs>
         </div>

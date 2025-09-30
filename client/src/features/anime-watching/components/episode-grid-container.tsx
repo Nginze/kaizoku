@@ -1,39 +1,114 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
+import Fuse from "fuse.js";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
-import { Input } from "../ui/input";
+} from "@/components/ui/select";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { useParams, useSearchParams } from "react-router";
+import { getWatchInfoOptions } from "../queries/get-watch-info";
 
 type EpisodeGridContainerProps = {};
 
+const EPISODES_PER_RANGE = 100;
+
 export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = () => {
+  const { animeId } = useParams();
+  const [searchParams] = useSearchParams();
+  const epNo = searchParams.get("ep");
+  const [selectedRange, setSelectedRange] = useState("0-100");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const { data: watchInfo } = useSuspenseQuery(
+    getWatchInfoOptions({ animeId: animeId!, epNo: epNo ?? "1" })
+  );
+
+  const totalEpisodes = watchInfo.anime.episodes || 0;
+  const showRangeSelector = totalEpisodes > EPISODES_PER_RANGE;
+
+  const episodeRanges = useMemo(() => {
+    const ranges: string[] = [];
+    for (let i = 0; i < totalEpisodes; i += EPISODES_PER_RANGE) {
+      const start = i;
+      const end = Math.min(i + EPISODES_PER_RANGE, totalEpisodes);
+      ranges.push(`${start}-${end}`);
+    }
+    !showRangeSelector ? ranges.push("0-100") : null;
+    return ranges;
+  }, [totalEpisodes]);
+
+  const currentEpisodes = useMemo(() => {
+    return watchInfo.availableEpisodes;
+  }, [watchInfo.availableEpisodes]);
+
+  const filteredEpisodes = useMemo(() => {
+    if (!searchQuery) return currentEpisodes;
+
+    const fuse = new Fuse(currentEpisodes, {
+      includeScore: true,
+      threshold: 0.3,
+      keys: ["toString()"],
+    });
+
+    const searchTerms =
+      searchQuery.toLowerCase().match(/\d+|episode|ep/g) || [];
+    const episodeNumber = searchTerms.find((term) => !isNaN(Number(term)));
+
+    if (episodeNumber) {
+      return currentEpisodes.filter((ep) => ep === Number(episodeNumber));
+    }
+
+    return fuse.search(searchQuery).map((result) => result.item);
+  }, [currentEpisodes, searchQuery]);
+
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center gap-3">
-        <Select>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="0-25" />
+        <Select
+          defaultValue={selectedRange || "0-100"}
+          value={selectedRange}
+          onValueChange={setSelectedRange}
+          disabled={!showRangeSelector}
+        >
+          <SelectTrigger
+            defaultValue={selectedRange || "0-100"}
+            className="w-[180px]"
+          >
+            <SelectValue
+              defaultValue={selectedRange || "0-100"}
+              placeholder={`0-${totalEpisodes}`}
+            />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="26-50">Light</SelectItem>
-            <SelectItem value="51-75">Dark</SelectItem>
+            {episodeRanges.map((range) => (
+              <SelectItem key={range} value={range}>
+                {range}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
         <div className="border border-secondary w-20">
           <Input
-            placeholder="Sear.."
+            placeholder="Ep #"
             className="bg-[#141414] rounded-none text-sm w-full"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
       </div>
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(45px,1fr))] gap-1 overflow-auto h-[180px] py-1">
-        {Array.from({ length: 200 }).map((_, index) => (
-          <button className="bg-secondary-2 py-1">
-            <span className="opacity-60">{index + 1}</span>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(45px,1fr))] gap-1 overflow-auto h-auto max-h-[180px] py-1">
+        {filteredEpisodes.map((epNumber) => (
+          <button
+            key={epNumber}
+            className={`bg-secondary-2 py-1 max-h-[40px] ${
+              Number(epNo) === epNumber ? "bg-primary text-black" : ""
+            }`}
+          >
+            <span className="opacity-60">{epNumber}</span>
           </button>
         ))}
       </div>

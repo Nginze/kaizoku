@@ -5,6 +5,6 @@ import { client } from "@/lib/api";
 export const getScheduleListOptions = () => {
 	return queryOptions({
 		queryKey: animeKeys.schedule(),
-		queryFn: () => null,
+		queryFn: () => client.getSchedule(),
 	});
 };

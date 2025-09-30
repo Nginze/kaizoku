@@ -19,9 +19,10 @@ export const Flyout: React.FC<FlyoutProps> = ({
 }) => {
   return (
     <Popover>
-      <PopoverTrigger>{trigger}</PopoverTrigger>
+      <PopoverTrigger asChild>{trigger}</PopoverTrigger>
       <PopoverContent
         onOpenAutoFocus={(e) => e.preventDefault()}
+        onCloseAutoFocus={(e) => e.preventDefault()}
         align={align}
         className={cn(className, disabled && "hidden")}
       >

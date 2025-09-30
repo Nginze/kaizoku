@@ -11,7 +11,7 @@ function App() {
         <Router>
           <Routes>
             <Route index element={<Home />} />
-            {/* <Route path="/watch" element={<Watch />} /> */}
+            <Route path="/watch/:animeId" element={<Watch />} />
             <Route path="/about" element={<h1>About</h1>} />
           </Routes>
         </Router>
