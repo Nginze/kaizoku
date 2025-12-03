@@ -5,13 +5,20 @@ import { Link } from "react-router";
 
 type SearchResultListItemProps = {
   anime: AnimeResult;
+  setOpenSearchResults: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const SearchResultListItem: React.FC<SearchResultListItemProps> = ({
   anime,
+  setOpenSearchResults,
 }) => {
   return (
-    <Link to={`/watch/${anime._id}?ep=1`}>
+    <Link
+      onClick={() => {
+        setOpenSearchResults(false);
+      }}
+      to={`/watch/${anime._id}?ep=1`}
+    >
       <div className="flex items-start gap-3 cursor-pointer hover:bg-secondary-2  rounded-sm">
         <div className="h-[70px] w-[55px] min-w-[55px] bg-secondary-2">
           <img

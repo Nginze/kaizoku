@@ -14,22 +14,25 @@ import { Button } from "@/components/ui/button";
 type SearchInputProps = {};
 
 export const SearchInput: React.FC<SearchInputProps> = () => {
+  const [openSearchResults, setOpenSearchResults] = useState<boolean>(false);
   const [query, setQuery] = useState("");
   const q = useDebounce(query, 300);
 
   const { data: searchResults, isPending: searchResultsPending } = useQuery(
     getSearchOptions({
       q,
-    })
+    }),
   );
 
   return (
     <>
       <Flyout
+        open={openSearchResults}
         align="start"
         disabled={query.length === 0}
         trigger={
           <div
+            onClick={() => setOpenSearchResults(true)}
             className={`flex bg-[#141414] items-center bg-bg-primary border border-slate-50/10 rounded-sm transition-all ease-out duration-150 ${
               query ? "w-[500px]" : "w-[250px]"
             }`}
@@ -68,7 +71,11 @@ export const SearchInput: React.FC<SearchInputProps> = () => {
                 {searchResults?.results
                   .slice(0, 15)
                   .map((anime, index: number) => (
-                    <SearchResultListItem anime={anime} key={index} />
+                    <SearchResultListItem
+                      setOpenSearchResults={setOpenSearchResults}
+                      anime={anime}
+                      key={index}
+                    />
                   ))}
               </div>
 

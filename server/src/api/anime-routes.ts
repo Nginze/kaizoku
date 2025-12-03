@@ -89,6 +89,14 @@ const episodeParamsSchema = z.object({
   epId: z.string(),
 });
 
+const watchParamsSchema = z.object({
+  animeId: z.string(),
+});
+
+const watchQuerySchema = z.object({
+  epNo: z.union([z.string(), z.number()]).optional(),
+});
+
 // Helper function to build MongoDB aggregation pipeline based on sort option
 function getSortPipeline(sortBy?: string) {
   const sortStage: any = {};
@@ -700,6 +708,170 @@ router.get("/schedule", async (req: Request, res: Response) => {
     console.error("Schedule error:", error);
     res.status(500).json({
       error: "Failed to fetch airing schedule",
+      details: error.message,
+    });
+  }
+});
+
+// /anime/watch/:animeId - Get anime info with episode embeds
+router.get("/watch/:animeId", async (req: Request, res: Response) => {
+  try {
+    const { animeId } = watchParamsSchema.parse(req.params);
+    const query = watchQuerySchema.parse(req.query);
+    let { epNo } = query;
+
+    // Get anime data from MongoDB using the MongoDB _id
+    const anime = await Anime.findById(animeId);
+
+    if (!anime) {
+      res.status(404).json({
+        error: "Anime not found",
+        message: `No anime found with ID: ${animeId}`,
+      });
+      return;
+    }
+
+    // Use the anilistId for Redis cache operations
+    const anilistId = anime.idAnilist;
+
+    if (!anilistId) {
+      res.status(400).json({
+        error: "Invalid anime data",
+        message: "Anime record is missing Anilist ID",
+      });
+      return;
+    }
+
+    // Get related anime (limit to 10 for performance)
+    const relatedAnime = anime.relations?.edges?.slice(0, 10) || [];
+
+    // Determine episode number to fetch
+    let targetEpNo = 1; // Default to first episode
+
+    if (epNo) {
+      if (epNo === "latest") {
+        // For "latest", we need to find the highest episode number available in Redis
+        const pattern = `anime:${anilistId}:*:*`;
+        const keys = await redis.keys(pattern);
+        
+        // Extract episode numbers from keys and find the maximum
+        const episodeNumbers = keys
+          .map(key => {
+            const parts = key.split(':');
+            return parseInt(parts[3]);
+          })
+          .filter(num => !isNaN(num))
+          .sort((a, b) => b - a); // Sort in descending order
+
+        if (episodeNumbers.length > 0) {
+          targetEpNo = episodeNumbers[0]; // Get the latest episode
+        }
+      } else {
+        targetEpNo = parseInt(epNo.toString());
+        if (isNaN(targetEpNo) || targetEpNo < 1) {
+          targetEpNo = 1;
+        }
+      }
+    }
+
+    // Get SUB and DUB embeds for the target episode using anilistId
+    const subCacheKey = `anime:${anilistId}:SUB:${targetEpNo}`;
+    const dubCacheKey = `anime:${anilistId}:DUB:${targetEpNo}`;
+
+    const [subEmbeds, dubEmbeds] = await Promise.all([
+      redis.get(subCacheKey),
+      redis.get(dubCacheKey),
+    ]);
+
+    // Parse embeds - handle both string and JSON formats
+    const parseEmbedData = (embedData: string | null) => {
+      if (!embedData) return [];
+      
+      try {
+        const parsed = JSON.parse(embedData);
+        
+        // If parsed result is a string, parse it again (double-encoded JSON)
+        if (typeof parsed === 'string') {
+          return JSON.parse(parsed);
+        }
+        
+        // If it's already an array, return it
+        return parsed;
+      } catch (error) {
+        console.error('Error parsing embed data:', error);
+        return [];
+      }
+    };
+
+    const parsedSubEmbeds = parseEmbedData(subEmbeds);
+    const parsedDubEmbeds = parseEmbedData(dubEmbeds);
+
+    // Get all available episodes for this anime from Redis using anilistId
+    const allKeysPattern = `anime:${anilistId}:*:*`;
+    const allKeys = await redis.keys(allKeysPattern);
+    
+    // Extract unique episode numbers
+    const availableEpisodes = [...new Set(
+      allKeys
+        .map(key => {
+          const parts = key.split(':');
+          return parseInt(parts[3]);
+        })
+        .filter(num => !isNaN(num))
+    )].sort((a, b) => a - b);
+
+    // Structure response
+    const response = {
+      anime: {
+        _id: anime._id,
+        idAnilist: anime.idAnilist,
+        idMal: anime.idMal,
+        title: anime.title,
+        coverImage: anime.coverImage,
+        bannerImage: anime.bannerImage,
+        startDate: anime.startDate,
+        endDate: anime.endDate,
+        description: anime.description,
+        season: anime.season,
+        seasonYear: anime.seasonYear,
+        type: anime.type,
+        format: anime.format,
+        status: anime.status,
+        episodes: anime.episodes,
+        duration: anime.duration,
+        genres: anime.genres,
+        synonyms: anime.synonyms,
+        source: anime.source,
+        isAdult: anime.isAdult,
+        meanScore: anime.meanScore,
+        averageScore: anime.averageScore,
+        popularity: anime.popularity,
+        favourites: anime.favourites,
+        countryOfOrigin: anime.countryOfOrigin,
+        isLicensed: anime.isLicensed,
+        trailer: anime.trailer,
+        tags: anime.tags,
+        streamingEpisodes: anime.streamingEpisodes,
+      },
+      currentEpisode: targetEpNo,
+      availableEpisodes,
+      totalAvailableEpisodes: availableEpisodes.length,
+      embeds: {
+        sub: parsedSubEmbeds,
+        dub: parsedDubEmbeds,
+      },
+      hasSubtitles: parsedSubEmbeds.length > 0,
+      hasDubbing: parsedDubEmbeds.length > 0,
+      related: relatedAnime,
+      timestamp: new Date().toISOString(),
+    };
+
+    res.json(response);
+
+  } catch (error: any) {
+    console.error("Watch endpoint error:", error);
+    res.status(500).json({
+      error: "Failed to fetch anime watch data",
       details: error.message,
     });
   }

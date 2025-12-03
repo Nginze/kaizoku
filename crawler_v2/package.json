@@ -1,29 +1,47 @@
 {
 	"name": "anidb",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Anime database crawler with bulk embed scraping capabilities",
 	"main": "index.js",
+	"bin": {
+		"bulk-scraper": "./dist/bulk-scraper.js"
+	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "docker compose up -d && ts-node --transpile-only src/index.ts"
+		"start": "docker compose up -d && ts-node --transpile-only src/index.ts",
+		"build": "tsc",
+		"dev": "nodemon --exec ts-node --transpile-only src/index.ts",
+		"bulk-scraper": "ts-node --transpile-only src/bulk-scraper.ts",
+		"bulk-scraper:start": "npm run bulk-scraper start",
+		"bulk-scraper:status": "npm run bulk-scraper status",
+		"bulk-scraper:monitor": "npm run bulk-scraper monitor",
+		"bulk-scraper:config": "npm run bulk-scraper config",
+		"bulk-scraper:recover": "npm run bulk-scraper recover",
+		"bulk-scraper:cleanup": "npm run bulk-scraper cleanup",
+		"test-connections": "ts-node --transpile-only src/utils/test-connections.ts"
 	},
-	"keywords": [],
+	"keywords": ["anime", "scraper", "crawler", "bulk", "embed", "streaming"],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
 		"@types/string-similarity": "^4.0.2",
 		"axios": "^1.7.9",
 		"bullmq": "^5.34.9",
+		"chalk": "^4.1.2",
 		"cheerio": "^1.0.0",
+		"commander": "^9.5.0",
 		"crypto-js": "^4.2.0",
 		"dotenv": "^16.4.7",
+		"inquirer": "^8.2.6",
 		"ioredis": "^5.4.2",
 		"mongoose": "^8.9.3",
+		"ora": "^5.4.1",
 		"string-similarity": "^4.0.4",
 		"winston": "^3.17.0"
 	},
 	"devDependencies": {
 		"@types/crypto-js": "^4.2.2",
+		"@types/inquirer": "^8.2.10",
 		"@types/node": "^22.10.4",
 		"nodemon": "^3.1.9",
 		"ts-node": "^10.9.2",

@@ -3,6 +3,7 @@ import { Home } from "./pages/home";
 import { Watch } from "./pages/watch";
 import TanstackProvider from "./lib/tanstack";
 import "./App.css";
+import { Filter } from "./pages/filter";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Router>
           <Routes>
             <Route index element={<Home />} />
+            <Route path="/filter" element={<Filter />} />
             <Route path="/watch/:animeId" element={<Watch />} />
             <Route path="/about" element={<h1>About</h1>} />
           </Routes>

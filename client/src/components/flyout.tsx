@@ -3,6 +3,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { cn } from "@/lib/utils";
 
 type FlyoutProps = {
+  open?: boolean;
   trigger: React.ReactNode;
   children: React.ReactNode;
   align?: "start" | "center" | "end";
@@ -11,6 +12,7 @@ type FlyoutProps = {
 };
 
 export const Flyout: React.FC<FlyoutProps> = ({
+  open,
   trigger,
   children,
   className,
@@ -18,7 +20,7 @@ export const Flyout: React.FC<FlyoutProps> = ({
   disabled = false,
 }) => {
   return (
-    <Popover>
+    <Popover {...{ open }}>
       <PopoverTrigger asChild>{trigger}</PopoverTrigger>
       <PopoverContent
         onOpenAutoFocus={(e) => e.preventDefault()}
