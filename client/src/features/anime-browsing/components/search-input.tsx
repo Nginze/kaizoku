@@ -10,18 +10,20 @@ import {
 } from "./search-result-list-item";
 import { useDebounce } from "@/hooks/use-debounce";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router";
 
 type SearchInputProps = {};
 
 export const SearchInput: React.FC<SearchInputProps> = () => {
   const [openSearchResults, setOpenSearchResults] = useState<boolean>(false);
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
   const q = useDebounce(query, 300);
 
   const { data: searchResults, isPending: searchResultsPending } = useQuery(
     getSearchOptions({
       q,
-    }),
+    })
   );
 
   return (
@@ -80,7 +82,12 @@ export const SearchInput: React.FC<SearchInputProps> = () => {
               </div>
 
               {searchResults?.hasNextPage && (
-                <Button className="flex w-full items-center justify-center">
+                <Button
+                  onClick={() => {
+                    navigate(`/filter?q=${q}`);
+                  }}
+                  className="flex w-full items-center justify-center"
+                >
                   <span>View all results</span>
                 </Button>
               )}

@@ -2,7 +2,7 @@
 export interface AnimeSearchFilters {
   q?: string;
   tags?: string;
-  year?: number;
+  year?: string;
   status?:
     | "FINISHED"
     | "RELEASING"
@@ -64,4 +64,3 @@ export interface AnimeResult {
     epNo: number;
   };
 }
-
