@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "./ui/skeleton";
 import axios from "axios";
 import { SearchInput } from "@/features/anime-browsing/components/search-input";
+import Logo from "./logo";
 
 type NavbarProps = {};
 
@@ -15,9 +16,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
     <div className="flex items-center min-h-[55px]">
       <div className="w-[1200px] flex items-center mx-auto justify-between">
         <div className="flex items-center gap-5">
-          <div>
-            <span className="text-2xl">改 kaiZen</span>
-          </div>
+          <Logo />
           <SearchInput />
         </div>
       </div>

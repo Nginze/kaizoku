@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import { Skeleton } from "./ui/skeleton";
+import Logo from "./logo";
 
 type FooterProps = {};
 
@@ -21,9 +22,7 @@ export const Footer: React.FC<FooterProps> = () => {
         </div>
       </div>
       <div className="w-full flex flex-col items-center justify-center py-8 gap-2">
-        <div>
-          <span className="text-2xl">改 kaiZen</span>
-        </div>
+        <Logo />
         <div className="opacity-30 text-regular text-xs">
           Disclaimer: This site does not store any files on its server. All
           contents are provided by non-affiliated third parties.
