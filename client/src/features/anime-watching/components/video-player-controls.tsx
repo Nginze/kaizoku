@@ -4,17 +4,31 @@ import React from "react";
 import { getWatchInfoOptions } from "../queries/get-watch-info";
 import { useParams, useSearchParams } from "react-router";
 import { watch } from "fs";
+import { WatchInfo } from "@/types/watch";
+import { usePlayerControls } from "../contexts/player-controls-context";
+import { cn } from "@/lib/utils";
 
-type PlayerControlsProps = {};
+type PlayerControlsProps = {
+  watchInfo: WatchInfo;
+};
 
-export const PlayerControls: React.FC<PlayerControlsProps> = () => {
-  const { animeId } = useParams();
-  const [searchParams] = useSearchParams();
-  const epNo = searchParams.get("ep");
+export const PlayerControls: React.FC<PlayerControlsProps> = ({
+  watchInfo,
+}) => {
+  const { selectedServer, setSelectedServer } = usePlayerControls();
 
-  const { data: watchInfo } = useSuspenseQuery(
-    getWatchInfoOptions({ animeId: animeId!, epNo: epNo ?? "1" })
-  );
+  const handleServerSelect = (
+    embed: WatchInfo["embeds"]["sub"][0] | WatchInfo["embeds"]["dub"][0]
+  ) => {
+    setSelectedServer({
+      serverIdx: embed.serverIdx,
+      serverName: embed.serverName,
+      embedLink: embed.embedLink,
+      epNo: watchInfo.currentEpisode,
+      serverId: embed.serverId,
+      type: watchInfo.embeds.sub.includes(embed) ? "SUB" : "DUB",
+    });
+  };
 
   return (
     <div className="bg-[#222222] flex w-full">
@@ -43,8 +57,13 @@ export const PlayerControls: React.FC<PlayerControlsProps> = () => {
               <div className="flex items-center gap-0.5">
                 {watchInfo.embeds.sub.map((embed, index) => (
                   <button
+                    onClick={() => handleServerSelect(embed)}
                     key={index}
-                    className="px-3 py-1.5 text-white text-sm bg-secondary"
+                    className={cn(
+                      "px-3 py-1.5 text-white text-sm bg-secondary hover:bg-secondary-1 active:bg-secondary",
+                      selectedServer?.serverId === embed.serverId &&
+                        "bg-primary hover:bg-primary active:bg-primary text-black"
+                    )}
                   >
                     <span className="opacity-60">
                       {embed.serverName || `HD-${embed.serverIdx}`}
@@ -60,8 +79,13 @@ export const PlayerControls: React.FC<PlayerControlsProps> = () => {
               <div className="flex items-center gap-0.5">
                 {watchInfo.embeds.dub.map((embed, index) => (
                   <button
+                    onClick={() => handleServerSelect(embed)}
                     key={index}
-                    className="px-3 py-1.5 text-white text-sm bg-secondary"
+                    className={cn(
+                      "px-3 py-1.5 text-white text-sm bg-secondary hover:bg-secondary-1 active:bg-secondary",
+                      selectedServer?.serverId === embed.serverId &&
+                        "bg-primary hover:bg-primary active:bg-primary text-black"
+                    )}
                   >
                     <span className="opacity-60">
                       {embed.serverName || `HD-${embed.serverIdx}`}

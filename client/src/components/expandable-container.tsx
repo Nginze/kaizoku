@@ -35,6 +35,7 @@ export const ExpandableContainer: React.FC<ExpandableContainerProps> = ({
       </div>
       <div className="flex justify-center">
         <button
+          type="button"
           onClick={toggleExpand}
           className="flex items-center justify-center p-2"
         >

@@ -1,31 +1,100 @@
 import React from "react";
-import { MediaPlayer, MediaProvider } from "@vidstack/react";
+import { MediaPlayer, MediaProvider, Poster, Track } from "@vidstack/react";
 import {
+  DefaultAudioLayout,
   defaultLayoutIcons,
   DefaultVideoLayout,
 } from "@vidstack/react/player/layouts/default";
+import { WatchInfo } from "@/types/watch";
+import { useQuery } from "@tanstack/react-query";
+import { getEpisodeSourcesOptions } from "../queries/get-episode-sources";
+import { usePlayerControls } from "../contexts/player-controls-context";
 
-type PlayerProps = {};
+type PlayerProps = {
+  watchInfo: WatchInfo;
+};
 
-export const Player: React.FC<PlayerProps> = () => {
-  // Original video URL
-  const originalVideoUrl =
-    "https://douvid.xyz/_v1_douvid/DnxdVwUQN8hpvrKtkv+o45N2TRyWMuC9472yqVwpWqs=/1aD58-WfZZNJKe6XAw.m3u8";
-  // "https://frostbite27.pro/_v7/984773c4852fd5ba3284edb065e44679ee3d11467608bdda79f2de42ed0e714dde623a073f0269d0bb9774686bb8b88263cbc8c923546530af2d28b8a3a5f9dd7e2befb6dbbc57f98b181fc62edf2719957f9f74033fb2a966b80116b8d276f4ca1c4dbc4d1057fa65d937c950a58898b3791557f176b504f1a151fe922be7c6/master.m3u8";
-  // "https://douvid.xyz/_v1_douvid/OBrpthndlmFJeUYIw7xnTTO1OB4ZaxESLAVpT2524NU=/2H23PyIbR_5pen2mI8.m3u8";
-  // "https://sunshinerays93.live/_v7/0e98070f56e943c33f1ec2ddd1b9dd03974caf33c918651838963c514582602b22bfd0e19bf658e755c9e36fba6f2b71b022483093ed62debb3671acf827732fb107bbdadbd8b424666d444effa391c6579fd3d145b00df15862e4e38626ae77002ec19962eca5d4dd747eeae09c8b1c85074e180bf90ace7df7b5e31ea42f21/master.m3u8";
-  // "https://thunderwave48.xyz/_v7/35229c723a1215e3fb9adbc44d72740a7fa59d8b430296e84cfa6bed416a17a7ce848aca1e61bd844d798d7e950b30a7929dbec850d38f6672ed088966b6bb8eceab18c6e0e19709e51b1548962657b21039ac96568f85d1e35e44945a966ec91badd978b3afcd85b503e3039a99478afc11cd5a72345494a6c409f0ac17ab4f/master.m3u8";
+export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
+  const { selectedServer } = usePlayerControls();
 
-  // Proxy URL through backend
+  const {
+    data: episodeSources,
+    isLoading: episodeSourcesLoading,
+    isError: episodeSourcesError,
+  } = useQuery(
+    getEpisodeSourcesOptions(
+      selectedServer
+        ? selectedServer.embedLink
+        : watchInfo.embeds.sub[0]?.embedLink
+    )
+  );
+
+  const noStreamingSources =
+    watchInfo.embeds.sub.length === 0 && watchInfo.embeds.dub.length === 0;
+
+  if (episodeSourcesLoading) {
+    return (
+      <MediaPlayer
+        crossOrigin
+        playsInline
+        title={`${watchInfo.anime.title.romaji} - Episode ${watchInfo.currentEpisode}`}
+        aspectRatio="16/9"
+        load="eager"
+        posterLoad="eager"
+        streamType="on-demand"
+        storage="storage-key"
+        keyTarget="player"
+        src={{
+          src: "",
+          type: "application/x-mpegurl",
+        }}
+      >
+        <MediaProvider>
+          <Poster
+            className="vds-poster object-cover w-full h-full"
+            src={watchInfo.anime.bannerImage}
+            alt=""
+          />
+        </MediaProvider>
+        <DefaultAudioLayout icons={defaultLayoutIcons} />
+        <DefaultVideoLayout icons={defaultLayoutIcons} />
+      </MediaPlayer>
+    );
+  }
+
+  if (noStreamingSources || !episodeSources) {
+    return (
+      <div className="w-full h-[500px] flex items-center justify-center bg-black text-white">
+        Content is currently being onboarded{" "}
+      </div>
+    );
+  }
+  if (episodeSourcesError) {
+    return (
+      <div className="w-full h-[500px] flex items-center justify-center bg-black text-white">
+        Error loading episode sources.
+      </div>
+    );
+  }
+
+  const params = new URLSearchParams({
+    introStart: episodeSources.intro.start.toString(),
+    introEnd: episodeSources.intro.end.toString(),
+    outroStart: episodeSources.outro.start.toString(),
+    outroEnd: episodeSources.outro.end.toString(),
+  });
+
   const proxyUrl = `http://localhost:8080/api/proxy/video?url=${encodeURIComponent(
-    originalVideoUrl
+    episodeSources?.sources[0]?.url || ""
   )}`;
+  const chaptersUrl = `http://localhost:8080/api/anime/get-chapters-vtt?${params.toString()}`;
 
   return (
     <>
       <MediaPlayer
-        crossorigin
-        playsinline
+        crossOrigin
+        playsInline
+        title={`${watchInfo.anime.title.romaji} - Episode ${watchInfo.currentEpisode}`}
         aspectRatio="16/9"
         load="eager"
         posterLoad="eager"
@@ -37,9 +106,33 @@ export const Player: React.FC<PlayerProps> = () => {
           type: "application/x-mpegurl",
         }}
       >
-        <MediaProvider />
+        <MediaProvider>
+          <Poster
+            className="vds-poster object-cover w-full h-full"
+            src={watchInfo.anime.bannerImage}
+            alt=""
+          />
+
+          {episodeSources.intro && (
+            <Track
+              kind="chapters"
+              src={chaptersUrl}
+              default
+              label="Skip Times"
+            />
+          )}
+          {episodeSources.tracks[0]?.url && (
+            <Track
+              kind="subtitles"
+              src={episodeSources.tracks[0]?.url}
+              default
+              label="English Subtitles"
+            />
+          )}
+        </MediaProvider>
+        <DefaultAudioLayout icons={defaultLayoutIcons} />
         <DefaultVideoLayout
-          thumbnails="https://s.megastatics.com/thumbnails/d60530447d09b5b21e590776048d0284/thumbnails.vtt"
+          //   thumbnails="https://s.megastatics.com/thumbnails/d60530447d09b5b21e590776048d0284/thumbnails.vtt"
           icons={defaultLayoutIcons}
         />
       </MediaPlayer>

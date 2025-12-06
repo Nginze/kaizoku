@@ -128,9 +128,20 @@ export const anime = {
 		if (epNo) {
 			params.append('epNo', epNo);
 		}
-		
+
 		const response = await api.get(`/anime/watch/${animeId}${params.toString() ? `?${params.toString()}` : ''}`);
 		return response.data;
+	},
+
+	/**
+	 * Get episode sources from embed URL
+	 */
+	getEpisodeSources: async (embedUrl: string): Promise<any> => {
+		const params = new URLSearchParams();
+		params.append('embedUrl', embedUrl);
+
+		const response = await api.get(`/anime/get-sources?${params.toString()}`);
+		return response.data.data;
 	}
 
 };

@@ -9,23 +9,31 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { useParams, useSearchParams } from "react-router";
+import { useNavigate, useParams, useSearchParams } from "react-router";
 import { getWatchInfoOptions } from "../queries/get-watch-info";
+import { WatchInfo } from "@/types/watch";
 
-type EpisodeGridContainerProps = {};
+type EpisodeGridContainerProps = {
+  watchInfo: WatchInfo;
+};
 
 const EPISODES_PER_RANGE = 100;
 
-export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = () => {
-  const { animeId } = useParams();
+export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = ({
+  watchInfo,
+}) => {
+  // const { animeId } = useParams();
+
   const [searchParams] = useSearchParams();
   const epNo = searchParams.get("ep");
   const [selectedRange, setSelectedRange] = useState("0-100");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const { data: watchInfo } = useSuspenseQuery(
-    getWatchInfoOptions({ animeId: animeId!, epNo: epNo ?? "1" })
-  );
+  // const { data: watchInfo } = useSuspenseQuery(
+  //   getWatchInfoOptions({ animeId: animeId!, epNo: epNo ?? "1" })
+  // );
+
+  const navigate = useNavigate();
 
   const totalEpisodes = watchInfo.anime.episodes || 0;
   const showRangeSelector = totalEpisodes > EPISODES_PER_RANGE;
@@ -103,9 +111,12 @@ export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = () => {
       <div className="grid grid-cols-[repeat(auto-fill,minmax(45px,1fr))] gap-1 overflow-auto h-auto max-h-[180px] py-1">
         {filteredEpisodes.map((epNumber) => (
           <button
+            onClick={() =>
+              navigate(`/watch/${watchInfo.anime._id}?ep=${epNumber}`)
+            }
             key={epNumber}
-            className={`bg-secondary-2 py-1 max-h-[40px] ${
-              Number(epNo) === epNumber ? "bg-primary text-black" : ""
+            className={`bg-secondary-2 py-1 max-h-[40px] hover:bg-secondary-1 active:bg-secondary ${
+              Number(epNo) === epNumber ? "bg-primary-1 text-black" : ""
             }`}
           >
             <span className="opacity-60">{epNumber}</span>

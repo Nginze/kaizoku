@@ -147,7 +147,7 @@ export const HomeSideContainer: React.FC<HomeSideContainerProps> = () => {
                     >
                       <SelectTrigger
                         aria-invalid={fieldState.invalid}
-                        className="w-full rounded-sm"
+                        className="w-[100px] rounded-sm"
                       >
                         <SelectValue placeholder="Fall" />
                       </SelectTrigger>
@@ -189,7 +189,7 @@ export const HomeSideContainer: React.FC<HomeSideContainerProps> = () => {
                       </Select>
                     )}
                   />
-                  <Button type="submit" variant={"default"}>
+                  <Button type="submit" className="w-full" variant={"default"}>
                     Go
                   </Button>
                 </div>

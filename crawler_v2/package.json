@@ -10,7 +10,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "docker compose up -d && ts-node --transpile-only src/index.ts",
 		"build": "tsc",
-		"dev": "nodemon --exec ts-node --transpile-only src/index.ts",
+		"dev": "nodemon",
 		"bulk-scraper": "ts-node --transpile-only src/bulk-scraper.ts",
 		"bulk-scraper:start": "npm run bulk-scraper start",
 		"bulk-scraper:status": "npm run bulk-scraper status",
@@ -20,7 +20,14 @@
 		"bulk-scraper:cleanup": "npm run bulk-scraper cleanup",
 		"test-connections": "ts-node --transpile-only src/utils/test-connections.ts"
 	},
-	"keywords": ["anime", "scraper", "crawler", "bulk", "embed", "streaming"],
+	"keywords": [
+		"anime",
+		"scraper",
+		"crawler",
+		"bulk",
+		"embed",
+		"streaming"
+	],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
@@ -36,6 +43,7 @@
 		"ioredis": "^5.4.2",
 		"mongoose": "^8.9.3",
 		"ora": "^5.4.1",
+		"p-limit": "^7.2.0",
 		"string-similarity": "^4.0.4",
 		"winston": "^3.17.0"
 	},

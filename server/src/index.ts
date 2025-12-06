@@ -11,6 +11,9 @@ import { cors as corsMiddleware } from "./middleware/cors";
 import { session as sessionMiddleware } from "./middleware/session";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
 import { connectDB } from "./config/mongo";
+import { embedQueue } from "./config/bull";
+
+import "./workers/embed.worker";
 
 const app = express();
 
@@ -29,10 +32,20 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 app.listen(process.env.PORT || 5000, async () => {
-	try {
-		await connectDB();
-		logger.info(`listening on port ${process.env.PORT || 5000}`);
-	} catch (error) {
-		console.log(error);
-	}
+  try {
+    await connectDB();
+    await embedQueue.add(
+      "init-embed-job",
+      {},
+      {
+        repeat: {
+          every: 1000 * 60 * 0.5,
+        },
+      }
+    );
+    logger.info(`listening on port ${process.env.PORT || 5000}`);
+    logger.info("Embed queue initialized");
+  } catch (error) {
+    console.log(error);
+  }
 });

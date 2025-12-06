@@ -20,7 +20,6 @@ export class MappingService {
 	}
 
 	async getMappingsByAnilistId(anilistId: number) {
-		console.log("anilist id", anilistId);
 		try {
 			const cached = await redis.get(`mappings:${anilistId}`);
 			if (cached) {

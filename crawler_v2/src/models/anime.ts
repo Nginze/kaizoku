@@ -68,6 +68,21 @@ const AnimeSchema = new Schema({
 			name: { type: String },
 		},
 	],
+	// Embed seeding progress tracking
+	embedsSeeded: { type: Boolean, default: false },
+	embedsProgress: {
+		lastProcessedEpisode: { type: Number, default: 0 },
+		failedEpisodes: { type: [Number], default: [] },
+		completedEpisodes: { type: [Number], default: [] },
+		status: { 
+			type: String, 
+			enum: ['pending', 'in_progress', 'completed', 'failed'],
+			default: 'pending'
+		},
+		startedAt: { type: Date },
+		completedAt: { type: Date },
+		lastUpdated: { type: Date, default: Date.now }
+	}
 });
 
 export default model("Anime", AnimeSchema);

@@ -8,6 +8,7 @@ import { appendToFile, saveToFile } from "./config/file";
 import Anime from "./models/anime";
 import { logger } from "./config/logger";
 import { initializeJobs } from "./jobs";
+import seedEmbeds from "./jobs/seed-embeds";
 
 async function seed() {
 	const anilistService = new AnilistService();
@@ -116,7 +117,8 @@ async function main() {
 	try {
 		await connectDB();
 		logger.info("📊 Database connected successfully");
-		await initializeJobs();
+		await seedEmbeds()
+		// await initializeJobs();
 		logger.info("🚀 Jobs initialized - application running");
 	} catch (error) {
 		logger.error("❌ Failed to start application:", error);

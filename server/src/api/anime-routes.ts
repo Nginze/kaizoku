@@ -2,6 +2,7 @@ import { Router, Request, Response } from "express";
 import Anime from "../models/anime";
 import { redis } from "../config/redis";
 import { z } from "zod";
+import MegaCloud from "../lib/extractors/megacloud";
 
 export const router = Router();
 
@@ -581,7 +582,7 @@ router.get(
         details: error.message,
       });
     }
-  },
+  }
 );
 
 // Alternative route: /anime/:animeId/episodes/:epId/servers
@@ -627,7 +628,7 @@ router.get(
         details: error.message,
       });
     }
-  },
+  }
 );
 
 // /anime/schedule - Get airing schedule grouped by days
@@ -644,7 +645,7 @@ router.get("/schedule", async (req: Request, res: Response) => {
         message: "No airing schedule data available",
       });
 
-      return
+      return;
     }
 
     const airingList = JSON.parse(cached);
@@ -658,13 +659,13 @@ router.get("/schedule", async (req: Request, res: Response) => {
         const timestamp = parseInt(anime.time) * 1000; // Convert to milliseconds
         const date = new Date(timestamp);
         const dateString = date.toISOString();
-        const dayKey = date.toISOString().split('T')[0]; // Get YYYY-MM-DD format
+        const dayKey = date.toISOString().split("T")[0]; // Get YYYY-MM-DD format
 
         // Add formatted timestamp to anime object
         const animeWithFormattedTime = {
           ...anime,
           formattedTime: dateString,
-          airingTime: dateString
+          airingTime: dateString,
         };
 
         if (!groupedByDay[dayKey]) {
@@ -676,7 +677,7 @@ router.get("/schedule", async (req: Request, res: Response) => {
     });
 
     // Sort anime within each day by airing time
-    Object.keys(groupedByDay).forEach(day => {
+    Object.keys(groupedByDay).forEach((day) => {
       groupedByDay[day].sort((a, b) => {
         const timeA = new Date(a.formattedTime).getTime();
         const timeB = new Date(b.formattedTime).getTime();
@@ -687,23 +688,22 @@ router.get("/schedule", async (req: Request, res: Response) => {
     // Convert to array format with day labels and sort by date
     const schedule = Object.keys(groupedByDay)
       .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
-      .map(day => ({
+      .map((day) => ({
         date: day,
-        dateFormatted: new Date(day).toLocaleDateString('en-US', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
+        dateFormatted: new Date(day).toLocaleDateString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
         }),
-        anime: groupedByDay[day]
+        anime: groupedByDay[day],
       }));
 
     res.json({
       schedule,
       totalDays: schedule.length,
-      totalAnime: airingList.length
+      totalAnime: airingList.length,
     });
-
   } catch (error: any) {
     console.error("Schedule error:", error);
     res.status(500).json({
@@ -751,16 +751,16 @@ router.get("/watch/:animeId", async (req: Request, res: Response) => {
     if (epNo) {
       if (epNo === "latest") {
         // For "latest", we need to find the highest episode number available in Redis
-        const pattern = `anime:${anilistId}:*:*`;
+        const pattern = `embeds:${anilistId}:ep:*`;
         const keys = await redis.keys(pattern);
-        
+
         // Extract episode numbers from keys and find the maximum
         const episodeNumbers = keys
-          .map(key => {
-            const parts = key.split(':');
-            return parseInt(parts[3]);
+          .map((key) => {
+            const parts = key.split(":");
+            return parseInt(parts[3]); // Episode number is the 4th part
           })
-          .filter(num => !isNaN(num))
+          .filter((num) => !isNaN(num))
           .sort((a, b) => b - a); // Sort in descending order
 
         if (episodeNumbers.length > 0) {
@@ -774,51 +774,61 @@ router.get("/watch/:animeId", async (req: Request, res: Response) => {
       }
     }
 
-    // Get SUB and DUB embeds for the target episode using anilistId
-    const subCacheKey = `anime:${anilistId}:SUB:${targetEpNo}`;
-    const dubCacheKey = `anime:${anilistId}:DUB:${targetEpNo}`;
+    // Get embeds for the target episode using anilistId
+    const embedsCacheKey = `embeds:${anilistId}:ep:${targetEpNo}`;
+    const embedsData = await redis.get(embedsCacheKey);
 
-    const [subEmbeds, dubEmbeds] = await Promise.all([
-      redis.get(subCacheKey),
-      redis.get(dubCacheKey),
-    ]);
+    // If no embeds found, add to requested embeds set
+    if (!embedsData) {
+      await redis.sadd("anime:requested-embeds", anilistId.toString());
+      console.log(`Added anime ${anilistId} to requested embeds set`);
+    }
 
     // Parse embeds - handle both string and JSON formats
     const parseEmbedData = (embedData: string | null) => {
       if (!embedData) return [];
-      
+
       try {
         const parsed = JSON.parse(embedData);
-        
+
         // If parsed result is a string, parse it again (double-encoded JSON)
-        if (typeof parsed === 'string') {
+        if (typeof parsed === "string") {
           return JSON.parse(parsed);
         }
-        
+
         // If it's already an array, return it
-        return parsed;
+        return Array.isArray(parsed) ? parsed : [];
       } catch (error) {
-        console.error('Error parsing embed data:', error);
+        console.error("Error parsing embed data:", error);
         return [];
       }
     };
 
-    const parsedSubEmbeds = parseEmbedData(subEmbeds);
-    const parsedDubEmbeds = parseEmbedData(dubEmbeds);
+    const allEmbeds = parseEmbedData(embedsData);
+
+    // Filter embeds by type (SUB vs DUB)
+    const parsedSubEmbeds = allEmbeds.filter(
+      (embed: any) => embed.type === "SUB"
+    );
+    const parsedDubEmbeds = allEmbeds.filter(
+      (embed: any) => embed.type === "DUB"
+    );
 
     // Get all available episodes for this anime from Redis using anilistId
-    const allKeysPattern = `anime:${anilistId}:*:*`;
+    const allKeysPattern = `embeds:${anilistId}:ep:*`;
     const allKeys = await redis.keys(allKeysPattern);
-    
+
     // Extract unique episode numbers
-    const availableEpisodes = [...new Set(
-      allKeys
-        .map(key => {
-          const parts = key.split(':');
-          return parseInt(parts[3]);
-        })
-        .filter(num => !isNaN(num))
-    )].sort((a, b) => a - b);
+    const availableEpisodes = [
+      ...new Set(
+        allKeys
+          .map((key) => {
+            const parts = key.split(":");
+            return parseInt(parts[3]); // Episode number is the 4th part (embeds:id:ep:NUMBER)
+          })
+          .filter((num) => !isNaN(num))
+      ),
+    ].sort((a, b) => a - b);
 
     // Structure response
     const response = {
@@ -867,12 +877,152 @@ router.get("/watch/:animeId", async (req: Request, res: Response) => {
     };
 
     res.json(response);
-
   } catch (error: any) {
     console.error("Watch endpoint error:", error);
     res.status(500).json({
       error: "Failed to fetch anime watch data",
       details: error.message,
+    });
+  }
+});
+
+router.get("/get-sources", async (req: Request, res: Response) => {
+  try {
+    // Validate embedUrl query parameter
+    const { embedUrl } = req.query;
+
+    console.log("Received embedUrl:", embedUrl);
+
+    if (!embedUrl || typeof embedUrl !== "string") {
+      res.status(400).json({
+        error: "Missing or invalid embedUrl parameter",
+        message: "Please provide a valid embedUrl as a query parameter",
+      });
+      return;
+    }
+
+    // Validate URL format
+    let url: URL | null = null;
+    try {
+      url = new URL(embedUrl as string);
+    } catch (error) {
+      res.status(400).json({
+        error: "Invalid URL format",
+        message: "The provided embedUrl is not a valid URL",
+      });
+      return;
+    }
+
+    // Safety check though control flow above should have returned on error
+    if (!url) {
+      res.json({
+        error: "URL parsing failed",
+        message: "Could not parse the provided embedUrl",
+      });
+      return;
+    }
+
+    // Initialize MegaCloud extractor
+    const megaCloud = new MegaCloud();
+
+    // Extract sources using extract5 method
+    const extractedData = await megaCloud.extract6(url);
+
+    // Return extracted data
+    res.json({
+      success: true,
+      embedUrl: embedUrl,
+      data: extractedData,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error: any) {
+    console.error("Get sources error:", error);
+    res.status(500).json({
+      error: "Failed to extract sources",
+      message: error.message || "An unknown error occurred",
+      details: error.toString(),
+    });
+  }
+});
+
+// Helper function to format seconds to VTT timestamp (HH:MM:SS.mmm)
+function formatVTTTimestamp(seconds: number): string {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = Math.floor(seconds % 60);
+  const milliseconds = Math.floor((seconds % 1) * 1000);
+
+  return `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}:${secs.toString().padStart(2, "0")}.${milliseconds
+    .toString()
+    .padStart(3, "0")}`;
+}
+
+router.get("/get-chapters-vtt", async (req: Request, res: Response) => {
+  try {
+    const { introStart, introEnd, outroStart, outroEnd } = req.query;
+
+    // Parse query parameters
+    const intro = {
+      start: introStart ? parseFloat(introStart as string) : undefined,
+      end: introEnd ? parseFloat(introEnd as string) : undefined,
+    };
+
+    const outro = {
+      start: outroStart ? parseFloat(outroStart as string) : undefined,
+      end: outroEnd ? parseFloat(outroEnd as string) : undefined,
+    };
+
+    // Validate input
+    const hasValidIntro =
+      intro.start !== undefined &&
+      intro.end !== undefined &&
+      !isNaN(intro.start) &&
+      !isNaN(intro.end);
+    const hasValidOutro =
+      outro.start !== undefined &&
+      outro.end !== undefined &&
+      !isNaN(outro.start) &&
+      !isNaN(outro.end);
+
+    if (!hasValidIntro && !hasValidOutro) {
+      res.status(400).json({
+        error: "Missing data",
+        message:
+          "Please provide intro and/or outro chapter data via query parameters (introStart, introEnd, outroStart, outroEnd)",
+      });
+      return;
+    }
+
+    // Build VTT content
+    let vttContent = "WEBVTT\n\n";
+
+    // Add intro chapter if provided
+    if (hasValidIntro) {
+      const introStartTime = formatVTTTimestamp(intro.start!);
+      const introEndTime = formatVTTTimestamp(intro.end!);
+      vttContent += `${introStartTime} --> ${introEndTime}\n`;
+      vttContent += "Intro\n\n";
+    }
+
+    // Add outro chapter if provided
+    if (hasValidOutro) {
+      const outroStartTime = formatVTTTimestamp(outro.start!);
+      const outroEndTime = formatVTTTimestamp(outro.end!);
+      vttContent += `${outroStartTime} --> ${outroEndTime}\n`;
+      vttContent += "Outro\n\n";
+    }
+
+    // Set appropriate headers for VTT file
+    res.setHeader("Content-Type", "text/vtt");
+    res.setHeader("Content-Disposition", "inline; filename=chapters.vtt");
+    res.send(vttContent);
+  } catch (error: any) {
+    console.error("Get chapters VTT error:", error);
+    res.status(500).json({
+      error: "Failed to generate VTT file",
+      message: error.message || "An unknown error occurred",
     });
   }
 });

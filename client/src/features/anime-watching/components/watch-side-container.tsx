@@ -4,20 +4,25 @@ import React from "react";
 import { useParams, useSearchParams } from "react-router";
 import { getWatchInfoOptions } from "../queries/get-watch-info";
 import { watch } from "fs";
+import { WatchInfo } from "@/types/watch";
 
-type WatchSideContainerProps = {};
+type WatchSideContainerProps = {
+  watchInfo: WatchInfo;
+};
 
-export const WatchSideContainer: React.FC<WatchSideContainerProps> = () => {
-  const { animeId } = useParams();
-  const [searchParams] = useSearchParams();
-  const epNo = searchParams.get("ep");
+export const WatchSideContainer: React.FC<WatchSideContainerProps> = ({
+  watchInfo,
+}) => {
+  // const { animeId } = useParams();
+  // const [searchParams] = useSearchParams();
+  // const epNo = searchParams.get("ep");
 
-  const { data: watchInfo } = useSuspenseQuery(
-    getWatchInfoOptions({
-      animeId: animeId!,
-      epNo: epNo ?? "1",
-    })
-  );
+  // const { data: watchInfo } = useSuspenseQuery(
+  //   getWatchInfoOptions({
+  //     animeId: animeId!,
+  //     epNo: epNo ?? "1",
+  //   })
+  // );
 
   return (
     <div className="bg-[#222222] flex flex-col gap-3 py-1">
@@ -70,10 +75,14 @@ export const WatchSideContainer: React.FC<WatchSideContainerProps> = () => {
             </div>
 
             <div className="opacity-60 col-span-2">Status: </div>
-            <div className="opacity-60 col-span-3 text-primary-1">{watchInfo.anime.status}</div>
+            <div className="opacity-60 col-span-3 text-primary-1">
+              {watchInfo.anime.status}
+            </div>
 
             <div className="opacity-60 col-span-2">MAL: </div>
-            <div className="opacity-60 col-span-3 text-primary-1">{watchInfo.anime.idMal}</div>
+            <div className="opacity-60 col-span-3 text-primary-1">
+              {watchInfo.anime.idMal}
+            </div>
 
             {/* <div className="opacity-60 col-span-2">Studios: </div>
             <div className="opacity-60 col-span-3 text-primary-1">
