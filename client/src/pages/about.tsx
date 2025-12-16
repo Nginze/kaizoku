@@ -1,7 +1,10 @@
+import Logo from "@/components/logo";
+
 export default function About() {
   return (
-    <div className="min-h-screen bg-dark flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-[#191919] flex items-center justify-center px-4 py-12">
       <div className="max-w-[500px] w-full space-y-8 text-white">
+        <Logo />
         <h1 className="text-3xl font-bold text-primary mb-8">About Kaizen</h1>
 
         <section className="space-y-2">
@@ -57,7 +60,7 @@ export default function About() {
         </section>
 
         <div className="pt-4 border-t border-secondary opacity-60 text-xs text-center">
-          <p>© 2025 Kaizen</p>
+          <p>© 2025 Kaizoku</p>
         </div>
       </div>
     </div>

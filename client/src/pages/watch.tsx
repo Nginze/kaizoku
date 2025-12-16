@@ -7,6 +7,7 @@ import { PlayerControls } from "@/features/anime-watching/components/video-playe
 import { WatchSideContainer } from "@/features/anime-watching/components/watch-side-container";
 import { PlayerControlsProvider } from "@/features/anime-watching/contexts/player-controls-context";
 import { getWatchInfoOptions } from "@/features/anime-watching/queries/get-watch-info";
+import { useDocumentTitle } from "@/hooks/use-document-title";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { watch } from "fs";
 import React, { Suspense } from "react";
@@ -28,6 +29,10 @@ export const Watch: React.FC<WatchProps> = () => {
       animeId: animeId!,
       epNo: epNo ?? "1",
     })
+  );
+
+  useDocumentTitle(
+    `${watchInfo?.anime.title.romaji} - Episode ${watchInfo?.currentEpisode} English Subbed/Dubbed • Kaizoku`
   );
 
   if (watchInfoPending) {

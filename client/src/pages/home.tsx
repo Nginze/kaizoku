@@ -6,10 +6,12 @@ import { HomeMainContainer } from "@/features/anime-browsing/components/home-mai
 import { HomeSideContainer } from "@/features/anime-browsing/components/home-side-container";
 import { Loader } from "@/components/loader";
 import { Spinner } from "@/components/ui/spinner";
+import { useDocumentTitle } from "@/hooks/use-document-title";
 
 type HomeProps = {};
 
 export const Home: React.FC<HomeProps> = () => {
+  useDocumentTitle("Kaizoku - Watch Free Anime Online • Stream HD");
   return (
     <>
       <Suspense fallback={<HomeFallback />}>
@@ -25,11 +27,5 @@ export const Home: React.FC<HomeProps> = () => {
 };
 
 const HomeFallback = () => {
-  return (
-    <div className="w-full h-screen flex  justify-center bg-[#191919]">
-      <div className="mt-20">
-        <Spinner />
-      </div>
-    </div>
-  );
+  return <Layout nav={null} main={null} side={null} footer={null} />;
 };
