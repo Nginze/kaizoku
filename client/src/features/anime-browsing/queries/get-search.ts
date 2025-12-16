@@ -25,6 +25,13 @@ export const getTopRatedOptions = (params = {}) => {
 	});
 };
 
+export const getTopMoviesOptions = (params = {}) => {
+	return queryOptions({
+		queryKey: animeKeys.topMovies(params),
+		queryFn: () => client.getTopMovies(params),
+	});
+}
+
 export const getTopAiringOptions = (params = {}) => {
 	return queryOptions({
 		queryKey: animeKeys.topAiring(params),

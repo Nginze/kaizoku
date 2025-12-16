@@ -7,6 +7,8 @@ import { watch } from "fs";
 import { WatchInfo } from "@/types/watch";
 import { usePlayerControls } from "../contexts/player-controls-context";
 import { cn } from "@/lib/utils";
+import { BxBxsCaptions } from "@/lib/icons/bx-captions";
+import { MajesticonsMicrophone } from "@/lib/icons/mj-microphone";
 
 type PlayerControlsProps = {
   watchInfo: WatchInfo;
@@ -51,7 +53,8 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
         <div className="flex-1 w-full h-full px-4">
           <div className="flex flex-col">
             <div className="flex items-center flex-1 h-1 px-3 py-4 border-b border-secondary border-dashed gap-6">
-              <div className="flex text-sm gap-4">
+              <div className="flex items-center text-sm gap-2">
+                <BxBxsCaptions className="text-lg" />
                 <div className="opacity-70">SUB: </div>
               </div>
               <div className="flex items-center gap-0.5">
@@ -73,7 +76,8 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
               </div>
             </div>
             <div className="flex items-center flex-1 h-1 px-3 py-4  gap-6">
-              <div className="flex text-sm gap-4">
+              <div className="flex items-center text-sm gap-2">
+                <MajesticonsMicrophone className="text-lg" />
                 <div className="opacity-70">DUB: </div>
               </div>
               <div className="flex items-center gap-0.5">

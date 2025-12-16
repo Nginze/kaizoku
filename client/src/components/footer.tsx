@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import { Skeleton } from "./ui/skeleton";
 import Logo from "./logo";
+import { RequestModal } from "@/features/anime-watching/components/request-modal";
 
 type FooterProps = {};
 
@@ -16,7 +17,7 @@ export const Footer: React.FC<FooterProps> = () => {
             </span>
           </div>
           <div className="text-light opacity-40 flex gap-6 items-center text-sm">
-            <Link to={"/about"}>Request</Link>
+            <RequestModal />
             <Link to={"/about"}>About</Link>
           </div>
         </div>

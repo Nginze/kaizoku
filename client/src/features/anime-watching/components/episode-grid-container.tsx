@@ -12,6 +12,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { useNavigate, useParams, useSearchParams } from "react-router";
 import { getWatchInfoOptions } from "../queries/get-watch-info";
 import { WatchInfo } from "@/types/watch";
+import { cn } from "@/lib/utils";
 
 type EpisodeGridContainerProps = {
   watchInfo: WatchInfo;
@@ -115,9 +116,11 @@ export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = ({
               navigate(`/watch/${watchInfo.anime._id}?ep=${epNumber}`)
             }
             key={epNumber}
-            className={`bg-secondary-2 py-1 max-h-[40px] hover:bg-secondary-1 active:bg-secondary ${
-              Number(epNo) === epNumber ? "bg-primary-1 text-black" : ""
-            }`}
+            className={cn(
+              "bg-secondary-2 py-1 max-h-[40px] hover:bg-secondary-1 active:bg-secondary",
+              Number(epNo) === epNumber &&
+                "bg-primary hover:bg-primary active:bg-primary text-black"
+            )}
           >
             <span className="opacity-60">{epNumber}</span>
           </button>

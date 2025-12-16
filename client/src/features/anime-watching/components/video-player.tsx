@@ -1,14 +1,22 @@
 import React from "react";
-import { MediaPlayer, MediaProvider, Poster, Track } from "@vidstack/react";
+import {
+  MediaPlayer,
+  MediaProvider,
+  Poster,
+  Track,
+  SeekButton,
+} from "@vidstack/react";
 import {
   DefaultAudioLayout,
   defaultLayoutIcons,
   DefaultVideoLayout,
 } from "@vidstack/react/player/layouts/default";
+import { RotateCcw, RotateCw } from "lucide-react";
 import { WatchInfo } from "@/types/watch";
 import { useQuery } from "@tanstack/react-query";
 import { getEpisodeSourcesOptions } from "../queries/get-episode-sources";
 import { usePlayerControls } from "../contexts/player-controls-context";
+import { SeekBackward10Icon, SeekForward10Icon } from "@vidstack/react/icons";
 
 type PlayerProps = {
   watchInfo: WatchInfo;
@@ -37,7 +45,8 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
       <MediaPlayer
         crossOrigin
         playsInline
-        title={`${watchInfo.anime.title.romaji} - Episode ${watchInfo.currentEpisode}`}
+        className="w-full bg-black h-[500px]"
+        // title={`${watchInfo.anime.title.romaji} - Episode ${watchInfo.currentEpisode}`}
         aspectRatio="16/9"
         load="eager"
         posterLoad="eager"
@@ -52,12 +61,23 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
         <MediaProvider>
           <Poster
             className="vds-poster object-cover w-full h-full"
-            src={watchInfo.anime.bannerImage}
+            src={
+              watchInfo.anime.bannerImage ||
+              watchInfo.anime.coverImage.extraLarge
+            }
             alt=""
           />
         </MediaProvider>
         <DefaultAudioLayout icons={defaultLayoutIcons} />
-        <DefaultVideoLayout icons={defaultLayoutIcons} />
+        <DefaultVideoLayout
+          icons={defaultLayoutIcons}
+          slots={{
+            captionButton: null,
+            airPlayButton: null,
+            googleCastButton: null,
+            chaptersMenu: null,
+          }}
+        />
       </MediaPlayer>
     );
   }
@@ -94,7 +114,8 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
       <MediaPlayer
         crossOrigin
         playsInline
-        title={`${watchInfo.anime.title.romaji} - Episode ${watchInfo.currentEpisode}`}
+        // title={`${watchInfo.anime.title.romaji} - Episode ${watchInfo.currentEpisode}`}
+        className="w-full bg-black h-[500px]"
         aspectRatio="16/9"
         load="eager"
         posterLoad="eager"
@@ -109,7 +130,10 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
         <MediaProvider>
           <Poster
             className="vds-poster object-cover w-full h-full"
-            src={watchInfo.anime.bannerImage}
+            src={
+              watchInfo.anime.bannerImage ||
+              watchInfo.anime.coverImage.extraLarge
+            }
             alt=""
           />
 
@@ -130,10 +154,16 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
             />
           )}
         </MediaProvider>
+
         <DefaultAudioLayout icons={defaultLayoutIcons} />
         <DefaultVideoLayout
-          //   thumbnails="https://s.megastatics.com/thumbnails/d60530447d09b5b21e590776048d0284/thumbnails.vtt"
-          icons={defaultLayoutIcons}
+          icons={{
+            ...defaultLayoutIcons,
+          }}
+          slots={{
+            captionButton: null,
+            chaptersMenu: null,
+          }}
         />
       </MediaPlayer>
     </>

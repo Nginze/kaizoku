@@ -10,7 +10,7 @@ type FilterProps = {};
 export const Filter: React.FC<FilterProps> = () => {
   return (
     <>
-      <Suspense fallback={null}>
+      <Suspense fallback={<FilterFallback />}>
         <Layout
           nav={<Navbar />}
           main={<FilterMainContainer />}
@@ -19,5 +19,11 @@ export const Filter: React.FC<FilterProps> = () => {
         />
       </Suspense>
     </>
+  );
+};
+
+const FilterFallback = () => {
+  return (
+    <div className="w-full h-screen flex  justify-center bg-[#191919]"></div>
   );
 };

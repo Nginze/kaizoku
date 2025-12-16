@@ -17,6 +17,9 @@ export const animeKeys = {
 
   recentReleases: () => [...animeKeys.all, "recent-releases"] as const,
 
+  topMovies: (params?: PaginationParams) =>
+    [...animeKeys.all, "top-movies", params] as const,
+
   schedule: () => [...animeKeys.all, "schedule"] as const,
 
   // POPULAR & TRENDING

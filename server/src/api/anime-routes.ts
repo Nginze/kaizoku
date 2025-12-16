@@ -537,6 +537,68 @@ router.get("/upcoming", async (req: Request, res: Response) => {
   }
 });
 
+// /anime/top-movies - Top rated recent movies
+router.get("/top-movies", async (req: Request, res: Response) => {
+  try {
+    const query = paginationSchema.parse(req.query);
+    const skip = (query.page - 1) * query.limit;
+    const sortPipeline = getSortPipeline(query.sort_by || "SCORE_DESC");
+
+    const [results, totalCount] = await Promise.all([
+      Anime.aggregate([
+        {
+          $match: {
+            format: "MOVIE",
+            averageScore: { $exists: true, $gte: 60 },
+          },
+        },
+        sortPipeline,
+        { $skip: skip },
+        { $limit: query.limit },
+        {
+          $project: {
+            idAnilist: 1,
+            title: 1,
+            coverImage: 1,
+            bannerImage: 1,
+            startDate: 1,
+            description: 1,
+            format: 1,
+            status: 1,
+            duration: 1,
+            genres: 1,
+            averageScore: 1,
+            popularity: 1,
+            favourites: 1,
+            seasonYear: 1,
+          },
+        },
+      ]),
+      Anime.countDocuments({
+        format: "MOVIE",
+        averageScore: { $exists: true, $gte: 60 },
+      }),
+    ]);
+
+    const totalPages = Math.ceil(totalCount / query.limit);
+
+    res.json({
+      currentPage: query.page,
+      hasNextPage: query.page < totalPages,
+      hasPreviousPage: query.page > 1,
+      totalPages,
+      totalResults: totalCount,
+      results,
+    });
+  } catch (error: any) {
+    console.error("Top movies error:", error);
+    res.status(500).json({
+      error: "Failed to fetch top movies",
+      details: error.message,
+    });
+  }
+});
+
 // CONTENT SOURCES ROUTES
 
 // /anime/:animeId/episodes/:epId/sources - Get episode sources from Redis

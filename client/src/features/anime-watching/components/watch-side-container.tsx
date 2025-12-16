@@ -39,7 +39,7 @@ export const WatchSideContainer: React.FC<WatchSideContainerProps> = ({
         </div>
       </div>
       <div className="flex gap-2 px-2 py-2">
-        <div className="bg-white text-black px-2 py-0.5 text-xs">None</div>
+        <div className="bg-white text-black px-2 py-0.5 text-xs">?</div>
         <div className="bg-yellow text-black px-2 py-0.5 text-xs ">HD</div>
         <div className="bg-dark px-2 py-0.5 text-xs">
           {watchInfo.totalAvailableEpisodes}

@@ -1,0 +1,6 @@
+# BSON files
+*.bson
+
+# JSON data files
+prelude.json
+animes.metadata.json
