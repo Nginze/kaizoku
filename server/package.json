@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "nodemon src/index.ts"
+		"dev": "nodemon src/index.ts",
+		"build": "tsc"
 	},
 	"keywords": [],
 	"author": "",
@@ -38,6 +39,7 @@
 		"@types/express-session": "^1.18.2",
 		"@types/morgan": "^1.9.10",
 		"nodemon": "^3.1.9",
-		"ts-node": "^10.9.2"
+		"ts-node": "^10.9.2",
+		"typescript": "^5.7.2"
 	}
 }

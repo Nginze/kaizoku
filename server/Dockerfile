@@ -15,9 +15,9 @@ RUN pnpm install --frozen-lockfile || npm install
 # Copy source code and TypeScript config
 COPY . .
 
-# Build TypeScript (if tsconfig exists)
+# Build TypeScript (if tsconfig exists) - continue even if build fails
 RUN if [ -f tsconfig.json ]; then \
-      npx tsc || pnpm build || echo "Build skipped"; \
+      pnpm build || npx tsc || echo "Build skipped - will use ts-node"; \
     fi
 
 # Production stage
@@ -35,8 +35,10 @@ COPY package.json pnpm-lock.yaml* ./
 RUN pnpm install --frozen-lockfile --prod || npm install --production
 
 # Copy built files or source from builder
-COPY --from=builder /app/dist ./dist 2>/dev/null || true
-COPY --from=builder /app/src ./src
+# Use a shell command to handle optional dist directory
+RUN --mount=type=bind,from=builder,source=/app,target=/build \
+    cp -r /build/src ./src && \
+    (cp -r /build/dist ./dist 2>/dev/null || echo "No dist folder, will use ts-node")
 
 # Set environment
 ENV NODE_ENV=production
