@@ -4,9 +4,8 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { HomeMainContainer } from "@/features/anime-browsing/components/home-main-container";
 import { HomeSideContainer } from "@/features/anime-browsing/components/home-side-container";
-import { Loader } from "@/components/loader";
-import { Spinner } from "@/components/ui/spinner";
 import { useDocumentTitle } from "@/hooks/use-document-title";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type HomeProps = {};
 
@@ -27,5 +26,19 @@ export const Home: React.FC<HomeProps> = () => {
 };
 
 const HomeFallback = () => {
-  return <Layout nav={null} main={null} side={null} footer={null} />;
+  return (
+    <div className="flex w-full h-screen bg-[#191919] flex-col gap-10  justify-center items-center">
+      <img src="/logo/pickachu-loader.gif" alt="Loading..." className="w-20" />
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <Skeleton className="h-4 w-[250px]  " />
+          <Skeleton className="h-4 w-[100px]  " />
+        </div>
+        <div className="flex items-center gap-2">
+          <Skeleton className="h-4 w-[50px]  " />
+          <Skeleton className="h-4 w-[200px]  " />
+        </div>
+      </div>
+    </div>
+  );
 };

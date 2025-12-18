@@ -11,7 +11,7 @@ export default function Logo({ className }: Props) {
       <div className="flex items-center gap-3">
         <img
           className="w-[35px] object-contain"
-          src="/public/logo/kaizoku-transparent.png"
+          src="/logo/kaizoku-transparent.png"
         />
         <span className={cn("text-2xl", className)}> kaizoku</span>
       </div>

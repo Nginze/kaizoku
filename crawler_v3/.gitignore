@@ -1,0 +1,21 @@
+# BSON files
+*.bson
+.pnpm-store/
+backups/
+node_modules/
+dist/
+build/
+.DS_Store  
+.vscode/
+.env
+.env.local
+.env.*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.vite
+
+# JSON data files
+prelude.json
+animes.metadata.json

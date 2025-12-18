@@ -1,2 +1,9 @@
 node_modules
+.pnpm-store/
+backups/
+dist/
+build/
+.DS_Store
+.vscode/
+
 .env

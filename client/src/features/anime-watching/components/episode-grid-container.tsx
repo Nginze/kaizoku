@@ -27,7 +27,6 @@ export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = ({
 
   const [searchParams] = useSearchParams();
   const epNo = searchParams.get("ep");
-  const [selectedRange, setSelectedRange] = useState("0-100");
   const [searchQuery, setSearchQuery] = useState("");
 
   // const { data: watchInfo } = useSuspenseQuery(
@@ -36,23 +35,46 @@ export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = ({
 
   const navigate = useNavigate();
 
-  const totalEpisodes = watchInfo.anime.episodes || 0;
+  const totalEpisodes =
+    watchInfo.anime.episodes || watchInfo.totalAvailableEpisodes || 0;
   const showRangeSelector = totalEpisodes > EPISODES_PER_RANGE;
 
   const episodeRanges = useMemo(() => {
     const ranges: string[] = [];
-    for (let i = 0; i < totalEpisodes; i += EPISODES_PER_RANGE) {
+    for (let i = 1; i <= totalEpisodes; i += EPISODES_PER_RANGE) {
       const start = i;
-      const end = Math.min(i + EPISODES_PER_RANGE, totalEpisodes);
+      const end = Math.min(i + EPISODES_PER_RANGE - 1, totalEpisodes);
       ranges.push(`${start}-${end}`);
     }
-    !showRangeSelector ? ranges.push("0-100") : null;
+    !showRangeSelector ? ranges.push("1-100") : null;
     return ranges;
   }, [totalEpisodes]);
 
+  // Determine initial range based on episode number from search params
+  const getInitialRange = () => {
+    if (!epNo) return episodeRanges[0] || "1-100";
+
+    const epNumber = Number(epNo);
+    const rangeIndex = Math.floor((epNumber - 1) / EPISODES_PER_RANGE);
+    const start = rangeIndex * EPISODES_PER_RANGE + 1;
+    const end = Math.min(start + EPISODES_PER_RANGE - 1, totalEpisodes);
+    const calculatedRange = `${start}-${end}`;
+
+    // Return the calculated range if it exists in episodeRanges, otherwise first range
+    return episodeRanges.includes(calculatedRange) ? calculatedRange : episodeRanges[0] || "1-100";
+  };
+
+  const [selectedRange, setSelectedRange] = useState(getInitialRange());
+
   const currentEpisodes = useMemo(() => {
-    return watchInfo.availableEpisodes;
-  }, [watchInfo.availableEpisodes]);
+    // Parse the selected range (e.g., "0-100" or "101-200")
+    const [rangeStart, rangeEnd] = selectedRange.split("-").map(Number);
+
+    // Filter episodes to only include those within the selected range
+    return watchInfo.availableEpisodes.filter(
+      (ep) => ep >= rangeStart && ep <= rangeEnd
+    );
+  }, [watchInfo.availableEpisodes, selectedRange]);
 
   const filteredEpisodes = useMemo(() => {
     if (!searchQuery) return currentEpisodes;
@@ -78,18 +100,18 @@ export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = ({
     <div className="flex flex-col gap-3">
       <div className="flex items-center gap-3">
         <Select
-          defaultValue={selectedRange || "0-100"}
+          defaultValue={selectedRange || "1-100"}
           value={selectedRange}
           onValueChange={setSelectedRange}
           disabled={!showRangeSelector}
         >
           <SelectTrigger
-            defaultValue={selectedRange || "0-100"}
+            defaultValue={selectedRange || "1-100"}
             className="w-[180px]"
           >
             <SelectValue
-              defaultValue={selectedRange || "0-100"}
-              placeholder={`0-${totalEpisodes}`}
+              defaultValue={selectedRange || "1-100"}
+              placeholder={`1-${totalEpisodes}`}
             />
           </SelectTrigger>
           <SelectContent>

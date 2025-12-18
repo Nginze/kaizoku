@@ -1,3 +1,4 @@
+
 import Anime from "../models/anime";
 import { redis } from "../config/redis";
 import { load } from "cheerio";

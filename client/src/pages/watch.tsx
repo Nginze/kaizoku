@@ -1,6 +1,7 @@
 import { Footer } from "@/components/footer";
 import { Layout } from "@/components/layout";
 import { Navbar } from "@/components/navbar";
+import { Skeleton } from "@/components/ui/skeleton";
 import { EpisodeGridContainer } from "@/features/anime-watching/components/episode-grid-container";
 import { Player } from "@/features/anime-watching/components/video-player";
 import { PlayerControls } from "@/features/anime-watching/components/video-player-controls";
@@ -18,7 +19,7 @@ type WatchProps = {};
 export const Watch: React.FC<WatchProps> = () => {
   const { animeId } = useParams();
   const [searchParams] = useSearchParams();
-  const epNo = searchParams.get("ep");
+  const epNo = searchParams.get("ep") || "1";
 
   const {
     data: watchInfo,
@@ -27,7 +28,7 @@ export const Watch: React.FC<WatchProps> = () => {
   } = useQuery(
     getWatchInfoOptions({
       animeId: animeId!,
-      epNo: epNo ?? "1",
+      epNo: epNo,
     })
   );
 
@@ -36,11 +37,25 @@ export const Watch: React.FC<WatchProps> = () => {
   );
 
   if (watchInfoPending) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex w-full h-screen bg-[#191919] flex-col gap-10  justify-center items-center">
+        <div className="flex flex-col gap-2">
+          <Skeleton className="h-4 w-[500px]  " />
+          <Skeleton className="h-4 w-[350px]  " />
+          <Skeleton className="h-4 w-[200px]  " />
+        </div>
+      </div>
+    );
   }
 
   if (watchInfoError || !watchInfo) {
-    return <div>Error loading watch info.</div>;
+    return (
+      <div className="flex w-full h-screen bg-[#191919] flex-col gap-10  justify-center items-center">
+        <div className="flex flex-col gap-2">
+          <span className="text-white text-lg">Failed to load episode.</span>
+        </div>
+      </div>
+    );
   }
 
   return (

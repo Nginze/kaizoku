@@ -4,6 +4,7 @@ import { PaginatedResponse, PaginationParams } from "@/types/pagination";
 import { ScheduleResponse } from "@/types/schedule";
 import { WatchInfo } from "@/types/watch";
 import { get } from "http";
+import { delayedQuery } from "../utils";
 
 export const anime = {
   // SEARCH & DISCOVERABILITY
@@ -39,6 +40,7 @@ export const anime = {
    */
   getRecentReleases: async (): Promise<any[]> => {
     const response = await api.get("/anime/recent-releases");
+    await new Promise((resolve) => setTimeout(resolve, 700));
     return response.data;
   },
 
@@ -163,9 +165,9 @@ export const anime = {
   /**
    * Get episode sources from embed URL
    */
-  getEpisodeSources: async (embedUrl: string): Promise<any> => {
+  getEpisodeSources: async (serverId: string): Promise<any> => {
     const params = new URLSearchParams();
-    params.append("embedUrl", embedUrl);
+    params.append("serverId", serverId);
 
     const response = await api.get(`/anime/get-sources?${params.toString()}`);
     return response.data.data;

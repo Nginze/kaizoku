@@ -3,6 +3,7 @@ import Anime from "../models/anime";
 import { redis } from "../config/redis";
 import { z } from "zod";
 import MegaCloud from "../lib/extractors/megacloud";
+import { safeRequest } from "../jobs/process-requested-embeds";
 
 export const router = Router();
 
@@ -330,7 +331,24 @@ router.get("/recent-releases", async (req: Request, res: Response) => {
     // Get from Redis cache
     const cached = await redis.get(cacheKey);
 
-    res.json(JSON.parse(cached!));
+    if (!cached) {
+      res.status(404).json({
+        error: "Recent releases not found",
+        message: "No recent releases data available",
+      });
+      return;
+    }
+
+    const recentReleases = JSON.parse(cached);
+
+    // Sort by pubDate in extras (most recent first)
+    const sortedReleases = recentReleases.sort((a: any, b: any) => {
+      const dateA = a.extras?.pubDate ? new Date(a.extras.pubDate).getTime() : 0;
+      const dateB = b.extras?.pubDate ? new Date(b.extras.pubDate).getTime() : 0;
+      return dateB - dateA; // Descending order (most recent first)
+    });
+
+    res.json(sortedReleases);
   } catch (error: any) {
     console.error("Recent releases error:", error);
     res.status(500).json({
@@ -950,36 +968,58 @@ router.get("/watch/:animeId", async (req: Request, res: Response) => {
 
 router.get("/get-sources", async (req: Request, res: Response) => {
   try {
-    // Validate embedUrl query parameter
-    const { embedUrl } = req.query;
+    // Validate serverId query parameter
+    const { serverId } = req.query;
 
-    console.log("Received embedUrl:", embedUrl);
+    console.log("Received serverId:", serverId);
+
+    if (!serverId || typeof serverId !== "string") {
+      res.status(400).json({
+        error: "Missing or invalid serverId parameter",
+        message: "Please provide a valid serverId as a query parameter",
+      });
+      return;
+    }
+
+    // Fetch embed URL from HiAnime using safeRequest
+    const sourcesUrl = `https://hianime.to/ajax/v2/episode/sources?id=${serverId}`;
+    console.log("Fetching embed URL from:", sourcesUrl);
+
+    const sourcesResponse = await safeRequest(sourcesUrl, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!sourcesResponse?.data) {
+      res.status(404).json({
+        error: "No data returned from HiAnime",
+        message: "Could not fetch embed URL for the provided serverId",
+      });
+      return;
+    }
+
+    const { link: embedUrl, server } = sourcesResponse.data;
 
     if (!embedUrl || typeof embedUrl !== "string") {
-      res.status(400).json({
-        error: "Missing or invalid embedUrl parameter",
-        message: "Please provide a valid embedUrl as a query parameter",
+      res.status(404).json({
+        error: "No embed URL found",
+        message: "The server response did not contain a valid embed link",
       });
       return;
     }
+
+    console.log("Got embed URL:", embedUrl);
 
     // Validate URL format
-    let url: URL | null = null;
+    let url: URL;
     try {
-      url = new URL(embedUrl as string);
+      url = new URL(embedUrl);
     } catch (error) {
       res.status(400).json({
-        error: "Invalid URL format",
-        message: "The provided embedUrl is not a valid URL",
-      });
-      return;
-    }
-
-    // Safety check though control flow above should have returned on error
-    if (!url) {
-      res.json({
-        error: "URL parsing failed",
-        message: "Could not parse the provided embedUrl",
+        error: "Invalid embed URL format",
+        message: "The embed URL returned from HiAnime is not valid",
       });
       return;
     }
@@ -987,13 +1027,15 @@ router.get("/get-sources", async (req: Request, res: Response) => {
     // Initialize MegaCloud extractor
     const megaCloud = new MegaCloud();
 
-    // Extract sources using extract5 method
+    // Extract sources using extract6 method
     const extractedData = await megaCloud.extract6(url);
 
     // Return extracted data
     res.json({
       success: true,
+      serverId: serverId,
       embedUrl: embedUrl,
+      server: server,
       data: extractedData,
       timestamp: new Date().toISOString(),
     });

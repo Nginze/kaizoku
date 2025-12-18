@@ -32,8 +32,8 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
   } = useQuery(
     getEpisodeSourcesOptions(
       selectedServer
-        ? selectedServer.embedLink
-        : watchInfo.embeds.sub[0]?.embedLink
+        ? selectedServer.serverId
+        : watchInfo.embeds.sub[0]?.serverId
     )
   );
 
@@ -82,13 +82,22 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
     );
   }
 
-  if (noStreamingSources || !episodeSources) {
+  if (noStreamingSources) {
     return (
       <div className="w-full h-[500px] flex items-center justify-center bg-black text-white">
         Content is currently being onboarded{" "}
       </div>
     );
   }
+
+  if (!episodeSources) {
+    return (
+      <div className="w-full h-[500px] flex items-center justify-center bg-black text-white">
+        No episode sources available.
+      </div>
+    );
+  }
+
   if (episodeSourcesError) {
     return (
       <div className="w-full h-[500px] flex items-center justify-center bg-black text-white">
@@ -104,10 +113,14 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
     outroEnd: episodeSources.outro.end.toString(),
   });
 
-  const proxyUrl = `http://localhost:8080/api/proxy/video?url=${encodeURIComponent(
+  const proxyUrl = `${
+    import.meta.env.VITE_API_URL
+  }/api/proxy/video?url=${encodeURIComponent(
     episodeSources?.sources[0]?.url || ""
   )}`;
-  const chaptersUrl = `http://localhost:8080/api/anime/get-chapters-vtt?${params.toString()}`;
+  const chaptersUrl = `${
+    import.meta.env.VITE_API_URL
+  }/api/anime/get-chapters-vtt?${params.toString()}`;
 
   return (
     <>

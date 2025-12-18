@@ -10,9 +10,10 @@ import { logger } from "./config/logger";
 import { initializeJobs } from "./jobs";
 import seedEmbeds from "./jobs/seed-embeds";
 
-import "./workers/metadata.worker";
+// import "./workers/metadata.worker";
 import { redis } from "./config/redis";
 import { Queue } from "bullmq";
+import seedPriorityEmbeds from "./jobs/seed-priority-embeds";
 
 async function seed() {
   const anilistService = new AnilistService();
@@ -123,24 +124,24 @@ const generateSeedFileV2 = async () => {
 };
 
 async function main() {
-  const metadataQueue = new Queue("metadata-queue", {
-    connection: redis,
-  });
+  // const metadataQueue = new Queue("metadata-queue", {
+  //   connection: redis,
+  // });
 
   try {
     await connectDB();
     logger.info("📊 Database connected successfully");
-    await metadataQueue.add(
-      "init-metadata-job",
-      {},
-      {
-        repeat: {
-          every: 1000 * 60 * 120, // every hour
-        },
-      }
-    );
-    await seedEmbeds();
-    await initializeJobs();
+    // await metadataQueue.add(
+    //   "init-metadata-job",
+    //   {},
+    //   {
+    //     repeat: {
+    //       every: 1000 * 60 * 120, // every hour
+    //     },
+    //   }
+    // );
+    await seedPriorityEmbeds();
+    // await initializeJobs();
     logger.info("🚀 Jobs initialized - application running");
   } catch (error) {
     logger.error("❌ Failed to start application:", error);

@@ -51,8 +51,13 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
           </div>
         </div>
         <div className="flex-1 w-full h-full px-4">
-          <div className="flex flex-col">
-            <div className="flex items-center flex-1 h-1 px-3 py-4 border-b border-secondary border-dashed gap-6">
+          <div className="flex flex-col h-full">
+            <div
+              className={cn(
+                "flex items-center flex-1 h-1 px-3 py-4 gap-6",
+                watchInfo.hasDubbing && "border-b border-secondary border-dashed"
+              )}
+            >
               <div className="flex items-center text-sm gap-2">
                 <BxBxsCaptions className="text-lg" />
                 <div className="opacity-70">SUB: </div>
@@ -68,36 +73,34 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
                         "bg-primary hover:bg-primary active:bg-primary text-black"
                     )}
                   >
-                    <span className="opacity-60">
-                      {embed.serverName || `HD-${embed.serverIdx}`}
-                    </span>
+                    <span className="opacity-60">{`HD-${index + 1}`}</span>
                   </button>
                 ))}
               </div>
             </div>
-            <div className="flex items-center flex-1 h-1 px-3 py-4  gap-6">
-              <div className="flex items-center text-sm gap-2">
-                <MajesticonsMicrophone className="text-lg" />
-                <div className="opacity-70">DUB: </div>
+            {watchInfo.hasDubbing && (
+              <div className="flex items-center flex-1 h-1 px-3 py-4  gap-6">
+                <div className="flex items-center text-sm gap-2">
+                  <MajesticonsMicrophone className="text-lg" />
+                  <div className="opacity-70">DUB: </div>
+                </div>
+                <div className="flex items-center gap-0.5">
+                  {watchInfo.embeds.dub.map((embed, index) => (
+                    <button
+                      onClick={() => handleServerSelect(embed)}
+                      key={index}
+                      className={cn(
+                        "px-3 py-1.5 text-white text-sm bg-secondary hover:bg-secondary-1 active:bg-secondary",
+                        selectedServer?.serverId === embed.serverId &&
+                          "bg-primary hover:bg-primary active:bg-primary text-black"
+                      )}
+                    >
+                      <span className="opacity-60">{`HD-${index + 1}`}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
-              <div className="flex items-center gap-0.5">
-                {watchInfo.embeds.dub.map((embed, index) => (
-                  <button
-                    onClick={() => handleServerSelect(embed)}
-                    key={index}
-                    className={cn(
-                      "px-3 py-1.5 text-white text-sm bg-secondary hover:bg-secondary-1 active:bg-secondary",
-                      selectedServer?.serverId === embed.serverId &&
-                        "bg-primary hover:bg-primary active:bg-primary text-black"
-                    )}
-                  >
-                    <span className="opacity-60">
-                      {embed.serverName || `HD-${embed.serverIdx}`}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

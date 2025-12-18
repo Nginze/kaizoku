@@ -3,8 +3,8 @@ import { animeKeys } from "@/lib/query-keys";
 import { client } from "@/lib/api";
 
 export const getRecentReleasesOptions = () => {
-	return queryOptions({
-		queryKey: animeKeys.recentReleases(),
-		queryFn: () => client.getRecentReleases(),
-	});
+  return queryOptions({
+    queryKey: animeKeys.recentReleases(),
+    queryFn: () => client.getRecentReleases(),
+  });
 };

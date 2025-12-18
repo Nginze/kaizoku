@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { getFeaturedListOptions } from "../queries/get-featured-list";
 import formatRating from "../utils/format-rating";
 import formatPopularity from "../utils/format-popularity";
+import { Link } from "react-router";
 
 type HomeFeaturedContainerProps = {};
 
@@ -37,21 +38,32 @@ export const HomeFeaturedContainer: React.FC<
         >
           <img
             src={anime.bannerImage}
-            className="w-full max-h-full scale-110 blur-lg opacity-20 object-cover absolute"
+            className="w-full max-h-full scale-110 blur-lg opacity-20 object-cover absolute z-10"
           />
-          <div className="min-w-[120px] h-full">
-            <img
-              className="w-full h-full object-cover"
-              src={anime.coverImage?.extraLarge}
-            />
-          </div>
-          <div className="flex flex-col items-start justify-center pr-4  relative h-full">
-            <div className="text-lg leading-[2.5rem]">
-              {anime.title.romaji ||
-                anime.title.english ||
-                anime.title.native ||
-                anime.title.userPreferred}
+
+          <Link
+            className="cursor-pointer z-50"
+            to={`/watch/${featuredList[currentSlideIdx]._id}`}
+          >
+            <div className="min-w-[120px]  w-[120px] h-full">
+              <img
+                className="w-full h-full object-cover"
+                src={anime.coverImage?.extraLarge}
+              />
             </div>
+          </Link>
+          <div className="flex flex-col items-start justify-center pr-4  relative h-full">
+            <Link
+              className="cursor-pointer z-50"
+              to={`/watch/${featuredList[currentSlideIdx]._id}`}
+            >
+              <div className="text-lg leading-[2.5rem]">
+                {anime.title.romaji ||
+                  anime.title.english ||
+                  anime.title.native ||
+                  anime.title.userPreferred}
+              </div>
+            </Link>
             <div className="flex flex-col items-start gap-2 mb-2">
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1">
@@ -74,18 +86,18 @@ export const HomeFeaturedContainer: React.FC<
                 className="text-sm opacity-70 line-clamp-2"
               ></div>
             </div>
-            <div className="w-full text-xs opacity-45 flex items-center justify-between">
+            <div className="w-full text-xs opacity-45 flex items-center justify-between z-50">
               <div className="flex items-center">
                 <Tags size={16} fillRule="nonzero" className="mr-2" />
                 <span>{anime.genres?.join(", ")}</span>
               </div>
 
-              <div className="flex justify-center items-center">
+              <div className="flex justify-center items-center ">
                 {featuredList.map((_: any, index: number) => (
                   <div
                     key={index}
                     onClick={() => setCurrentSlideIdx(index)}
-                    className={`h-1 w-3 mr-1 cursor-pointer  ${
+                    className={`h-1 w-3 mr-1 cursor-pointer z-50 ${
                       index === currentSlideIdx ? "bg-white" : "bg-gray"
                     }`}
                   ></div>
