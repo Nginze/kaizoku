@@ -18,19 +18,13 @@ COPY . .
 # Build the application
 RUN pnpm build
 
-# Production stage
+# Production stage - serve static files
 FROM node:20-alpine
-
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 
-# Copy package files
-COPY package.json pnpm-lock.yaml* ./
-
-# Install all dependencies (vite is needed for preview)
-RUN pnpm install --frozen-lockfile
+# Install serve globally for serving static files
+RUN npm install -g serve
 
 # Copy built files from builder
 COPY --from=builder /app/dist ./dist
@@ -41,5 +35,5 @@ EXPOSE 5173
 # Set environment
 ENV NODE_ENV=production
 
-# Run vite preview on port 5173
-CMD ["pnpm", "preview", "--host", "0.0.0.0", "--port", "5173"]
+# Serve static files on port 5173
+CMD ["serve", "-s", "dist", "-l", "5173"]
