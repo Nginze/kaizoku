@@ -96,12 +96,13 @@ export const m3u8Proxy = async (req: Request, res: Response): Promise<void> => {
 			}
 		});
 	} catch (error: any) {
-		console.error("Proxy error for URL:", req.query.url);
-		console.error("Error details:", error.message);
+		console.log("Proxy error for URL:", req.query.url);
+		console.log("Error details:", error.message);
+
 
 		if (!res.headersSent) {
 			if (error.response) {
-				console.error("Response status:", error.response.status);
+				console.log("Response status:", error.response.status);
 				res.status(error.response.status).json({
 					error: "Upstream server error",
 					details: error.response.statusText,
