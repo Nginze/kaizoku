@@ -62,6 +62,24 @@ services:
     networks:
       - anidb-network
 
+  # Rust proxy service for video streaming
+  rust-proxy:
+    image: ghcr.io/zuhaz/rustproxy:latest
+    container_name: anidb-rust-proxy
+    ports:
+      - "8090:8090"
+    environment:
+      - ENABLE_CORS=true
+    restart: unless-stopped
+    networks:
+      - anidb-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
   # Main server - API endpoints and client requests
   server:
     build:
@@ -77,6 +95,7 @@ services:
       - REDIS_URL=redis://redis:6379
       - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
       - SERVER_URL=${SERVER_URL:-http://localhost:8080}
+      - PROXY_SERVER_URL=${PROXY_SERVER_URL:-http://rust-proxy:8090}
     volumes:
       - ./server/src:/app/src
       - server_node_modules:/app/node_modules
@@ -84,6 +103,8 @@ services:
       redis:
         condition: service_healthy
       mongodb:
+        condition: service_healthy
+      rust-proxy:
         condition: service_healthy
     restart: unless-stopped
     networks:

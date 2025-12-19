@@ -113,11 +113,18 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
     outroEnd: episodeSources.outro.end.toString(),
   });
 
+  // V2 Proxy URL with megacloud.club origin and headers
+  const headers = JSON.stringify({
+    Referer: "https://megacloud.club/",
+    Origin: "https://megacloud.club"
+  });
+
   const proxyUrl = `${
     import.meta.env.VITE_API_URL
-  }/api/proxy/video?url=${encodeURIComponent(
+  }/api/proxy/v2?url=${encodeURIComponent(
     episodeSources?.sources[0]?.url || ""
-  )}`;
+  )}&origin=${encodeURIComponent("https://megacloud.club")}&headers=${encodeURIComponent(headers)}`;
+
   const chaptersUrl = `${
     import.meta.env.VITE_API_URL
   }/api/anime/get-chapters-vtt?${params.toString()}`;
