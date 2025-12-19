@@ -5,11 +5,13 @@ export const allowedExtensions = ['.ts', '.png', '.jpg', '.webp', '.ico', '.html
 export class LineTransform extends Transform {
   private buffer: string;
   private baseUrl: string;
+  private serverUrl: string;
 
-  constructor(baseUrl: string) {
+  constructor(baseUrl: string, serverUrl?: string) {
     super();
     this.buffer = '';
     this.baseUrl = baseUrl;
+    this.serverUrl = serverUrl || process.env.SERVER_URL || 'http://localhost:8080';
   }
 
   _transform(chunk: Buffer, encoding: BufferEncoding, callback: TransformCallback) {
@@ -35,15 +37,15 @@ export class LineTransform extends Transform {
 
   private processLine(line: string): string {
     if (line.endsWith('.m3u8') || line.endsWith('.ts')) {
-      return `http://localhost:8080/api/proxy/video?url=${encodeURIComponent(this.baseUrl + line)}`;
+      return `${this.serverUrl}/api/proxy/video?url=${encodeURIComponent(this.baseUrl + line)}`;
     }
 
     if (line.startsWith("http") && !line.endsWith(".m3u8")) {
-      return `http://localhost:8080/api/proxy/video?url=${encodeURIComponent(line)}`;
+      return `${this.serverUrl}/api/proxy/video?url=${encodeURIComponent(line)}`;
     }
 
     if (allowedExtensions.some(ext => line.endsWith(ext))) {
-      return `http://localhost:8080/api/proxy/video?url=${encodeURIComponent(line)}`;
+      return `${this.serverUrl}/api/proxy/video?url=${encodeURIComponent(line)}`;
     }
 
     return line;
