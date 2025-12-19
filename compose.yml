@@ -73,12 +73,6 @@ services:
     restart: unless-stopped
     networks:
       - anidb-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8090/health"]
-      interval: 10s
-      timeout: 3s
-      retries: 5
-      start_period: 5s
 
   # Main server - API endpoints and client requests
   server:
@@ -105,7 +99,7 @@ services:
       mongodb:
         condition: service_healthy
       rust-proxy:
-        condition: service_healthy
+        condition: service_started
     restart: unless-stopped
     networks:
       - anidb-network
