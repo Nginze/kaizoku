@@ -75,6 +75,16 @@ services:
     networks:
       - anidb-network
 
+  # Rust proxy service for video streaming (kept for compatibility, not used)
+  rust-proxy:
+    image: ghcr.io/zuhaz/rustproxy:latest
+    container_name: anidb-rust-proxy
+    ports:
+      - "8090:8080"
+    restart: unless-stopped
+    networks:
+      - anidb-network
+
   # Main server - API endpoints and client requests (uses mubeng for proxy rotation)
   server:
     build:
