@@ -62,17 +62,20 @@ services:
     networks:
       - anidb-network
 
-  # Rust proxy service for video streaming
-  rust-proxy:
-    image: ghcr.io/zuhaz/rustproxy:latest
-    container_name: anidb-rust-proxy
+  # Mubeng proxy rotator - rotates through residential proxies
+  mubeng:
+    image: ghcr.io/kitabisa/mubeng:latest
+    container_name: anidb-mubeng
     ports:
-      - "8090:8080"
+      - "8088:8080"
+    volumes:
+      - ./proxy-list.txt:/app/proxy-list.txt:ro
+    command: -f /app/proxy-list.txt -a :8080 -r 1 -v -t 60s
     restart: unless-stopped
     networks:
       - anidb-network
 
-  # Main server - API endpoints and client requests
+  # Main server - API endpoints and client requests (uses mubeng for proxy rotation)
   server:
     build:
       context: ./server
@@ -80,6 +83,10 @@ services:
     container_name: anidb-server
     ports:
       - "8080:8080"
+    volumes:
+      - ./server/src:/app/src
+      - server_node_modules:/app/node_modules
+      - ./mubeng-ca.pem:/app/mubeng-ca.pem:ro
     environment:
       - NODE_ENV=production
       - PORT=8080
@@ -87,16 +94,14 @@ services:
       - REDIS_URL=redis://redis:6379
       - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
       - SERVER_URL=${SERVER_URL:-http://localhost:8080}
-      - PROXY_SERVER_URL=${PROXY_SERVER_URL:-http://rust-proxy:8080}
-    volumes:
-      - ./server/src:/app/src
-      - server_node_modules:/app/node_modules
+      - MUBENG_PROXY_URL=http://mubeng:8080
+      - NODE_EXTRA_CA_CERTS=/app/mubeng-ca.pem
     depends_on:
       redis:
         condition: service_healthy
       mongodb:
         condition: service_healthy
-      rust-proxy:
+      mubeng:
         condition: service_started
     restart: unless-stopped
     networks:

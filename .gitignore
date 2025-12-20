@@ -7,3 +7,6 @@ build/
 .vscode/
 
 .env
+proxy-list.txt
+mubeng-ca.crt
+mubeng-ca.pem

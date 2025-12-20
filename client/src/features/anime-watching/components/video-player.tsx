@@ -121,7 +121,7 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
 
   const proxyUrl = `${
     import.meta.env.VITE_API_URL
-  }/api/proxy/v2?url=${encodeURIComponent(
+  }/api/proxy/video?url=${encodeURIComponent(
     episodeSources?.sources[0]?.url || ""
   )}&origin=${encodeURIComponent("https://megacloud.club")}&headers=${encodeURIComponent(headers)}`;
 

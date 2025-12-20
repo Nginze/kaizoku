@@ -1,10 +1,23 @@
 import { Router, Request, Response, NextFunction } from "express";
 import axios from "axios";
+import { HttpsProxyAgent } from "https-proxy-agent";
 import { allowedExtensions, LineTransform } from "../utils/line-transform";
 
 export const router = Router();
 
-// Enhanced M3U8 proxy for video streaming with provider bypass
+// Get mubeng proxy URL from environment
+const MUBENG_PROXY_URL = process.env.MUBENG_PROXY_URL;
+
+// Create proxy agent if mubeng is configured
+const getProxyAgent = () => {
+	if (!MUBENG_PROXY_URL) {
+		console.log("MUBENG_PROXY_URL not configured, making direct requests");
+		return undefined;
+	}
+	return new HttpsProxyAgent(MUBENG_PROXY_URL);
+};
+
+// Enhanced M3U8 proxy for video streaming with provider bypass (uses mubeng for IP rotation)
 export const m3u8Proxy = async (req: Request, res: Response): Promise<void> => {
 	try {
 		const url = req.query.url as string;
@@ -37,9 +50,6 @@ export const m3u8Proxy = async (req: Request, res: Response): Promise<void> => {
 			"Sec-Fetch-Site": "cross-site",
 		};
 
-		// Add provider-specific headers
-		const urlObj = new URL(url);
-
 		headers.Referer = "https://megacloud.club/";
 		headers.Origin = "https://megacloud.club";
 
@@ -48,9 +58,14 @@ export const m3u8Proxy = async (req: Request, res: Response): Promise<void> => {
 			headers.Range = req.headers.range as string;
 		}
 
+		// Use mubeng proxy for IP rotation
+		const proxyAgent = getProxyAgent();
+
 		const response = await axios.get(url, {
 			responseType: "stream",
 			headers,
+			httpsAgent: proxyAgent,
+			proxy: false, // Disable axios default proxy handling since we're using httpsAgent
 			validateStatus: (status) => status < 500,
 			timeout: 30000,
 		});
