@@ -5,6 +5,9 @@ import { allowedExtensions, LineTransform } from "../utils/line-transform";
 
 export const router = Router();
 
+// Lazy-load impit (ESM module)
+let Impit: any;
+
 // Get mubeng proxy URL from environment
 const MUBENG_PROXY_URL = process.env.MUBENG_PROXY_URL;
 
@@ -251,8 +254,121 @@ export const m3u8ProxyV2 = async (req: Request, res: Response): Promise<void> =>
 	}
 };
 
+// Proxy V3 - Uses impit with proper headers for better bot detection bypass
+export const m3u8ProxyV3 = async (req: Request, res: Response): Promise<void> => {
+	try {
+		const url = req.query.url as string;
+		const origin = (req.query.origin as string) || "https://megacloud.club";
+		const referer = (req.query.referer as string) || "https://megacloud.club/";
+
+		if (!url) {
+			res.status(400).json({ error: "URL parameter is required" });
+			return;
+		}
+
+		// Validate URL format
+		try {
+			new URL(url);
+		} catch {
+			res.status(400).json({ error: "Invalid URL format" });
+			return;
+		}
+
+		console.log("Proxying via impit:", url);
+
+		// Lazy-load impit on first use (ESM module)
+		if (!Impit) {
+			const module = await import("impit");
+			Impit = module.Impit;
+		}
+
+		// Create impit instance with Chrome browser fingerprint
+		const impit = new Impit({
+			browser: "chrome",
+		});
+
+		// Use impit for better bot detection bypass
+		const response = await impit.fetch(url, {
+			headers: {
+				referer,
+				origin,
+			},
+		});
+
+		// Get response body as buffer
+		const bodyBuffer = Buffer.from(await response.arrayBuffer());
+
+		// Ensure CORS headers are set
+		const responseHeaders: Record<string, string> = {};
+		response.headers.forEach((value: string, key: string) => {
+			responseHeaders[key] = value;
+		});
+
+		responseHeaders["access-control-allow-origin"] = "*";
+		responseHeaders["access-control-allow-headers"] = "*";
+		responseHeaders["access-control-allow-methods"] = "*";
+
+		res.set(responseHeaders);
+		res.status(response.status);
+
+		// Check if response is M3U8 playlist AND request was successful
+		const isM3U8 = url.endsWith('.m3u8') || responseHeaders['content-type']?.includes('mpegurl');
+		const isSuccessful = response.status >= 200 && response.status < 300;
+
+		if (isM3U8 && isSuccessful) {
+			const m3u8Data = bodyBuffer.toString('utf-8');
+
+			// Verify it's actually M3U8 content (should start with #EXTM3U)
+			if (!m3u8Data.trim().startsWith('#EXTM3U')) {
+				// Not actually M3U8, send as-is
+				res.send(m3u8Data);
+				return;
+			}
+
+			// Rewrite relative URLs to point through our proxy
+			const serverUrl = process.env.SERVER_URL || `${req.protocol}://${req.get('host')}`;
+			const baseUrl = `${serverUrl}/api/proxy/v3`;
+			const originalBaseUrl = url.replace(/[^/]+$/, "");
+
+			const rewrittenM3U8 = m3u8Data
+				.split('\n')
+				.map(line => {
+					const trimmedLine = line.trim();
+					// Skip comments and empty lines
+					if (trimmedLine.startsWith('#') || trimmedLine === '') {
+						return line;
+					}
+					// Rewrite relative URLs
+					if (!trimmedLine.startsWith('http')) {
+						const absoluteUrl = new URL(trimmedLine, originalBaseUrl).toString();
+						return `${baseUrl}?url=${encodeURIComponent(absoluteUrl)}&origin=${encodeURIComponent(origin)}&referer=${encodeURIComponent(referer)}`;
+					}
+					// Rewrite absolute URLs
+					return `${baseUrl}?url=${encodeURIComponent(trimmedLine)}&origin=${encodeURIComponent(origin)}&referer=${encodeURIComponent(referer)}`;
+				})
+				.join('\n');
+
+			res.send(rewrittenM3U8);
+		} else {
+			// Send the response directly for non-M3U8 files or error responses
+			res.send(bodyBuffer);
+		}
+	} catch (error: any) {
+		console.log("Proxy V3 error for URL:", req.query.url);
+		console.log("Error details:", error.message);
+
+		if (!res.headersSent) {
+			res.status(500).json({
+				error: "Proxy server error",
+				details: error.message,
+			});
+		}
+	}
+};
+
 // Register the proxy routes
 router.get("/video", m3u8Proxy);
 router.get("/v2", m3u8ProxyV2);
+router.get("/v3", m3u8ProxyV3);
 
 export { router as proxyRouter };
