@@ -104,6 +104,7 @@ services:
       - REDIS_URL=redis://redis:6379
       - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
       - SERVER_URL=${SERVER_URL:-http://localhost:8080}
+      - PROXY_SERVER_URL=${PROXY_SERVER_URL:-http://rust-proxy:8080}
       - MUBENG_PROXY_URL=http://mubeng:8080
       - NODE_EXTRA_CA_CERTS=/app/mubeng-ca.pem
     depends_on:
