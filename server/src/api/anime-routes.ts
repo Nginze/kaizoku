@@ -280,14 +280,15 @@ router.get("/search", async (req: Request, res: Response) => {
 // /anime/featured - Cached featured anime
 router.get("/featured", async (req: Request, res: Response) => {
   try {
-    const cacheKey = "anime:featured:new";
+    // const cacheKey = "anime:featured:new";
 
-    // Try to get from Redis cache first
-    const cached = await redis.get(cacheKey);
-    if (cached) {
-      res.json(JSON.parse(cached));
-      return;
-    }
+    // // Try to get from Redis cache first
+    // const cached = await redis.get(cacheKey);
+    // if (cached) {
+    //   console.log("CACHED returning featured anime");
+    //   res.json(JSON.parse(cached));
+    //   return;
+    // }
 
     // If not cached, get from database
     const featured = await Anime.aggregate([
@@ -311,7 +312,7 @@ router.get("/featured", async (req: Request, res: Response) => {
     ]);
 
     // Cache for 1 hour
-    await redis.setex(cacheKey, 3600, JSON.stringify(featured));
+    // await redis.setex(cacheKey, 3600, JSON.stringify(featured));
 
     res.json(featured);
   } catch (error: any) {
