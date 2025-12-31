@@ -5,17 +5,19 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "nodemon src/index.ts",
+		"dev": "tsx watch src/index.ts",
 		"build": "tsc"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
+	"type": "module",
 	"dependencies": {
 		"@types/crypto-js": "^4.2.2",
 		"@types/http-errors": "^2.0.4",
 		"@types/string-similarity": "^4.0.2",
 		"axios": "^1.11.0",
+		"better-auth": "^1.4.9",
 		"bullmq": "^5.58.4",
 		"cheerio": "^1.1.2",
 		"connect-redis": "^9.0.0",
@@ -42,6 +44,7 @@
 		"@types/morgan": "^1.9.10",
 		"nodemon": "^3.1.9",
 		"ts-node": "^10.9.2",
+		"tsx": "^4.21.0",
 		"typescript": "^5.7.2"
 	}
 }

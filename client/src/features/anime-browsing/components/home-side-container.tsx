@@ -17,6 +17,9 @@ import { check, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { useAuth } from "@/features/authentication/contexts/auth-context";
+import { useLogin } from "@/features/authentication/mutations/login";
+import { useSignout } from "@/features/authentication/mutations/signout";
 
 type HomeSideContainerProps = {};
 
@@ -81,6 +84,9 @@ export const HomeSideContainer: React.FC<HomeSideContainerProps> = () => {
   const years = Array.from({ length: 2026 - 1980 + 1 }, (_, i) => 2026 - i);
   const { data: topAiringList } = useSuspenseQuery(getTopAiringOptions());
 
+  const { user, isAuthenticated, isLoading } = useAuth();
+  const { mutate: login } = useLogin();
+
   const filterFormSchema = z.object({
     season: z.string(),
     year: z.string(),
@@ -110,27 +116,33 @@ export const HomeSideContainer: React.FC<HomeSideContainerProps> = () => {
       })}
     >
       <div className="flex flex-col w-full gap-3">
-        <div className="flex flex-col gap-2 px-2 py-2 items-center bg-[#222222] ">
-          <span className="w-full text-left text-xs opacity-50">
-            Sign in to kaizen
-          </span>
-          <button className="bg-blue flex items-center w-full overflow-hidden border border-secondary">
-            <div className="bg-white p-3">
-              <img src="/icons/google.svg" className="w-5" />
-            </div>
-            <span className="w-full flex items-center justify-center text-sm">
-              Continue with Google
+        {!isAuthenticated && (
+          <div className="flex flex-col gap-2 px-2 py-2 items-center bg-[#222222] ">
+            <span className="w-full text-left text-xs opacity-50">
+              Sign in to kaizoku
             </span>
-          </button>
-          <button className="bg-gray-dark border border-secondary flex items-center w-full overflow-hidden">
+            <button
+              type="button"
+              onClick={() => login()}
+              className="bg-blue flex items-center w-full overflow-hidden border border-secondary"
+            >
+              <div className="bg-white p-3">
+                <img src="/icons/google.svg" className="w-5" />
+              </div>
+              <span className="w-full flex items-center justify-center text-sm">
+                Continue with Google
+              </span>
+            </button>
+            {/* <button className="bg-gray-dark border border-secondary flex items-center w-full overflow-hidden">
             <div className="bg-secondary-2 p-3">
               <img src="/icons/anilist.svg" className="w-5" />
             </div>
             <span className="w-full flex items-center justify-center text-sm">
               Continue with Anilist
             </span>
-          </button>
-        </div>
+          </button> */}
+          </div>
+        )}
         <div className="bg-[#222222] w-full">
           <div className="px-2 py-2 border-b border-secondary border-opacity-10">
             <div className="flex items-start gap-3">
@@ -147,9 +159,12 @@ export const HomeSideContainer: React.FC<HomeSideContainerProps> = () => {
                     >
                       <SelectTrigger
                         aria-invalid={fieldState.invalid}
-                        className="w-[100px] rounded-sm"
+                        className="max-w-full w-[70px] rounded-sm"
                       >
-                        <SelectValue placeholder="Fall" />
+                        <SelectValue
+                          placeholder="Fall"
+                          className="truncate text-ellipsis w-[70px]"
+                        />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="fall">Fall</SelectItem>

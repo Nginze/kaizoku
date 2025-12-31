@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import {
   MediaPlayer,
   MediaProvider,
   Poster,
   Track,
   SeekButton,
+  useMediaState,
 } from "@vidstack/react";
 import {
   DefaultAudioLayout,
@@ -17,6 +18,9 @@ import { useQuery } from "@tanstack/react-query";
 import { getEpisodeSourcesOptions } from "../queries/get-episode-sources";
 import { usePlayerControls } from "../contexts/player-controls-context";
 import { SeekBackward10Icon, SeekForward10Icon } from "@vidstack/react/icons";
+import { Button } from "@/components/ui/button";
+import type { MediaPlayerInstance } from "@vidstack/react";
+import { is, pl } from "zod/v4/locales";
 
 type PlayerProps = {
   watchInfo: WatchInfo;
@@ -24,6 +28,8 @@ type PlayerProps = {
 
 export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
   const { selectedServer } = usePlayerControls();
+  const playerRef = useRef<MediaPlayerInstance>(null);
+  const [currentTime, setCurrentTime] = useState(0);
 
   const {
     data: episodeSources,
@@ -36,6 +42,11 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
         : watchInfo.embeds.sub[0]?.serverId
     )
   );
+
+  // Handler for time updates
+  const handleTimeUpdate = (detail: { currentTime: number }) => {
+    setCurrentTime(detail.currentTime);
+  };
 
   const noStreamingSources =
     watchInfo.embeds.sub.length === 0 && watchInfo.embeds.dub.length === 0;
@@ -116,26 +127,59 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
   // V2 Proxy URL with megacloud.club origin and headers
   const headers = JSON.stringify({
     Referer: "https://megacloud.club/",
-    Origin: "https://megacloud.club"
+    Origin: "https://megacloud.club",
   });
 
   const proxyUrl = `${
     import.meta.env.VITE_API_URL
   }/api/proxy/v2?url=${encodeURIComponent(
     episodeSources?.sources[0]?.url || ""
-  )}&origin=${encodeURIComponent("https://megacloud.club")}&headers=${encodeURIComponent(headers)}`;
+  )}&origin=${encodeURIComponent(
+    "https://megacloud.club"
+  )}&headers=${encodeURIComponent(headers)}`;
 
   const chaptersUrl = `${
     import.meta.env.VITE_API_URL
   }/api/anime/get-chapters-vtt?${params.toString()}`;
 
+  // Check if intro/outro exist (both start and end are not 0)
+  const hasIntro =
+    episodeSources.intro.start !== 0 || episodeSources.intro.end !== 0;
+  const hasOutro =
+    episodeSources.outro.start !== 0 || episodeSources.outro.end !== 0;
+
+  // Check if current time is within intro/outro range
+  const isInIntro =
+    hasIntro &&
+    currentTime >= episodeSources.intro.start &&
+    currentTime <= episodeSources.intro.end;
+  const isInOutro =
+    hasOutro &&
+    currentTime >= episodeSources.outro.start &&
+    currentTime <= episodeSources.outro.end;
+
+  // Handlers to skip intro/outro
+  const handleSkipIntro = () => {
+    if (playerRef.current && hasIntro) {
+      playerRef.current.currentTime = episodeSources.intro.end;
+    }
+  };
+
+  const handleSkipOutro = () => {
+    if (playerRef.current && hasOutro) {
+      playerRef.current.currentTime = episodeSources.outro.end;
+    }
+  };
+
   return (
     <>
       <MediaPlayer
+        ref={playerRef}
         crossOrigin
         playsInline
+        onTimeUpdate={handleTimeUpdate}
         // title={`${watchInfo.anime.title.romaji} - Episode ${watchInfo.currentEpisode}`}
-        className="w-full bg-black h-[500px]"
+        className="w-full bg-black h-[500px] relative"
         aspectRatio="16/9"
         load="eager"
         posterLoad="eager"
@@ -156,7 +200,6 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
             }
             alt=""
           />
-
           {episodeSources.intro && (
             <Track
               kind="chapters"
@@ -185,6 +228,26 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
             chaptersMenu: null,
           }}
         />
+
+        {isInIntro && (
+          <Button
+            onClick={handleSkipIntro}
+            variant={"outline"}
+            className="absolute rounded-md bg-transparent bottom-20 right-5 z-50 h-[40px] hover:bg-transparent hover:text-white"
+          >
+            Skip Intro
+          </Button>
+        )}
+
+        {isInOutro && (
+          <Button
+            onClick={handleSkipOutro}
+            variant={"outline"}
+            className="absolute rounded-md bg-transparent bottom-20 right-5 z-50 h-[40px] hover:bg-secondary hover:text-white"
+          >
+            Skip Outro
+          </Button>
+        )}
       </MediaPlayer>
     </>
   );

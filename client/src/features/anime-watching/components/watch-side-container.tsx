@@ -5,6 +5,7 @@ import { useParams, useSearchParams } from "react-router";
 import { getWatchInfoOptions } from "../queries/get-watch-info";
 import { watch } from "fs";
 import { WatchInfo } from "@/types/watch";
+import { AnimeRatingCard } from "./anime-rating-card";
 
 type WatchSideContainerProps = {
   watchInfo: WatchInfo;
@@ -13,17 +14,6 @@ type WatchSideContainerProps = {
 export const WatchSideContainer: React.FC<WatchSideContainerProps> = ({
   watchInfo,
 }) => {
-  // const { animeId } = useParams();
-  // const [searchParams] = useSearchParams();
-  // const epNo = searchParams.get("ep");
-
-  // const { data: watchInfo } = useSuspenseQuery(
-  //   getWatchInfoOptions({
-  //     animeId: animeId!,
-  //     epNo: epNo ?? "1",
-  //   })
-  // );
-
   return (
     <div className="bg-[#222222] flex flex-col gap-3 py-1">
       <div className="w-full px-2 py-2">
@@ -45,7 +35,7 @@ export const WatchSideContainer: React.FC<WatchSideContainerProps> = ({
           {watchInfo.totalAvailableEpisodes}
         </div>
       </div>
-      <ExpandableContainer maxHeight="h-[300px]" minHeight="h-[50px]">
+      <ExpandableContainer maxHeight="h-[420px]" minHeight="h-[50px]">
         <div
           dangerouslySetInnerHTML={{
             __html: watchInfo.anime.description as TrustedHTML,
@@ -94,6 +84,8 @@ export const WatchSideContainer: React.FC<WatchSideContainerProps> = ({
             </div> */}
           </div>
         </div>
+
+        <AnimeRatingCard />
       </ExpandableContainer>
     </div>
   );

@@ -8,17 +8,27 @@ import { Skeleton } from "./ui/skeleton";
 import axios from "axios";
 import { SearchInput } from "@/features/anime-browsing/components/search-input";
 import Logo from "./logo";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useAuth } from "@/features/authentication/contexts/auth-context";
 
 type NavbarProps = {};
 
 export const Navbar: React.FC<NavbarProps> = () => {
+  const { user, isAuthenticated, isLoading } = useAuth();
+
   return (
-    <div className="flex items-center min-h-[55px]">
-      <div className="w-[1200px] flex items-center mx-auto justify-between">
+    <div className="flex items-center min-h-[55px] w-full">
+      <div className="w-full flex items-center justify-between">
         <div className="flex items-center gap-5">
           <Logo />
           <SearchInput />
         </div>
+        {isAuthenticated && (
+          <Avatar className="w-6 h-6 cursor-pointer">
+            <AvatarImage src={user?.image} alt="@user" />
+            <AvatarFallback>{user?.name}</AvatarFallback>
+          </Avatar>
+        )}
       </div>
     </div>
   );

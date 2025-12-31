@@ -139,7 +139,7 @@ export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = ({
             }
             key={epNumber}
             className={cn(
-              "bg-secondary-2 py-1 max-h-[40px] hover:bg-secondary-1 active:bg-secondary",
+              "bg-secondary-2 py-1 max-h-[40px] text-sm  hover:bg-secondary-1 active:bg-secondary",
               Number(epNo) === epNumber &&
                 "bg-primary hover:bg-primary active:bg-primary text-black"
             )}

@@ -113,6 +113,12 @@ export const watchKeys = {
     [...animeKeys.all, "episode-sources", embedUrl] as const,
 };
 
+export const authKeys = {
+  all: ["auth"] as const,
+  me: () => [...authKeys.all, "me"] as const,
+  session: () => [...authKeys.all, "session"] as const,
+} as const;
+
 /**
  * Type-safe query key factory
  * Usage examples:

@@ -10,9 +10,9 @@ type LayoutProps = {
 
 export const Layout: React.FC<LayoutProps> = ({ nav, main, side, footer }) => {
   return (
-    <div className="w-full  flex flex-col bg-[#191919] gap-5">
-      <div className="w-full">{nav}</div>
-      <div className="w-[1200px] mx-auto min-h-[100vh] mb-10">
+    <div className="w-full flex flex-col bg-[#191919] gap-5">
+      <div className="w-[1200px] mx-auto">{nav}</div>
+      <div className="w-[1200px] mx-auto min-h-[100vh] mb-10 ">
         <div className="flex gap-3">
           <div className="min-h-[1000px] grow-0 shrink-0 w-4/5 gap-4 flex flex-col">
             {main}

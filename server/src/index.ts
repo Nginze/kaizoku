@@ -7,6 +7,7 @@ import { httpLogger, logger } from "./config/logger";
 import { router as indexRoutes } from "./api/index-routes";
 import { router as proxyRoutes } from "./api/proxy-routes";
 import { router as animeRoutes } from "./api/anime-routes";
+import { router as authRoutes } from "./api/auth-routes";
 import { cors as corsMiddleware } from "./middleware/cors";
 import { session as sessionMiddleware } from "./middleware/session";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
@@ -14,12 +15,15 @@ import { connectDB } from "./config/mongo";
 
 const app = express();
 
+app.use(httpLogger);
 app.use(cors(corsMiddleware));
 app.use(session(sessionMiddleware));
+
+// Has to be before json parsing middleware
+app.use("/api/auth", authRoutes);
+
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
-
-app.use(httpLogger);
 
 app.use("/", indexRoutes);
 app.use("/api/proxy", proxyRoutes);
