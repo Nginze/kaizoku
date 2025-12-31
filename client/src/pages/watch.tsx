@@ -2,6 +2,7 @@ import { Footer } from "@/components/footer";
 import { Layout } from "@/components/layout";
 import { Navbar } from "@/components/navbar";
 import { Skeleton } from "@/components/ui/skeleton";
+import { CommentSection } from "@/features/anime-watching/components/comment-section";
 import { EpisodeGridContainer } from "@/features/anime-watching/components/episode-grid-container";
 import { Player } from "@/features/anime-watching/components/video-player";
 import { PlayerControls } from "@/features/anime-watching/components/video-player-controls";
@@ -68,6 +69,7 @@ export const Watch: React.FC<WatchProps> = () => {
               <Player watchInfo={watchInfo} />
               <PlayerControls watchInfo={watchInfo} />
               <EpisodeGridContainer watchInfo={watchInfo} />
+              <CommentSection watchInfo={watchInfo} />
             </PlayerControlsProvider>
           </>
         }

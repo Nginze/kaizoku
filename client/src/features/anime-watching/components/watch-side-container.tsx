@@ -74,18 +74,10 @@ export const WatchSideContainer: React.FC<WatchSideContainerProps> = ({
               {watchInfo.anime.idMal}
             </div>
 
-            {/* <div className="opacity-60 col-span-2">Studios: </div>
-            <div className="opacity-60 col-span-3 text-primary-1">
-              {watchInfo.anime.tags
-                ?.filter((tag) => tag.category === "studio")
-                .slice(0, 3)
-                .map((tag) => tag.name)
-                .join(", ")}
-            </div> */}
           </div>
         </div>
 
-        <AnimeRatingCard />
+        <AnimeRatingCard score={watchInfo.anime.averageScore/10} />
       </ExpandableContainer>
     </div>
   );

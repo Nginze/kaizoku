@@ -6,6 +6,7 @@ import {
   Track,
   SeekButton,
   useMediaState,
+  useMediaRemote,
 } from "@vidstack/react";
 import {
   DefaultAudioLayout,
@@ -20,7 +21,6 @@ import { usePlayerControls } from "../contexts/player-controls-context";
 import { SeekBackward10Icon, SeekForward10Icon } from "@vidstack/react/icons";
 import { Button } from "@/components/ui/button";
 import type { MediaPlayerInstance } from "@vidstack/react";
-import { is, pl } from "zod/v4/locales";
 
 type PlayerProps = {
   watchInfo: WatchInfo;
@@ -29,6 +29,7 @@ type PlayerProps = {
 export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
   const { selectedServer } = usePlayerControls();
   const playerRef = useRef<MediaPlayerInstance>(null);
+  const remote = useMediaRemote(playerRef);
   const [currentTime, setCurrentTime] = useState(0);
 
   const {
@@ -39,7 +40,8 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
     getEpisodeSourcesOptions(
       selectedServer
         ? selectedServer.serverId
-        : watchInfo.embeds.sub[0]?.serverId
+        : watchInfo.embeds.sub[0]?.serverId,
+      watchInfo.currentEpisode
     )
   );
 
@@ -160,15 +162,11 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
 
   // Handlers to skip intro/outro
   const handleSkipIntro = () => {
-    if (playerRef.current && hasIntro) {
-      playerRef.current.currentTime = episodeSources.intro.end;
-    }
+    remote.seek(episodeSources.intro.end);
   };
 
   const handleSkipOutro = () => {
-    if (playerRef.current && hasOutro) {
-      playerRef.current.currentTime = episodeSources.outro.end;
-    }
+    remote.seek(episodeSources.outro.end);
   };
 
   return (

@@ -109,8 +109,8 @@ export const watchKeys = {
   detail: (params: { animeId: string; epNo?: string | number }) =>
     [...animeKeys.all, "watch", params] as const,
 
-  episodeSources: (embedUrl: string) =>
-    [...animeKeys.all, "episode-sources", embedUrl] as const,
+  episodeSources: (serverId: string, episodeNumber: number | string) =>
+    [...animeKeys.all, "episode-sources", serverId, episodeNumber] as const,
 };
 
 export const authKeys = {

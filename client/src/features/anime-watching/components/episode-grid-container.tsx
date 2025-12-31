@@ -13,6 +13,7 @@ import { useNavigate, useParams, useSearchParams } from "react-router";
 import { getWatchInfoOptions } from "../queries/get-watch-info";
 import { WatchInfo } from "@/types/watch";
 import { cn } from "@/lib/utils";
+import { useWatchedEpisodesStore } from "../stores/watched-episodes-store";
 
 type EpisodeGridContainerProps = {
   watchInfo: WatchInfo;
@@ -26,12 +27,13 @@ export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = ({
   // const { animeId } = useParams();
 
   const [searchParams] = useSearchParams();
-  const epNo = searchParams.get("ep");
+  const epNo = searchParams.get("ep") || 1;
   const [searchQuery, setSearchQuery] = useState("");
 
   // const { data: watchInfo } = useSuspenseQuery(
   //   getWatchInfoOptions({ animeId: animeId!, epNo: epNo ?? "1" })
   // );
+  const { addWatchedEpisode, isEpisodeWatched } = useWatchedEpisodesStore();
 
   const navigate = useNavigate();
 
@@ -61,7 +63,9 @@ export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = ({
     const calculatedRange = `${start}-${end}`;
 
     // Return the calculated range if it exists in episodeRanges, otherwise first range
-    return episodeRanges.includes(calculatedRange) ? calculatedRange : episodeRanges[0] || "1-100";
+    return episodeRanges.includes(calculatedRange)
+      ? calculatedRange
+      : episodeRanges[0] || "1-100";
   };
 
   const [selectedRange, setSelectedRange] = useState(getInitialRange());
@@ -134,14 +138,16 @@ export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = ({
       <div className="grid grid-cols-[repeat(auto-fill,minmax(45px,1fr))] gap-1 overflow-auto h-auto max-h-[180px] py-1">
         {filteredEpisodes.map((epNumber) => (
           <button
-            onClick={() =>
-              navigate(`/watch/${watchInfo.anime._id}?ep=${epNumber}`)
-            }
+            onClick={() => {
+              addWatchedEpisode(watchInfo.anime._id, epNumber);
+              navigate(`/watch/${watchInfo.anime._id}?ep=${epNumber}`);
+            }}
             key={epNumber}
             className={cn(
               "bg-secondary-2 py-1 max-h-[40px] text-sm  hover:bg-secondary-1 active:bg-secondary",
               Number(epNo) === epNumber &&
-                "bg-primary hover:bg-primary active:bg-primary text-black"
+                "bg-primary hover:bg-primary active:bg-primary text-black",
+              isEpisodeWatched(watchInfo.anime._id, epNumber) && Number(epNo) !== epNumber  && "opacity-30"
             )}
           >
             <span className="opacity-60">{epNumber}</span>

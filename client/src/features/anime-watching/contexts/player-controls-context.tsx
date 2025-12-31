@@ -51,9 +51,9 @@ export function PlayerControlsProvider({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
 
-  // Set the first SUB server as default when watchInfo changes
+  // Set the first SUB server as default when episode changes
   useEffect(() => {
-    if (watchInfo.embeds.sub.length > 0 && !selectedServer) {
+    if (watchInfo.embeds.sub.length > 0) {
       const firstSubEmbed = watchInfo.embeds.sub[0];
       setSelectedServer({
         serverIdx: firstSubEmbed.serverIdx,
@@ -64,7 +64,7 @@ export function PlayerControlsProvider({
         type: "SUB",
       });
     }
-  }, [watchInfo, selectedServer]);
+  }, [watchInfo.currentEpisode]);
 
   return (
     <PlayerControlsContext.Provider
