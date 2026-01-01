@@ -18,10 +18,12 @@ COPY . .
 # Accept build arguments for environment variables
 ARG VITE_GOOGLE_SHEETS_URL
 ARG VITE_API_URL
+ARG VITE_BASE_URL
 
 # Set them as environment variables for the build
 ENV VITE_GOOGLE_SHEETS_URL=$VITE_GOOGLE_SHEETS_URL
 ENV VITE_API_URL=$VITE_API_URL
+ENV VITE_BASE_URL=$VITE_BASE_URL
 
 # Build the application
 RUN pnpm build
