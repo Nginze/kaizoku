@@ -100,6 +100,10 @@ services:
       - PROXY_SERVER_URL=${PROXY_SERVER_URL:-http://rust-proxy:8080}
       - MUBENG_PROXY_URL=http://mubeng:8080
       - NODE_EXTRA_CA_CERTS=/app/mubeng-ca.pem
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET}
+      - BETTER_AUTH_URL=${BETTER_AUTH_URL}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
     restart: unless-stopped
     networks:
       - anidb-network
