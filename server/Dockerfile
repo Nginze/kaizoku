@@ -46,4 +46,4 @@ ENV PORT=3000
 EXPOSE 3000
 
 # Run the server using tsx (handles ES modules properly)
-CMD ["npx", "tsx", "src/index.ts"]
+CMD ["pnpm", "exec", "tsx", "src/index.ts"]
