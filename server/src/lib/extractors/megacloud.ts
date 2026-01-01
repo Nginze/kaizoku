@@ -1,7 +1,7 @@
 import axios from "axios";
 import crypto from "crypto";
-import { getSources } from "./megacloud.getsrcs";
-import extractToken, { decryptSrc2, getMegaCloudClientKey } from "./utils";
+import { getSources } from "./megacloud.getsrcs.js";
+import extractToken, { decryptSrc2, getMegaCloudClientKey } from "./utils/index.js";
 
 // https://megacloud.tv/embed-2/e-1/dBqCr5BcOhnD?k=1
 

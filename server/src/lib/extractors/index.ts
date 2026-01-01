@@ -1,6 +1,6 @@
-// import StreamSB from "./streamsb";
-// import StreamTape from "./streamtape";
-// import RapidCloud from "./rapidcloud";
-import MegaCloud from "./megacloud";
+// import StreamSB from "./streamsb.js";
+// import StreamTape from "./streamtape.js";
+// import RapidCloud from "./rapidcloud.js";
+import MegaCloud from "./megacloud.js";
 
 export { MegaCloud };

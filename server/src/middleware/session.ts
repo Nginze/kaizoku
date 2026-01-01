@@ -1,5 +1,5 @@
 import type { SessionOptions } from "express-session";
-import { redis } from "../config/redis";
+import { redis } from "../config/redis.js";
 import { RedisStore } from "connect-redis";
 
 const REDIS_STORE = new RedisStore({

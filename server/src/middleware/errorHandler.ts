@@ -1,6 +1,6 @@
 import { ErrorRequestHandler, RequestHandler } from "express";
 import createHttpError, { isHttpError } from "http-errors";
-import { logger } from "../config/logger";
+import { logger } from "../config/logger.js";
 
 export const notFoundHandler: RequestHandler = (req, res, next) => {
 	next(createHttpError(404, "Endpoint not found"));

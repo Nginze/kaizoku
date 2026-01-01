@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { proxyRouter } from "./proxy-routes";
+import { proxyRouter } from "./proxy-routes.js";
 
 export const router = Router();
 

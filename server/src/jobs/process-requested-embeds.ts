@@ -1,5 +1,5 @@
-import Anime from "../models/anime";
-import { redis } from "../config/redis";
+import Anime from "../models/anime.js";
+import { redis } from "../config/redis.js";
 import { load } from "cheerio";
 import axios from "axios";
 import { findBestMatch } from "string-similarity";

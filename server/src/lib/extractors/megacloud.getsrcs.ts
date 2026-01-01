@@ -1,11 +1,11 @@
 // solution inspired from https://github.com/drblgn/rabbit_wasm/blob/main/rabbit.ts
 
-import { decoded_png } from "./megacloud.decodedpng";
+import { decoded_png } from "./megacloud.decodedpng.js";
 import util from "util";
 import CryptoJS from "crypto-js";
 import { webcrypto } from "crypto";
-import { SRC_BASE_URL, USER_AGENT_HEADER } from "./constants";
-import type { extractedSrc, unencryptedSrc } from "./megacloud";
+import { SRC_BASE_URL, USER_AGENT_HEADER } from "./constants.js";
+import type { extractedSrc, unencryptedSrc } from "./megacloud.js";
 
 const embed_url = "https://megacloud.tv/embed-2/e-1/";
 const embed_url_blog = "https://megacloud.blog/embed-2/v3/e-1/";

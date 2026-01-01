@@ -2,16 +2,16 @@ import cors from "cors";
 import "dotenv/config";
 import express, { Request, Response } from "express";
 import session, { Session } from "express-session";
-import { httpLogger, logger } from "./config/logger";
+import { httpLogger, logger } from "./config/logger.js";
 
-import { router as indexRoutes } from "./api/index-routes";
-import { router as proxyRoutes } from "./api/proxy-routes";
-import { router as animeRoutes } from "./api/anime-routes";
-import { router as authRoutes } from "./api/auth-routes";
-import { cors as corsMiddleware } from "./middleware/cors";
-import { session as sessionMiddleware } from "./middleware/session";
-import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
-import { connectDB } from "./config/mongo";
+import { router as indexRoutes } from "./api/index-routes.js";
+import { router as proxyRoutes } from "./api/proxy-routes.js";
+import { router as animeRoutes } from "./api/anime-routes.js";
+import { router as authRoutes } from "./api/auth-routes.js";
+import { cors as corsMiddleware } from "./middleware/cors.js";
+import { session as sessionMiddleware } from "./middleware/session.js";
+import { errorHandler, notFoundHandler } from "./middleware/errorHandler.js";
+import { connectDB } from "./config/mongo.js";
 
 const app = express();
 

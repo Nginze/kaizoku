@@ -1,6 +1,6 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
-import { getClient } from "./mongo";
+import { getClient } from "./mongo.js";
 
 export async function initAuth() {
   const client = await getClient();

@@ -1,7 +1,7 @@
 import { Worker } from "bullmq";
-import { processRequestedEmbeds } from "../jobs/process-requested-embeds";
-import { logger } from "../config/logger";
-import { redis } from "../config/redis";
+import { processRequestedEmbeds } from "../jobs/process-requested-embeds.js";
+import { logger } from "../config/logger.js";
+import { redis } from "../config/redis.js";
 
 const embedWorker = new Worker(
   "embed-queue",

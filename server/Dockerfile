@@ -15,10 +15,8 @@ RUN pnpm install --frozen-lockfile || npm install
 # Copy source code and TypeScript config
 COPY . .
 
-# Build TypeScript (if tsconfig exists) - continue even if build fails
-RUN if [ -f tsconfig.json ]; then \
-      pnpm build || npx tsc || echo "Build skipped - will use ts-node"; \
-    fi
+# Build TypeScript to JavaScript
+RUN pnpm run build
 
 # Production stage
 FROM node:20-alpine
@@ -28,15 +26,10 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /app
 
-# Copy package files
-COPY package.json pnpm-lock.yaml* ./
-
-# Install all dependencies (including dev dependencies for tsx)
-RUN pnpm install --frozen-lockfile --include=dev || pnpm install --include=dev || npm install
-
-# Copy source from builder
-RUN --mount=type=bind,from=builder,source=/app,target=/build \
-    cp -r /build/src ./src
+# Copy built files and dependencies from builder
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./
 
 # Set environment
 ENV NODE_ENV=production
@@ -45,5 +38,5 @@ ENV PORT=3000
 # Expose port
 EXPOSE 3000
 
-# Run the server using tsx (handles ES modules properly)
-CMD ["node_modules/.bin/tsx", "src/index.ts"]
+# Run the compiled JavaScript
+CMD ["node", "dist/index.js"]

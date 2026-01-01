@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from "express";
 import axios from "axios";
 import { HttpsProxyAgent } from "https-proxy-agent";
-import { allowedExtensions, LineTransform } from "../utils/line-transform";
+import { allowedExtensions, LineTransform } from "../utils/line-transform.js";
 
 export const router = Router();
 
