@@ -89,8 +89,6 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./server/src:/app/src
-      - server_node_modules:/app/node_modules
       - ./mubeng-ca.pem:/app/mubeng-ca.pem:ro
     environment:
       - NODE_ENV=production
