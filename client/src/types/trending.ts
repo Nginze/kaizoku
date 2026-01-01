@@ -11,8 +11,7 @@ export interface TrendingExtras {
 }
 
 export interface TrendingAnime extends AnimeResult {
-  extras: {
-    provider: string;
+  extras: AnimeResult["extras"] & {
     trending: TrendingExtras;
   };
 }
