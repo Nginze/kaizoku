@@ -10,7 +10,7 @@ initAuth().then((auth) => {
       headers: fromNodeHeaders(req.headers),
     });
 
-    res.json(session.user || null);
+    res.json(session?.user || null);
   });
 
   router.all("/*", toNodeHandler(auth));

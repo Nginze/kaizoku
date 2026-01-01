@@ -1,12 +1,13 @@
 import { AnimeResult } from "@/types/anime";
-import { ChartNoAxesColumn, Star } from "lucide-react";
+import { ArrowUp, ArrowDown, ChartNoAxesColumn, Star } from "lucide-react";
 import React from "react";
 import formatPopularity from "../utils/format-popularity";
 import formatRating from "../utils/format-rating";
 import { Link } from "react-router";
+import { TrendingAnime } from "@/types/trending";
 
 type AnimeSideBarListItemProps = {
-  anime: AnimeResult;
+  anime: TrendingAnime;
   ranking: number;
 };
 
@@ -23,7 +24,7 @@ export const AnimeSideBarListItem: React.FC<AnimeSideBarListItemProps> = ({
             src={anime.coverImage?.extraLarge}
           />
         </div>
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start gap-1">
           <div className="opacity-40 text-xs">#{ranking}</div>
           <div className="text-xs text-primary line-clamp-1">
             {anime.title.romaji ||
@@ -35,7 +36,7 @@ export const AnimeSideBarListItem: React.FC<AnimeSideBarListItemProps> = ({
             <div className="flex items-center gap-1">
               <Star size={10} fill="#ffc107" color="#ffc107" />
               <span className="text-xs opacity-55">
-                {formatRating(anime.averageScore!)}
+                {anime.averageScore ? formatRating(anime.averageScore!) : "?"}
               </span>
             </div>
             <div className="flex items-center gap-1">
@@ -44,6 +45,25 @@ export const AnimeSideBarListItem: React.FC<AnimeSideBarListItemProps> = ({
                 {formatPopularity(anime.popularity!)}
               </span>
             </div>
+            {anime.extras.trending.change !== undefined &&
+              anime.extras.trending.change !== 0 && (
+                <div className="flex items-center gap-1">
+                  {anime.extras.trending.change > 0 ? (
+                    <ArrowUp size={13} className="text-green" />
+                  ) : (
+                    <ArrowDown size={13} className="text-red" />
+                  )}
+                  <span
+                    className={`text-xs ${
+                      anime.extras.trending.change > 0
+                        ? "text-green"
+                        : "text-red"
+                    }`}
+                  >
+                    {Math.abs(anime.extras.trending.change)}
+                  </span>
+                </div>
+              )}
           </div>
         </div>
       </div>

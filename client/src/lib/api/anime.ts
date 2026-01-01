@@ -2,6 +2,7 @@ import { AnimeResult, AnimeSearchFilters } from "@/types/anime";
 import { api } from "./index";
 import { PaginatedResponse, PaginationParams } from "@/types/pagination";
 import { ScheduleResponse } from "@/types/schedule";
+import { TrendingResponse } from "@/types/trending";
 import { WatchInfo } from "@/types/watch";
 import { get } from "http";
 import { delayedQuery } from "../utils";
@@ -139,6 +140,17 @@ export const anime = {
 
   getSchedule: async (): Promise<ScheduleResponse> => {
     const response = await api.get("/anime/schedule");
+    return response.data;
+  },
+
+  /**
+   * Get trending anime (daily or weekly)
+   */
+  getTrending: async (filter: "daily" | "weekly"): Promise<TrendingResponse> => {
+    const params = new URLSearchParams();
+    params.append("filter", filter);
+
+    const response = await api.get(`/anime/trending?${params.toString()}`);
     return response.data;
   },
 

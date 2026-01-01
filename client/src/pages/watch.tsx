@@ -39,11 +39,11 @@ export const Watch: React.FC<WatchProps> = () => {
 
   if (watchInfoPending) {
     return (
-      <div className="flex w-full h-screen bg-[#191919] flex-col gap-10  justify-center items-center">
-        <div className="flex flex-col gap-2">
-          <Skeleton className="h-4 w-[500px]  " />
-          <Skeleton className="h-4 w-[350px]  " />
-          <Skeleton className="h-4 w-[200px]  " />
+      <div className="flex w-full h-screen bg-[#191919] flex-col gap-10  justify-center items-center ">
+        <div className="flex flex-col gap-2 mx-10">
+          <Skeleton className="h-4 md:w-[500px] w-[300px]  " />
+          <Skeleton className="h-4 md:w-[350px] w-[250px]  " />
+          <Skeleton className="h-4 md:w-[200px] w-[150px]  " />
         </div>
       </div>
     );
@@ -53,7 +53,7 @@ export const Watch: React.FC<WatchProps> = () => {
     return (
       <div className="flex w-full h-screen bg-[#191919] flex-col gap-10  justify-center items-center">
         <div className="flex flex-col gap-2">
-          <span className="text-white text-lg">Failed to load episode.</span>
+          <span className="text-white text-sm">Failed to load episode.</span>
         </div>
       </div>
     );

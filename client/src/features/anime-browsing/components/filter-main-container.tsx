@@ -43,10 +43,10 @@ export default function FilterMainContainer({}: Props) {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <div className="flex items-center justify-center py-2 bg-secondary">
+      <div className="flex items-center justify-center py-2 bg-gray-dark border border-secondary-2">
         <p className="text-lg">Search results for "{searchLabel}"</p>
       </div>
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(135px,1fr))] gap-1">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))]  md:grid-cols-[repeat(auto-fill,minmax(135px,1fr))] gap-1">
         {searchResults.results.map((anime: any, index: number) => (
           <AnimeCard anime={anime} key={index} />
         ))}

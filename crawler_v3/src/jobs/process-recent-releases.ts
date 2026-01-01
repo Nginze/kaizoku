@@ -83,6 +83,9 @@ export const processRecentReleases = async () => {
     let failedCount = 0;
     let queuedForEmbeds = 0;
 
+    console.log("items")
+    console.log(items)
+
     for (const item of items) {
       try {
         const { malId, epNo, title } = item;

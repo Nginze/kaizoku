@@ -384,10 +384,33 @@ export async function processRequestedEmbeds(data?: any) {
 
         if (existingKeys.length > 0) {
           console.log(
-            `[ProcessRequestedEmbeds] Anime ${anilistId} already has ${existingKeys.length} episodes with embeds, removing from queue`
+            `[ProcessRequestedEmbeds] Anime ${anilistId} already has ${existingKeys.length} episodes with embeds`
           );
-          await redis.srem(REQUESTED_EMBEDS_KEY, anilistId);
-          continue;
+
+          // Check if there are new episodes from Kuroiru
+          let kuroiruEpisodeCount = 0;
+          if (anime.idMal) {
+            kuroiruEpisodeCount =
+              (await fetchEpisodeCountFromKuroiru(anime.idMal)) || 0;
+          }
+
+          // Use existing cached episodes count as the baseline
+          const cachedEpisodeCount = existingKeys.length;
+
+          if (kuroiruEpisodeCount <= cachedEpisodeCount) {
+            console.log(
+              `[ProcessRequestedEmbeds] No new episodes for anime ${anilistId} (cached: ${cachedEpisodeCount}, Kuroiru: ${kuroiruEpisodeCount}), removing from queue`
+            );
+            await redis.srem(REQUESTED_EMBEDS_KEY, anilistId);
+            continue;
+          }
+
+          console.log(
+            `[ProcessRequestedEmbeds] Found new episodes for anime ${anilistId}: Kuroiru has ${kuroiruEpisodeCount} vs ${cachedEpisodeCount} cached`
+          );
+
+          // Update totalEpisodes to Kuroiru count for scraping new episodes
+          totalEpisodes = kuroiruEpisodeCount;
         }
 
         // Get or generate mapping
@@ -410,11 +433,30 @@ export async function processRequestedEmbeds(data?: any) {
           continue;
         }
 
-        // Process first 5 episodes
+        // Get list of already scraped episodes
+        const scrapedEpisodes = new Set<number>();
+        for (const key of existingKeys) {
+          const match = key.match(/:ep:(\d+)$/);
+          if (match) {
+            scrapedEpisodes.add(parseInt(match[1]));
+          }
+        }
+
+        // Process only episodes that haven't been scraped yet
         let successCount = 0;
         let failedCount = 0;
+        let skippedCount = 0;
 
         for (let ep = 1; ep <= totalEpisodes; ep++) {
+          // Skip if already scraped
+          if (scrapedEpisodes.has(ep)) {
+            skippedCount++;
+            console.log(
+              `[ProcessRequestedEmbeds] Skipping episode ${ep} (already scraped)`
+            );
+            continue;
+          }
+
           try {
             console.log(
               `[ProcessRequestedEmbeds] Fetching episode ${ep}/${totalEpisodes} for anime ${anilistId}`
@@ -449,7 +491,7 @@ export async function processRequestedEmbeds(data?: any) {
         await redis.srem(REQUESTED_EMBEDS_KEY, anilistId);
 
         console.log(
-          `[ProcessRequestedEmbeds] Completed anime ${anilistId}: ${successCount} success, ${failedCount} failed`
+          `[ProcessRequestedEmbeds] Completed anime ${anilistId}: ${successCount} success, ${failedCount} failed, ${skippedCount} skipped`
         );
       } catch (error: any) {
         console.error(

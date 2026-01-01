@@ -3,6 +3,7 @@ import { processAiringList } from "./process-airing-schedule";
 import { processRecentReleases } from "./process-recent-releases";
 import { processRequestedEmbeds } from "./process-requested-embeds";
 import { syncMetadata } from "./sync-db-with-anilist";
+import { processTrendingReleases } from "./process-trending-releases";
 
 export interface Job {
   name: string;
@@ -46,6 +47,12 @@ export async function handleJob(job: Job): Promise<void> {
         await syncMetadata();
         break;
 
+      case "process-trending-releases":
+      case "trending-releases-task":
+        logger.info("Running trending releases job...");
+        await processTrendingReleases();
+        break;
+
       default:
         logger.warn(`Unknown job type: ${name}`);
         throw new Error(`Unknown job type: ${name}`);
@@ -71,4 +78,5 @@ export {
   processRecentReleases,
   processRequestedEmbeds,
   syncMetadata,
+  processTrendingReleases,
 };

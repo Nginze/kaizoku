@@ -48,15 +48,15 @@ export const CommentSection: React.FC<CommentSectionProps> = ({
   }, [isExpanded, scriptLoaded, watchInfo.anime.idAnilist, watchInfo.currentEpisode]);
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 overflow-hidden max-w-full">
       <Button
         onClick={() => setIsExpanded(!isExpanded)}
         variant="ghost"
-        className="w-full flex items-center justify-between px-4 py-6 bg-secondary hover:text-white hover:bg-secondary-1 text-white"
+        className="w-full flex items-center justify-between px-4 py-6 bg-gray-dark hover:text-white hover:bg-secondary-1 text-white"
       >
-        <div className="flex items-center gap-2">
-          <MessageSquare className="w-5 h-5" />
-          <span className="text-base font-medium">
+        <div className="flex items-center gap-2 line-clamp-1">
+          <MessageSquare className="w-5 h-5 opacity-80" />
+          <span className="text-base font-medium opacity-80">
             Discussion & Comments
           </span>
           <span className="text-xs text-gray opacity-70">

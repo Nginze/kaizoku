@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   MediaPlayer,
   MediaProvider,
@@ -21,6 +21,7 @@ import { usePlayerControls } from "../contexts/player-controls-context";
 import { SeekBackward10Icon, SeekForward10Icon } from "@vidstack/react/icons";
 import { Button } from "@/components/ui/button";
 import type { MediaPlayerInstance } from "@vidstack/react";
+import { useWatchedEpisodesStore } from "../stores/watched-episodes-store";
 
 type PlayerProps = {
   watchInfo: WatchInfo;
@@ -45,6 +46,24 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
     )
   );
 
+  const { updateRecentlyWatched } = useWatchedEpisodesStore();
+
+  useEffect(() => {
+    updateRecentlyWatched({
+      _id: watchInfo.anime._id,
+      idAnilist: watchInfo.anime.idAnilist,
+      title: watchInfo.anime.title,
+      coverImage: watchInfo.anime.coverImage,
+      bannerImage: watchInfo.anime.bannerImage,
+      episodeNumber: watchInfo.currentEpisode,
+      totalEpisodes: watchInfo.availableEpisodes.length,
+      watchedDuration: currentTime,
+      totalDuration: watchInfo.anime.duration,
+      latestWatchedEpisode: watchInfo.currentEpisode,
+      timestamp: new Date().toISOString(),
+    });
+  }, []);
+
   // Handler for time updates
   const handleTimeUpdate = (detail: { currentTime: number }) => {
     setCurrentTime(detail.currentTime);
@@ -58,8 +77,7 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
       <MediaPlayer
         crossOrigin
         playsInline
-        className="w-full bg-black h-[500px]"
-        // title={`${watchInfo.anime.title.romaji} - Episode ${watchInfo.currentEpisode}`}
+        className="w-full bg-black md:h-[500px] h-[200px]"
         aspectRatio="16/9"
         load="eager"
         posterLoad="eager"
@@ -97,24 +115,24 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
 
   if (noStreamingSources) {
     return (
-      <div className="w-full h-[500px] flex items-center justify-center bg-black text-white">
-        Content is currently being onboarded{" "}
+      <div className="w-full md:h-[500px] h-[200px] flex items-center justify-center bg-black text-white text-sm ">
+        <div className="opacity-60">Content is currently being onboarded </div>
       </div>
     );
   }
 
   if (!episodeSources) {
     return (
-      <div className="w-full h-[500px] flex items-center justify-center bg-black text-white">
-        No episode sources available.
+      <div className="w-full md:h-[500px] h-[200px] flex items-center justify-center bg-black text-white text-sm">
+        <div className="opacity-60">No episode sources available.</div>
       </div>
     );
   }
 
   if (episodeSourcesError) {
     return (
-      <div className="w-full h-[500px] flex items-center justify-center bg-black text-white">
-        Error loading episode sources.
+      <div className="w-full md:h-[500px] h-[200px] flex items-center justify-center bg-black text-white text-sm">
+        <div className="opacity-60">Error loading episode sources.</div>
       </div>
     );
   }
@@ -177,7 +195,7 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
         playsInline
         onTimeUpdate={handleTimeUpdate}
         // title={`${watchInfo.anime.title.romaji} - Episode ${watchInfo.currentEpisode}`}
-        className="w-full bg-black h-[500px] relative"
+        className="w-full bg-black md:h-[500px] h-[200px] relative"
         aspectRatio="16/9"
         load="eager"
         posterLoad="eager"

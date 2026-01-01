@@ -50,6 +50,7 @@ export interface AnimeResult {
   seasonYear?: number;
   format?: string;
   status?: string;
+  duration?: number;
   episodes?: number;
   genres?: string[];
   averageScore?: number;

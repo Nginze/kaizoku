@@ -35,6 +35,9 @@ export const animeKeys = {
   upcoming: (params?: PaginationParams) =>
     [...animeKeys.all, "upcoming", params] as const,
 
+  trending: (filter: "daily" | "weekly") =>
+    [...animeKeys.all, "trending", filter] as const,
+
   // CATEGORY QUERIES
   byGenre: (tags: string[], page = 1, limit = 20) =>
     [...animeKeys.all, "by-genre", { tags, page, limit }] as const,

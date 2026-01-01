@@ -1,7 +1,7 @@
 import axios from "axios";
 import { logger } from "../config/logger";
 import * as cheerio from "cheerio";
-import { cache } from "../config/redis";
+import { cache, redis } from "../config/redis";
 import { getOrFetchAnimeByMalId } from "../utils/anilist";
 
 export const processAiringList = async () => {
@@ -54,6 +54,9 @@ export const processAiringList = async () => {
     const augmentedAiringList = [];
     let processedCount = 0;
     let failedCount = 0;
+
+    console.log("airingList:");
+    console.log(airingList)
 
     for (const item of (airingList as any)) {
       try {
@@ -140,11 +143,39 @@ export const processAiringList = async () => {
       }
     }
 
-    // Store in Redis cache
+    // Append to existing airing list (avoid duplicates using malId + time)
     try {
-      await cache("airing-list", augmentedAiringList);
+      // Retrieve existing airing list
+      const existingDataStr = await redis.get("airing-list");
+      const existingData: any[] = existingDataStr
+        ? JSON.parse(existingDataStr)
+        : [];
+
+      // Create a Set of unique identifiers from existing data
+      const existingIds = new Set(
+        existingData.map((item) => {
+          const malId = item.extras?.mal_id || item.mal_id;
+          const time = item.extras?.time || item.time;
+          return `${malId}-${time}`;
+        })
+      );
+
+      // Filter out duplicates from new data
+      const newItems = augmentedAiringList.filter((item) => {
+        const malId = item.extras?.mal_id || item.mal_id;
+        const time = item.extras?.time || item.time;
+        const identifier = `${malId}-${time}`;
+        return !existingIds.has(identifier);
+      });
+
+      // Append new items to existing data
+      const updatedData = [...existingData, ...newItems];
+
+      // Save back to Redis
+      await cache("airing-list", updatedData);
+
       logger.info(
-        `✅ Airing list cached: ${augmentedAiringList.length} items (${processedCount} processed, ${failedCount} failed)`
+        `✅ Airing list updated: ${newItems.length} new items added, ${updatedData.length} total (${processedCount} processed, ${failedCount} failed)`
       );
     } catch (cacheError: any) {
       logger.error(

@@ -335,12 +335,12 @@ export function RequestForm({ onSubmit, onCancel, isSubmitting = false }: Reques
               <FormControl>
                 <Textarea
                   placeholder="Please provide details about your request..."
-                  className="resize-none min-h-[120px]"
+                  className="resize-none min-h-[120px] border-secondary-2 text-sm "
                   disabled={isSubmitting}
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
+              <FormDescription className="text-xs">
                 Provide as much detail as possible (10-500 characters).
               </FormDescription>
               <FormMessage />

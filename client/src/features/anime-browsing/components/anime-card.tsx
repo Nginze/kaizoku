@@ -5,6 +5,7 @@ import React from "react";
 import formatRating from "../utils/format-rating";
 import formatTimeAgo from "../utils/format-timeago";
 import { Link } from "react-router";
+import formatDuration from "../utils/format-duration";
 
 type AnimeCard = {
   anime: AnimeResult;
@@ -14,16 +15,18 @@ export const AnimeCard: React.FC<AnimeCard> = ({ anime }) => {
   return (
     <Link to={`/watch/${anime._id}?ep=${anime.extras?.epNo || ""}`}>
       <div className="max-h-[300px] transition ease-out duration-150 cursor-pointer ani-search-card group overflow-hidden">
-        <div className="relative">
+        <div className="relative ">
           <Play
             className="ani-search-card-play z-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-0 transition duration-300 group-hover:opacity-100 group-hover:scale-100"
             fill="white"
             size={40}
           />
-          <img
-            className="w-full h-[180px] object-cover"
-            src={anime.coverImage?.extraLarge}
-          />
+          <div className="w-full h-[180px] bg-secondary-2 overflow-hidden relative">
+            <img
+              className="w-full h-full object-cover"
+              src={anime.coverImage?.extraLarge}
+            />
+          </div>
           {anime?.averageScore && (
             <div className="bg-[#222222] gap-1 absolute top-0 left-0 bg-opacity-40 px-1.5 h-4 flex items-center justify-center rounded-br-md">
               <Star size={10} fill="#ffc107" color="#ffc107" />
@@ -53,8 +56,9 @@ export const AnimeCard: React.FC<AnimeCard> = ({ anime }) => {
               anime.title.native ||
               anime.title.userPreferred}
           </span>
-          <span className="text-xs text-light opacity-70">
-            {anime.extras?.epInfo || anime.format}
+          <span className="text-[10px] text-light opacity-70">
+            {anime.extras?.epInfo ||
+              `${anime.format} • ${formatDuration(anime.duration!) || "?"}`}
           </span>
         </div>
       </div>

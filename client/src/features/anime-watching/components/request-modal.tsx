@@ -38,6 +38,7 @@ export function RequestModal() {
 
   return (
     <Modal
+      className="w-[400px]"
       open={open}
       setOpen={setOpen}
       trigger={
@@ -46,10 +47,10 @@ export function RequestModal() {
         </button>
       }
       content={
-        <div className="space-y-4">
+        <div className="space-y-4 ">
           <DialogHeader>
-            <DialogTitle>Submit a Request</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-md opacity-80">Submit a Request</DialogTitle>
+            <DialogDescription className="text-sm opacity-60">
               Let us know if you're experiencing issues or need help with
               something.
             </DialogDescription>

@@ -11,7 +11,11 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ExpandableContainer } from "@/components/expandable-container";
-import { getPopularOptions, getTopAiringOptions } from "../queries";
+import {
+  getPopularOptions,
+  getTopAiringOptions,
+  getTrendingReleasesOptions,
+} from "../queries";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { check, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -83,6 +87,10 @@ const genres = [
 export const HomeSideContainer: React.FC<HomeSideContainerProps> = () => {
   const years = Array.from({ length: 2026 - 1980 + 1 }, (_, i) => 2026 - i);
   const { data: topAiringList } = useSuspenseQuery(getTopAiringOptions());
+  const { data: trendingDaily } = useQuery(getTrendingReleasesOptions("daily"));
+  const { data: trendingWeekly } = useQuery(
+    getTrendingReleasesOptions("weekly")
+  );
 
   const { user, isAuthenticated, isLoading } = useAuth();
   const { mutate: login } = useLogin();
@@ -260,22 +268,44 @@ export const HomeSideContainer: React.FC<HomeSideContainerProps> = () => {
                   <TabsTrigger className="w-full" value="week">
                     Week
                   </TabsTrigger>
-                  <TabsTrigger className="w-full" value="month">
-                    Month
-                  </TabsTrigger>
                 </TabsList>
               </div>
               <TabsContent
                 value="today"
-                className="px-2 flex flex-col gap-1 w-full"
+                // className="px-2 flex flex-col gap-1 w-full"
               >
-                {topAiringList?.results.slice(0, 8).map((anime, index) => (
-                  <AnimeSideBarListItem
-                    ranking={index + 1}
-                    anime={anime}
-                    key={index}
-                  />
-                ))}
+                <ExpandableContainer
+                  maxHeight="h-full"
+                  minHeight="h-[585px]"
+                  className="px-2 flex flex-col gap-1 w-full"
+                >
+                  {trendingDaily?.trending.slice(0, 15).map((anime, index) => (
+                    <AnimeSideBarListItem
+                      ranking={index + 1}
+                      anime={anime}
+                      key={index}
+                    />
+                  ))}
+                </ExpandableContainer>
+              </TabsContent>
+
+              <TabsContent
+                value="week"
+                // className="px-2 flex flex-col gap-1 w-full"
+              >
+                <ExpandableContainer
+                  maxHeight="h-full"
+                  minHeight="h-[585px]"
+                  className="px-2 flex flex-col gap-1 w-full"
+                >
+                  {trendingWeekly?.trending.slice(0, 15).map((anime, index) => (
+                    <AnimeSideBarListItem
+                      ranking={index + 1}
+                      anime={anime}
+                      key={index}
+                    />
+                  ))}
+                </ExpandableContainer>
               </TabsContent>
             </Tabs>
           </div>

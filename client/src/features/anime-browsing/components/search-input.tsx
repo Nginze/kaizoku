@@ -1,7 +1,7 @@
 import { Flyout } from "@/components/flyout";
 import { Input } from "@/components/ui/input";
 import { useQuery } from "@tanstack/react-query";
-import { MoveRight, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import React, { useState } from "react";
 import { getSearchOptions } from "../queries";
 import {

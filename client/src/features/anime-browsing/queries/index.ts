@@ -5,6 +5,7 @@ export { animeKeys } from "@/lib/query-keys";
 export { getFeaturedListOptions } from "./get-featured-list";
 export { getScheduleListOptions } from "./get-schedule-list";
 export { getRecentReleasesOptions } from "./get-recent-releases";
+export { getTrendingReleasesOptions } from "./get-trending-releases";
 export {
 	getSearchOptions,
 	getPopularOptions,

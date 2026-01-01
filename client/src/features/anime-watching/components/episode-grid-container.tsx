@@ -14,6 +14,7 @@ import { getWatchInfoOptions } from "../queries/get-watch-info";
 import { WatchInfo } from "@/types/watch";
 import { cn } from "@/lib/utils";
 import { useWatchedEpisodesStore } from "../stores/watched-episodes-store";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 type EpisodeGridContainerProps = {
   watchInfo: WatchInfo;
@@ -70,6 +71,25 @@ export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = ({
 
   const [selectedRange, setSelectedRange] = useState(getInitialRange());
 
+  // Get current range index
+  const currentRangeIndex = episodeRanges.indexOf(selectedRange);
+  const isAtLeftBoundary = currentRangeIndex === 0;
+  const isAtRightBoundary = currentRangeIndex === episodeRanges.length - 1;
+
+  // Navigate to previous range
+  const handlePreviousRange = () => {
+    if (!isAtLeftBoundary && currentRangeIndex > 0) {
+      setSelectedRange(episodeRanges[currentRangeIndex - 1]);
+    }
+  };
+
+  // Navigate to next range
+  const handleNextRange = () => {
+    if (!isAtRightBoundary && currentRangeIndex < episodeRanges.length - 1) {
+      setSelectedRange(episodeRanges[currentRangeIndex + 1]);
+    }
+  };
+
   const currentEpisodes = useMemo(() => {
     // Parse the selected range (e.g., "0-100" or "101-200")
     const [rangeStart, rangeEnd] = selectedRange.split("-").map(Number);
@@ -102,33 +122,59 @@ export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = ({
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex items-center gap-3">
-        <Select
-          defaultValue={selectedRange || "1-100"}
-          value={selectedRange}
-          onValueChange={setSelectedRange}
-          disabled={!showRangeSelector}
-        >
-          <SelectTrigger
+      <div className="flex items-center justify-between w-full">
+        <div className="flex items-center gap-2">
+          <Select
             defaultValue={selectedRange || "1-100"}
-            className="w-[180px]"
+            value={selectedRange}
+            onValueChange={setSelectedRange}
+            disabled={!showRangeSelector}
           >
-            <SelectValue
+            <SelectTrigger
               defaultValue={selectedRange || "1-100"}
-              placeholder={`1-${totalEpisodes}`}
-            />
-          </SelectTrigger>
-          <SelectContent>
-            {episodeRanges.map((range) => (
-              <SelectItem key={range} value={range}>
-                {range}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <div className="border border-secondary w-20">
+              className="w-[180px]"
+            >
+              <SelectValue
+                defaultValue={selectedRange || "1-100"}
+                placeholder={`1-${totalEpisodes}`}
+              />
+            </SelectTrigger>
+            <SelectContent>
+              {episodeRanges.map((range) => (
+                <SelectItem key={range} value={range}>
+                  {range}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <div className="flex items-center">
+            <button
+              onClick={handlePreviousRange}
+              disabled={isAtLeftBoundary || !showRangeSelector}
+              className={cn(
+                "bg-secondary flex items-center justify-center h-8 px-2 border-r border-secondary-2 transition-opacity",
+                (isAtLeftBoundary || !showRangeSelector) &&
+                  "opacity-30 cursor-not-allowed"
+              )}
+            >
+              <ArrowLeft size={13} className="opacity-80" />
+            </button>
+            <button
+              onClick={handleNextRange}
+              disabled={isAtRightBoundary || !showRangeSelector}
+              className={cn(
+                "bg-secondary flex items-center justify-center h-8 px-2 transition-opacity",
+                (isAtRightBoundary || !showRangeSelector) &&
+                  "opacity-30 cursor-not-allowed"
+              )}
+            >
+              <ArrowRight size={13} className="opacity-80" />
+            </button>
+          </div>
+        </div>
+        <div className="border border-secondary-2 w-24">
           <Input
-            placeholder="Ep #"
+            placeholder="Ep numb..."
             className="bg-[#141414] rounded-none text-sm w-full"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -147,7 +193,9 @@ export const EpisodeGridContainer: React.FC<EpisodeGridContainerProps> = ({
               "bg-secondary-2 py-1 max-h-[40px] text-sm  hover:bg-secondary-1 active:bg-secondary",
               Number(epNo) === epNumber &&
                 "bg-primary hover:bg-primary active:bg-primary text-black",
-              isEpisodeWatched(watchInfo.anime._id, epNumber) && Number(epNo) !== epNumber  && "opacity-30"
+              isEpisodeWatched(watchInfo.anime._id, epNumber) &&
+                Number(epNo) !== epNumber &&
+                "opacity-30"
             )}
           >
             <span className="opacity-60">{epNumber}</span>

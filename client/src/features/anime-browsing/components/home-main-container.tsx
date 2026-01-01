@@ -11,6 +11,8 @@ import { ScheduleList } from "./schedule-list";
 import { getTopMoviesOptions } from "../queries/get-search";
 import { Loader } from "@/components/loader";
 import { Spinner } from "@/components/ui/spinner";
+import { useMediaQuery } from "react-responsive";
+import { cn } from "@/lib/utils";
 
 type HomeMainContainerProps = {};
 
@@ -18,6 +20,8 @@ export const HomeMainContainer: React.FC<HomeMainContainerProps> = () => {
   const { data: recentReleases } = useSuspenseQuery(getRecentReleasesOptions());
   const { data: popularReleases } = useSuspenseQuery(getTopRatedOptions());
   const { data: topMovieReleases } = useSuspenseQuery(getTopMoviesOptions());
+
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   return (
     <>
@@ -31,35 +35,43 @@ export const HomeMainContainer: React.FC<HomeMainContainerProps> = () => {
           </TabsList>
           <Slideout
             side="left"
-            className="p-0 w-[350px]"
+            className={cn("p-0", isTabletOrMobile ? "w-[250px]" : "w-[350px]")}
             trigger={
-              <Button>
-                <div className="flex items-center gap-2">
-                  <Clock />
-                  <span>Schedule</span>
-                </div>
-              </Button>
+              isTabletOrMobile ? (
+                <Button>
+                  <div className="flex items-center gap-2">
+                    <Clock />
+                  </div>
+                </Button>
+              ) : (
+                <Button >
+                  <div className="flex items-center gap-2">
+                    <Clock />
+                    <span>Schedule</span>
+                  </div>
+                </Button>
+              )
             }
           >
             <ScheduleList />
           </Slideout>
         </div>
         <TabsContent value="recent">
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(135px,1fr))] gap-1">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(135px,1fr))] gap-1">
             {recentReleases.map((anime: any, index: number) => (
               <AnimeCard anime={anime} key={index} />
             ))}
           </div>
         </TabsContent>
         <TabsContent value="popular">
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(135px,1fr))] gap-1">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(135px,1fr))] gap-1">
             {popularReleases.results.map((anime: any, index: number) => (
               <AnimeCard anime={anime} key={index} />
             ))}
           </div>
         </TabsContent>
         <TabsContent value="movie">
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(135px,1fr))] gap-1">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(135px,1fr))] gap-1">
             {topMovieReleases.results.map((anime: any, index: number) => (
               <AnimeCard anime={anime} key={index} />
             ))}

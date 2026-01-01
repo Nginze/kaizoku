@@ -8,15 +8,15 @@ type FooterProps = {};
 
 export const Footer: React.FC<FooterProps> = () => {
   return (
-    <footer className="w-full  bg-[#222222]">
+    <footer className="w-full  bg-[#222222] px-4 md:px-0">
       <div className="flex items-center justify-center  py-2.5 bg-secondary-2">
-        <div className="flex items-center justify-between w-[1200px]  mx-auto">
+        <div className="flex items-center justify-between w-[1200px] mx-auto">
           <div>
-            <span className="text-light opacity-40 text-sm">
-              Copyright © kaiZen. All Rights Reserved
+            <span className="text-light opacity-40 md:text-sm text-xs w-full">
+              Copyright © kaizoku. All Rights Reserved
             </span>
           </div>
-          <div className="text-light opacity-40 flex gap-6 items-center text-sm">
+          <div className="hidden md:flex text-light opacity-40  gap-6 items-center text-sm">
             <RequestModal />
             <Link to={"/about"}>About</Link>
           </div>
@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = () => {
       </div>
       <div className="w-full flex flex-col items-center justify-center py-8 gap-2">
         <Logo />
-        <div className="opacity-30 text-regular text-xs">
+        <div className="opacity-30 md:text-regular text-xs text-center">
           Disclaimer: This site does not store any files on its server. All
           contents are provided by non-affiliated third parties.
         </div>

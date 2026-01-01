@@ -426,6 +426,7 @@ router.get("/top-rated", async (req: Request, res: Response) => {
             idAnilist: 1,
             title: 1,
             coverImage: 1,
+            duration: 1,
             format: 1,
             status: 1,
             episodes: 1,
@@ -475,6 +476,7 @@ router.get("/top-airing", async (req: Request, res: Response) => {
             idAnilist: 1,
             title: 1,
             coverImage: 1,
+            duration: 1,
             format: 1,
             episodes: 1,
             genres: 1,
@@ -524,6 +526,7 @@ router.get("/upcoming", async (req: Request, res: Response) => {
             idAnilist: 1,
             title: 1,
             coverImage: 1,
+            duration: 1,
             startDate: 1,
             format: 1,
             episodes: 1,
@@ -789,6 +792,57 @@ router.get("/schedule", async (req: Request, res: Response) => {
     console.error("Schedule error:", error);
     res.status(500).json({
       error: "Failed to fetch airing schedule",
+      details: error.message,
+    });
+  }
+});
+
+// /anime/trending - Get trending anime (daily or weekly)
+router.get("/trending", async (req: Request, res: Response) => {
+  try {
+    const { filter } = req.query;
+
+    // Validate filter parameter
+    if (!filter || (filter !== "daily" && filter !== "weekly")) {
+      res.status(400).json({
+        error: "Invalid filter parameter",
+        message: "Filter must be either 'daily' or 'weekly'",
+      });
+      return;
+    }
+
+    const cacheKey = `trending-releases:${filter}`;
+
+    // Get trending data from Redis cache
+    const cached = await redis.get(cacheKey);
+
+    if (!cached) {
+      res.status(404).json({
+        error: "Trending data not found",
+        message: `No ${filter} trending data available`,
+      });
+      return;
+    }
+
+    const trendingData = JSON.parse(cached);
+
+    // Sort by hits in descending order (highest hits first)
+    const sortedTrendingData = trendingData.sort((a: any, b: any) => {
+      const hitsA = a.extras?.trending?.hits || 0;
+      const hitsB = b.extras?.trending?.hits || 0;
+      return hitsB - hitsA;
+    });
+
+    res.json({
+      type: filter,
+      trending: sortedTrendingData,
+      count: sortedTrendingData.length,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error: any) {
+    console.error("Trending error:", error);
+    res.status(500).json({
+      error: "Failed to fetch trending data",
       details: error.message,
     });
   }

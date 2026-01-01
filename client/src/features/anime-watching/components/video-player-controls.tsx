@@ -34,8 +34,8 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
 
   return (
     <div className="bg-[#222222] flex w-full">
-      <div className="flex w-full h-full">
-        <div className="w-1/4 flex items-center px-3 py-4 text-xs opacity-55 bg-dark border-r border-secondary-1 border-dashed">
+      <div className="flex flex-col md:flex-row w-full h-full">
+        <div className="md:w-1/4 w-full  flex items-center px-3 md:py-4 py-2 md:text-xs text-[11px]  opacity-55 bg-dark border-r border-secondary-1 border-dashed">
           <div className=" mx-auto text-center">
             <div>
               You are watching{" "}
@@ -59,8 +59,8 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
               )}
             >
               <div className="flex items-center text-sm gap-2">
-                <BxBxsCaptions className="text-lg" />
-                <div className="opacity-70">SUB: </div>
+                <BxBxsCaptions className="md:text-lg text-md" />
+                <div className="opacity-70 text-xs md:text-md">SUB: </div>
               </div>
               <div className="flex items-center gap-0.5">
                 {watchInfo.embeds.sub.map((embed, index) => (
@@ -68,7 +68,7 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
                     onClick={() => handleServerSelect(embed)}
                     key={index}
                     className={cn(
-                      "px-3 py-1.5 text-white text-sm bg-secondary hover:bg-secondary-1 active:bg-secondary",
+                      "px-3 py-1.5 text-white md:text-sm text-xs bg-secondary hover:bg-secondary-1 active:bg-secondary",
                       selectedServer?.serverId === embed.serverId &&
                         "bg-primary hover:bg-primary active:bg-primary text-black"
                     )}
@@ -81,8 +81,8 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
             {watchInfo.hasDubbing && (
               <div className="flex items-center flex-1 h-1 px-3 py-4  gap-6">
                 <div className="flex items-center text-sm gap-2">
-                  <MajesticonsMicrophone className="text-lg" />
-                  <div className="opacity-70">DUB: </div>
+                  <MajesticonsMicrophone className="md:text-lg text-md" />
+                  <div className="opacity-70 md:text-md text-xs">DUB: </div>
                 </div>
                 <div className="flex items-center gap-0.5">
                   {watchInfo.embeds.dub.map((embed, index) => (
@@ -90,7 +90,7 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
                       onClick={() => handleServerSelect(embed)}
                       key={index}
                       className={cn(
-                        "px-3 py-1.5 text-white text-sm bg-secondary hover:bg-secondary-1 active:bg-secondary",
+                        "px-3 py-1.5 text-white md:text-sm text-xs bg-secondary hover:bg-secondary-1 active:bg-secondary",
                         selectedServer?.serverId === embed.serverId &&
                           "bg-primary hover:bg-primary active:bg-primary text-black"
                       )}

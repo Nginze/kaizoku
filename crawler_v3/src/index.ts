@@ -3,9 +3,9 @@ import "./config/bull";
 import { jobQueue } from "./config/bull";
 import { connectDB, disconnectDB } from "./config/mongo";
 
-function main() {
+async function main() {
   try {
-    connectDB();
+    await connectDB();
     //initialize repeatable jobs
     jobQueue.upsertJobScheduler(
       "airing-schedule-scheduler-id",
@@ -43,8 +43,17 @@ function main() {
         name: "sync-db-with-anilist",
       }
     );
+    jobQueue.upsertJobScheduler(
+      "trending-releases-scheduler-id",
+      {
+        pattern: "0 * * * *", // Every hour
+      },
+      {
+        name: "process-trending-releases",
+      }
+    );
   } catch (error) {
-    disconnectDB();
+    await disconnectDB();
   }
 }
 
