@@ -31,8 +31,8 @@ WORKDIR /app
 # Copy package files
 COPY package.json pnpm-lock.yaml* ./
 
-# Install all dependencies (including tsx for running TypeScript)
-RUN pnpm install --frozen-lockfile || npm install
+# Install all dependencies (including dev dependencies for tsx)
+RUN pnpm install --frozen-lockfile --include=dev || pnpm install --include=dev || npm install
 
 # Copy source from builder
 RUN --mount=type=bind,from=builder,source=/app,target=/build \
@@ -46,4 +46,4 @@ ENV PORT=3000
 EXPOSE 3000
 
 # Run the server using tsx (handles ES modules properly)
-CMD ["pnpm", "exec", "tsx", "src/index.ts"]
+CMD ["node_modules/.bin/tsx", "src/index.ts"]
