@@ -4,6 +4,8 @@ import { redis } from "../config/redis";
 import { load } from "cheerio";
 import axios from "axios";
 import { findBestMatch } from "string-similarity";
+import { connectDB } from "../config/mongo";
+import mongoose from "mongoose";
 
 const SERVER_MAP: { [key: string]: string } = {
   "1": "HD-1",
@@ -324,6 +326,12 @@ export async function processRequestedEmbeds(data?: any) {
   console.log("[ProcessRequestedEmbeds] Starting job...");
 
   try {
+    // Ensure database connection is established for this worker
+    if (mongoose.connection.readyState !== 1) {
+      console.log("Database not connected in worker, connecting...");
+      await connectDB();
+    }
+
     // Get all anime IDs from the Redis set
     const animeIds = await redis.smembers(REQUESTED_EMBEDS_KEY);
 

@@ -3,9 +3,17 @@ import { logger } from "../config/logger";
 import * as cheerio from "cheerio";
 import { cache, redis } from "../config/redis";
 import { getOrFetchAnimeByMalId } from "../utils/anilist";
+import { connectDB } from "../config/mongo";
+import mongoose from "mongoose";
 
 export const processAiringList = async () => {
   try {
+    // Ensure database connection is established for this worker
+    if (mongoose.connection.readyState !== 1) {
+      logger.info("Database not connected in worker, connecting...");
+      await connectDB();
+    }
+
     logger.info("🔄 Fetching airing list from kuroiru.co");
 
     const response = await axios.get("https://kuroiru.co/app", {
@@ -54,6 +62,7 @@ export const processAiringList = async () => {
     const augmentedAiringList = [];
     let processedCount = 0;
     let failedCount = 0;
+    let dbErrors = 0;
 
     console.log("airingList:");
     console.log(airingList)
@@ -87,6 +96,7 @@ export const processAiringList = async () => {
               );
             }
           } catch (dbError: any) {
+            dbErrors++;
             logger.error(
               `Error fetching anime for MAL ID ${item.mal_id}:`,
               dbError?.message || dbError
@@ -141,6 +151,16 @@ export const processAiringList = async () => {
           );
         }
       }
+    }
+
+    // Only update cache if we have complete data (no DB errors)
+    if (dbErrors > 0) {
+      logger.error(
+        `❌ Skipping cache update due to ${dbErrors} database errors. Better to keep old data than incomplete new data.`
+      );
+      throw new Error(
+        `Database errors encountered: ${dbErrors}/${(airingList as any).length} items failed to augment`
+      );
     }
 
     // Append to existing airing list (avoid duplicates using malId + time)

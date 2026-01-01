@@ -3,12 +3,20 @@ import { logger } from "../config/logger";
 import * as cheerio from "cheerio";
 import { cache, redis } from "../config/redis";
 import { getOrFetchAnimeByMalId } from "../utils/anilist";
+import { connectDB } from "../config/mongo";
+import mongoose from "mongoose";
 
 const RSS_URL = "https://kuroiru.co/feeds/kuroiruanime.xml";
 const REQUESTED_EMBEDS_KEY = "anime:requested-embeds";
 
 export const processRecentReleases = async () => {
   try {
+    // Ensure database connection is established for this worker
+    if (mongoose.connection.readyState !== 1) {
+      logger.info("Database not connected in worker, connecting...");
+      await connectDB();
+    }
+
     logger.info("🔄 Fetching recent releases RSS feed from kuroiru.co");
 
     // Fetch RSS feed
@@ -82,6 +90,7 @@ export const processRecentReleases = async () => {
     let processedCount = 0;
     let failedCount = 0;
     let queuedForEmbeds = 0;
+    let dbErrors = 0;
 
     console.log("items")
     console.log(items)
@@ -106,6 +115,7 @@ export const processRecentReleases = async () => {
               logger.warn(`Could not find or fetch anime for MAL ID ${malId}`);
             }
           } catch (dbError: any) {
+            dbErrors++;
             logger.error(
               `Error fetching anime for MAL ID ${malId}:`,
               dbError?.message || dbError
@@ -187,7 +197,17 @@ export const processRecentReleases = async () => {
       }
     }
 
-    // Store in Redis cache
+    // Only cache if we have complete data (no DB errors)
+    if (dbErrors > 0) {
+      logger.error(
+        `❌ Skipping cache update due to ${dbErrors} database errors. Better to keep old data than incomplete new data.`
+      );
+      throw new Error(
+        `Database errors encountered: ${dbErrors}/${items.length} items failed to augment`
+      );
+    }
+
+    // Store in Redis cache only if data is complete
     try {
       await cache("recent-releases", augmentedItems);
       logger.info(

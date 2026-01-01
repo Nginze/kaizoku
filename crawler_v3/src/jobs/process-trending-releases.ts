@@ -3,6 +3,8 @@ import { logger } from "../config/logger";
 import * as cheerio from "cheerio";
 import { cache } from "../config/redis";
 import { getOrFetchAnimeByMalId } from "../utils/anilist";
+import { connectDB } from "../config/mongo";
+import mongoose from "mongoose";
 
 const KUROIRU_BASE_URL = "https://kuroiru.co";
 const KUROIRU_APP_URL = "https://kuroiru.co/app";
@@ -123,10 +125,11 @@ async function fetchDailyTrending(): Promise<TrendingItem[]> {
 async function augmentTrendingItems(
   items: TrendingItem[],
   type: "weekly" | "daily"
-): Promise<any[]> {
+): Promise<{ augmentedItems: any[]; dbErrors: number }> {
   const augmentedItems = [];
   let processedCount = 0;
   let failedCount = 0;
+  let dbErrors = 0;
 
   for (const item of items) {
     try {
@@ -148,6 +151,7 @@ async function augmentTrendingItems(
             logger.warn(`Could not find or fetch anime for MAL ID ${malid}`);
           }
         } catch (dbError: any) {
+          dbErrors++;
           logger.error(
             `Error fetching anime for MAL ID ${malid}:`,
             dbError?.message || dbError
@@ -219,7 +223,8 @@ async function augmentTrendingItems(
     `Augmented ${type} trending: ${processedCount} processed, ${failedCount} failed`
   );
 
-  return augmentedItems;
+  // Return both augmented items and error count
+  return { augmentedItems, dbErrors };
 }
 
 /**
@@ -227,6 +232,12 @@ async function augmentTrendingItems(
  */
 export const processTrendingReleases = async () => {
   try {
+    // Ensure database connection is established for this worker
+    if (mongoose.connection.readyState !== 1) {
+      logger.info("Database not connected in worker, connecting...");
+      await connectDB();
+    }
+
     logger.info("🚀 Starting trending releases processing job");
 
     // Fetch both trending lists in parallel
@@ -236,19 +247,30 @@ export const processTrendingReleases = async () => {
     ]);
 
     // Augment both lists with AniList data
-    const [augmentedWeekly, augmentedDaily] = await Promise.all([
+    const [weeklyResult, dailyResult] = await Promise.all([
       augmentTrendingItems(weeklyItems, "weekly"),
       augmentTrendingItems(dailyItems, "daily"),
     ]);
 
-    // Cache both lists
+    // Check for database errors
+    const totalDbErrors = weeklyResult.dbErrors + dailyResult.dbErrors;
+    if (totalDbErrors > 0) {
+      logger.error(
+        `❌ Skipping cache update due to ${totalDbErrors} database errors (${weeklyResult.dbErrors} weekly, ${dailyResult.dbErrors} daily). Better to keep old data than incomplete new data.`
+      );
+      throw new Error(
+        `Database errors encountered: ${totalDbErrors} items failed to augment`
+      );
+    }
+
+    // Cache both lists only if data is complete
     await Promise.all([
-      cache("trending-releases:weekly", augmentedWeekly),
-      cache("trending-releases:daily", augmentedDaily),
+      cache("trending-releases:weekly", weeklyResult.augmentedItems),
+      cache("trending-releases:daily", dailyResult.augmentedItems),
     ]);
 
     logger.info(
-      `✅ Trending releases cached successfully: ${augmentedWeekly.length} weekly, ${augmentedDaily.length} daily`
+      `✅ Trending releases cached successfully: ${weeklyResult.augmentedItems.length} weekly, ${dailyResult.augmentedItems.length} daily`
     );
   } catch (error: any) {
     logger.error(

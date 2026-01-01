@@ -49,6 +49,12 @@ services:
       - NODE_ENV=production
       - MONGO_URL=${MONGO_URL:-mongodb://mongodb:27017/anidb}
       - REDIS_URL=${REDIS_URL:-redis://redis:6379}
+      # Job schedule configurations (cron patterns)
+      - AIRING_SCHEDULE_CRON=${AIRING_SCHEDULE_CRON:-0 0 * * *}
+      - RECENT_RELEASES_CRON=${RECENT_RELEASES_CRON:-0 * * * *}
+      - REQUESTED_EMBEDS_CRON=${REQUESTED_EMBEDS_CRON:-*/5 * * * *}
+      - SYNC_DB_CRON=${SYNC_DB_CRON:-0 */6 * * *}
+      - TRENDING_RELEASES_CRON=${TRENDING_RELEASES_CRON:-0 * * * *}
     volumes:
       - ./crawler_v3/src:/app/src
       - ./crawler_v3/backups:/app/backups
