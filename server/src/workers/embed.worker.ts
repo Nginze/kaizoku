@@ -1,7 +1,7 @@
 import { Worker } from "bullmq";
 import { processRequestedEmbeds } from "../jobs/process-requested-embeds.js";
 import { logger } from "../config/logger.js";
-import { redis } from "../config/redis.js";
+import { bullMQConnection } from "../config/redis.js";
 
 const embedWorker = new Worker(
   "embed-queue",
@@ -9,7 +9,7 @@ const embedWorker = new Worker(
     await processRequestedEmbeds(job.data);
   },
   {
-    connection: redis,
+    connection: bullMQConnection,
   }
 );
 

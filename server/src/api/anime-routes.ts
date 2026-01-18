@@ -1053,6 +1053,8 @@ router.get("/get-sources", async (req: Request, res: Response) => {
       return;
     }
 
+    console.log(sourcesResponse?.data)
+
     const { link: embedUrl, server } = sourcesResponse.data;
 
     if (!embedUrl || typeof embedUrl !== "string") {
@@ -1080,8 +1082,8 @@ router.get("/get-sources", async (req: Request, res: Response) => {
     // Initialize MegaCloud extractor
     const megaCloud = new MegaCloud();
 
-    // Extract sources using extract6 method
-    const extractedData = await megaCloud.extract6(url);
+    // Extract sources using extract7 method
+    const extractedData = await megaCloud.extract7(url);
 
     // Return extracted data
     res.json({

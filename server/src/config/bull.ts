@@ -1,8 +1,8 @@
 import { Queue } from "bullmq";
-import { redis } from "./redis.js";
+import { bullMQConnection } from "./redis.js";
 
 const opts = {
-  connection: redis,
+  connection: bullMQConnection,
 };
 
 export const embedQueue = new Queue("embed-queue", opts);

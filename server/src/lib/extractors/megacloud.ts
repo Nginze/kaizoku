@@ -1,5 +1,7 @@
 import axios from "axios";
 import crypto from "crypto";
+import CryptoJS from "crypto-js";
+import * as cheerio from "cheerio";
 import { getSources } from "./megacloud.getsrcs.js";
 import extractToken, { decryptSrc2, getMegaCloudClientKey } from "./utils/index.js";
 
@@ -9,6 +11,24 @@ const megacloud = {
   script: "https://megacloud.tv/js/player/a/prod/e1-player.min.js?v=",
   sources: "https://megacloud.tv/embed-2/ajax/e-1/getSources?id=",
 } as const;
+
+// extract7 constants
+const EXTRACT7_CONFIG = {
+  MAX_RETRIES: 2,
+  TIMEOUT: 15000,
+  KEY_CACHE_DURATION: 60 * 60 * 1000, // 1 hour
+  KEY_URL: "https://raw.githubusercontent.com/ryanwtf88/megacloud-keys/refs/heads/master/key.txt",
+  FALLBACK_PROVIDERS: [
+    { name: "megaplay", domain: "megaplay.buzz" },
+    { name: "vidwish", domain: "vidwish.live" },
+  ],
+  USER_AGENT: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+  BASE_URL: "https://hianime.to",
+} as const;
+
+// Key cache for extract7
+let cachedKey: string | null = null;
+let keyLastFetched = 0;
 
 export type track = {
   file: string;
@@ -390,6 +410,7 @@ class MegaCloud {
 
       console.log("Received data from crawlr.cc");
 
+
       // Map sources to the expected format
       extractedData.sources = rawData.sources?.map((s: any) => ({
         url: s.url,
@@ -414,6 +435,334 @@ class MegaCloud {
       console.error("Extract6 error:", err.message);
       throw err;
     }
+  }
+
+  /**
+   * extract7 - New megacloud extractor with GitHub-hosted key and fallback providers
+   * Based on the reference implementation with token extraction and AES decryption
+   */
+  async extract7(embedIframeURL: URL, retry = 0): Promise<ExtractedData> {
+    console.log("extract7 used");
+    try {
+      const extractedData: ExtractedData = {
+        tracks: [],
+        intro: { start: 0, end: 0 },
+        outro: { start: 0, end: 0 },
+        sources: [],
+      };
+
+      // Parse the embed URL to get sourceId and baseUrl
+      const { sourceId, baseUrl } = this.parseEmbedUrl(embedIframeURL.href);
+      console.log("[extract7] sourceId:", sourceId, "baseUrl:", baseUrl);
+
+      // Fetch decryption key and sources in parallel
+      const [key] = await Promise.all([this.getDecryptionKey()]);
+
+      let decryptedSources: any[];
+      let rawData: any;
+      let usedFallback = false;
+
+      try {
+        // Try primary source decryption
+        const result = await this.decryptPrimarySource7(baseUrl, sourceId, key);
+        decryptedSources = result.sources;
+        rawData = result.rawData;
+      } catch (primaryError: any) {
+        console.log("[extract7] Primary source failed:", primaryError.message);
+        console.log("[extract7] Trying fallback providers...");
+
+        // Extract episode ID from the URL for fallback
+        const epID = embedIframeURL.href.split("ep=").pop() || sourceId;
+
+        // Try fallback providers
+        const fallbackResult = await this.getFallbackSource7(epID, "sub", "HD-1");
+        decryptedSources = fallbackResult.sources;
+        rawData = fallbackResult.rawData;
+        usedFallback = true;
+      }
+
+      // Validate sources
+      if (!decryptedSources?.[0]?.file) {
+        throw new Error("Invalid decrypted sources - no file found");
+      }
+
+      // Build extracted data
+      extractedData.sources = decryptedSources.map((s: any) => ({
+        url: s.file,
+        type: s.type || "hls",
+        isM3U8: s.file?.includes(".m3u8") || s.type === "hls",
+      }));
+
+      extractedData.tracks = rawData?.tracks?.map((t: any) => ({
+        file: t.file,
+        kind: t.kind || "captions",
+        label: t.label,
+        default: t.default,
+      })) || [];
+
+      extractedData.intro = rawData?.intro || { start: 0, end: 0 };
+      extractedData.outro = rawData?.outro || { start: 0, end: 0 };
+
+      console.log(`[extract7] Success! ${usedFallback ? "(used fallback)" : "(primary)"}`);
+      return extractedData;
+    } catch (err: any) {
+      console.error("[extract7] Error:", err.message);
+
+      if (retry < EXTRACT7_CONFIG.MAX_RETRIES) {
+        console.log(`[extract7] Retrying... (${retry + 1}/${EXTRACT7_CONFIG.MAX_RETRIES})`);
+        await this.backoff7(retry);
+        return this.extract7(embedIframeURL, retry + 1);
+      }
+
+      throw err;
+    }
+  }
+
+  // =====================
+  // extract7 Helper Methods
+  // =====================
+
+  private parseEmbedUrl(url: string): { sourceId: string; baseUrl: string } {
+    const sourceIdMatch = /\/([^/?]+)\?/.exec(url);
+    const sourceId = sourceIdMatch?.[1];
+
+    const baseUrlMatch = url.match(/^(https?:\/\/[^/]+(?:\/[^/]+){3})/);
+    const baseUrl = baseUrlMatch?.[1];
+
+    if (!sourceId || !baseUrl) {
+      throw new Error("Invalid embed URL format");
+    }
+
+    return { sourceId, baseUrl };
+  }
+
+  private async getDecryptionKey(): Promise<string> {
+    const now = Date.now();
+
+    // Return cached key if still valid
+    if (cachedKey && now - keyLastFetched < EXTRACT7_CONFIG.KEY_CACHE_DURATION) {
+      return cachedKey;
+    }
+
+    try {
+      const { data } = await axios.get(EXTRACT7_CONFIG.KEY_URL, {
+        timeout: EXTRACT7_CONFIG.TIMEOUT,
+      });
+      cachedKey = data.trim();
+      keyLastFetched = now;
+      console.log("[extract7] Decryption key fetched successfully");
+      return cachedKey;
+    } catch (err: any) {
+      console.error("[extract7] Key fetch error:", err.message);
+      if (cachedKey) return cachedKey;
+      throw new Error("Failed to fetch decryption key");
+    }
+  }
+
+  private async extractToken7(url: string): Promise<string | null> {
+    try {
+      const { data: html } = await axios.get(url, {
+        timeout: EXTRACT7_CONFIG.TIMEOUT,
+        headers: {
+          Referer: `${EXTRACT7_CONFIG.BASE_URL}/`,
+          "User-Agent": EXTRACT7_CONFIG.USER_AGENT,
+          Accept: "text/html",
+        },
+      });
+
+      const $ = cheerio.load(html);
+
+      // Try multiple extraction methods in priority order
+
+      // 1. Meta tag
+      const meta = $('meta[name="_gg_fb"]').attr("content");
+      if (meta && meta.length >= 10) return meta;
+
+      // 2. Data attribute
+      const dpi = $("[data-dpi]").attr("data-dpi");
+      if (dpi && dpi.length >= 10) return dpi;
+
+      // 3. Nonce from script
+      const nonce = $("script[nonce]")
+        .map((_, el) => $(el).attr("nonce"))
+        .get()
+        .find((n) => n && n.length >= 10);
+      if (nonce) return nonce;
+
+      // 4. Window string assignments
+      const stringRegex = /window\.\w+\s*=\s*["']([a-zA-Z0-9_-]{10,})["']/g;
+      for (const match of html.matchAll(stringRegex)) {
+        if (match[1]?.length >= 10) return match[1];
+      }
+
+      // 5. Window object assignments
+      const objectRegex = /window\.\w+\s*=\s*(\{[\s\S]*?\});/g;
+      for (const match of html.matchAll(objectRegex)) {
+        try {
+          const obj = new Function(`return ${match[1]}`)();
+          if (obj && typeof obj === "object") {
+            const joined = Object.values(obj)
+              .filter((v) => typeof v === "string")
+              .join("");
+            if (joined.length >= 20) return joined;
+          }
+        } catch {
+          continue;
+        }
+      }
+
+      // 6. HTML comments
+      let commentToken: string | null = null;
+      $("*")
+        .contents()
+        .each((_, node: any) => {
+          if (node.type === "comment") {
+            const match = node.data?.trim().match(/(?:_is_th|token|key):([a-zA-Z0-9_-]{10,})/);
+            if (match) {
+              commentToken = match[1];
+              return false;
+            }
+          }
+        });
+      if (commentToken) return commentToken;
+
+      throw new Error("No token found in page");
+    } catch (err: any) {
+      console.error("[extract7] Token extraction error:", err.message);
+      return null;
+    }
+  }
+
+  private async decryptPrimarySource7(
+    baseUrl: string,
+    sourceId: string,
+    key: string
+  ): Promise<{ sources: any[]; rawData: any }> {
+    // Extract token from embed page
+    const tokenUrl = `${baseUrl}/${sourceId}?k=1&autoPlay=0&oa=0&asi=1`;
+    const token = await this.extractToken7(tokenUrl);
+
+    if (!token) {
+      throw new Error("Token extraction failed");
+    }
+
+    console.log("[extract7] Token extracted:", token.substring(0, 10) + "...");
+
+    // Fetch sources with token
+    const sourcesUrl = `${baseUrl}/getSources?id=${sourceId}&_k=${token}`;
+    const { data } = await axios.get(sourcesUrl, {
+      timeout: EXTRACT7_CONFIG.TIMEOUT,
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+        Referer: `${baseUrl}/${sourceId}`,
+        "User-Agent": EXTRACT7_CONFIG.USER_AGENT,
+      },
+    });
+
+    const encrypted = data?.sources;
+    if (!encrypted) {
+      throw new Error("Missing encrypted sources in response");
+    }
+
+    // If sources are not encrypted, return directly
+    if (typeof encrypted !== "string") {
+      return { sources: encrypted, rawData: data };
+    }
+
+    // Decrypt using AES
+    const decrypted = this.decryptAES7(encrypted, key);
+    return { sources: decrypted, rawData: data };
+  }
+
+  private decryptAES7(encrypted: string, key: string): any[] {
+    // Try decryption with string key first
+    let decrypted = CryptoJS.AES.decrypt(encrypted, key).toString(CryptoJS.enc.Utf8);
+
+    // If that fails, try with hex-parsed key
+    if (!decrypted) {
+      decrypted = CryptoJS.AES.decrypt(encrypted, CryptoJS.enc.Hex.parse(key)).toString(
+        CryptoJS.enc.Utf8
+      );
+    }
+
+    if (!decrypted) {
+      throw new Error("AES decryption failed");
+    }
+
+    return JSON.parse(decrypted);
+  }
+
+  private async getFallbackSource7(
+    epID: string,
+    type: string,
+    serverName: string
+  ): Promise<{ sources: any[]; rawData: any }> {
+    // Prioritize fallback based on server name
+    const providers = this.prioritizeFallback7(serverName);
+
+    for (const provider of providers) {
+      try {
+        console.log(`[extract7] Trying fallback: ${provider.name}`);
+
+        // Fetch fallback HTML
+        const { data: html } = await axios.get(
+          `https://${provider.domain}/stream/s-2/${epID}/${type}`,
+          {
+            timeout: EXTRACT7_CONFIG.TIMEOUT,
+            headers: {
+              Referer: `https://${provider.domain}/`,
+              "User-Agent": EXTRACT7_CONFIG.USER_AGENT,
+            },
+          }
+        );
+
+        // Extract data-id from HTML
+        const dataIdMatch = html.match(/data-id=["'](\d+)["']/);
+        const realId = dataIdMatch?.[1];
+
+        if (!realId) {
+          console.log(`[extract7] No data-id found for ${provider.name}`);
+          continue;
+        }
+
+        // Fetch sources from fallback
+        const { data } = await axios.get(
+          `https://${provider.domain}/stream/getSources?id=${realId}`,
+          {
+            timeout: EXTRACT7_CONFIG.TIMEOUT,
+            headers: {
+              "X-Requested-With": "XMLHttpRequest",
+              Referer: `https://${provider.domain}/`,
+            },
+          }
+        );
+
+        if (data?.sources?.file) {
+          console.log(`[extract7] Fallback ${provider.name} succeeded`);
+          return {
+            sources: [{ file: data.sources.file }],
+            rawData: data,
+          };
+        }
+      } catch (err: any) {
+        console.log(`[extract7] Fallback ${provider.name} failed:`, err.message);
+        continue;
+      }
+    }
+
+    throw new Error("All fallback providers failed");
+  }
+
+  private prioritizeFallback7(serverName: string): Array<{ name: string; domain: string }> {
+    const providers = [...EXTRACT7_CONFIG.FALLBACK_PROVIDERS];
+    const primary =
+      serverName.toLowerCase() === "hd-1" ? providers[0] : providers[1];
+
+    return [primary, ...providers.filter((p) => p !== primary)];
+  }
+
+  private backoff7(retry: number): Promise<void> {
+    return new Promise((res) => setTimeout(res, 2000 * (retry + 1)));
   }
 }
 
