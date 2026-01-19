@@ -5,11 +5,11 @@ export default function About() {
     <div className="min-h-screen bg-[#191919] flex items-center justify-center px-4 py-12">
       <div className="max-w-[500px] w-full space-y-8 text-white">
         <Logo />
-        <h1 className="text-3xl font-bold text-primary mb-8">About Kaizen</h1>
+        <h1 className="text-3xl font-bold text-primary mb-8">About kaizoku</h1>
 
         <section className="space-y-2">
           <h2 className="text-lg font-semibold text-primary">
-            What is Kaizen?
+            What is Kaizoku?
           </h2>
           <p className="text-sm opacity-80 leading-relaxed">
             An anime streaming site. Watch shows, track episodes, discover new

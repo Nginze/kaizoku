@@ -19,3 +19,14 @@ export async function delayedQuery<T>(
   ]);
   return result;
 }
+
+export function getInitials(name: string, count?: number): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  const initials = parts.map(part => part.charAt(0).toUpperCase());
+
+  if (count === undefined) {
+    return initials.join("");
+  }
+
+  return initials.slice(0, count).join("");
+}

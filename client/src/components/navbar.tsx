@@ -12,6 +12,7 @@ import Logo from "./logo";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useAuth } from "@/features/authentication/contexts/auth-context";
 import { useMediaQuery } from "react-responsive";
+import { getInitials } from "@/lib/utils";
 
 type NavbarProps = {};
 
@@ -24,9 +25,11 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
+  console.log(isAuthenticated, user);
+
   return (
-    <div className="sm:px-4 flex items-center min-h-[55px] w-full">
-      <div className="w-full flex items-center justify-between">
+    <div className="px-4  md:py-0 border-b border-secondary md:border-none  flex items-center min-h-[55px] w-full">
+      <div className="w-full flex items-center justify-between md:pl-3 lg:pl-3">
         <div className="flex items-center gap-5">
           <Logo />
           {isDesktopOrLaptop && <SearchInput />}
@@ -35,9 +38,11 @@ export const Navbar: React.FC<NavbarProps> = () => {
         <div className="flex items-center gap-4">
           {isTabletOrMobile && <SearchInputMobile />}
           {isAuthenticated && (
-            <Avatar className="w-6 h-6 cursor-pointer">
+            <Avatar className="w-7 h-7 cursor-pointer ">
               <AvatarImage src={user?.image} alt="@user" />
-              <AvatarFallback>{user?.name}</AvatarFallback>
+              <AvatarFallback className="bg-secondary-1 ">
+                {getInitials(user?.name as string, 2)}
+              </AvatarFallback>
             </Avatar>
           )}
         </div>

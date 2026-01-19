@@ -59,3 +59,10 @@ html {
 .ani-search-card-play {
   transform: scale(3.5);
 }
+
+.logo {
+  font-family: "Poppins", serif;
+  font-optical-sizing: auto;
+  font-weight: 450;
+  font-style: normal;
+}

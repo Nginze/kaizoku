@@ -1,13 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  MediaPlayer,
-  MediaProvider,
-  Poster,
-  Track,
-  SeekButton,
-  useMediaState,
-  useMediaRemote,
-} from "@vidstack/react";
+import { MediaPlayer, MediaProvider, Poster, Track } from "@vidstack/react";
 import {
   DefaultAudioLayout,
   defaultLayoutIcons,
@@ -30,7 +22,6 @@ type PlayerProps = {
 export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
   const { selectedServer } = usePlayerControls();
   const playerRef = useRef<MediaPlayerInstance>(null);
-  const remote = useMediaRemote(playerRef);
   const [currentTime, setCurrentTime] = useState(0);
 
   const {
@@ -42,8 +33,8 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
       selectedServer
         ? selectedServer.serverId
         : watchInfo.embeds.sub[0]?.serverId,
-      watchInfo.currentEpisode
-    )
+      watchInfo.currentEpisode,
+    ),
   );
 
   const { updateRecentlyWatched } = useWatchedEpisodesStore();
@@ -67,6 +58,19 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
   // Handler for time updates
   const handleTimeUpdate = (detail: { currentTime: number }) => {
     setCurrentTime(detail.currentTime);
+    updateRecentlyWatched({
+      _id: watchInfo.anime._id,
+      idAnilist: watchInfo.anime.idAnilist,
+      title: watchInfo.anime.title,
+      coverImage: watchInfo.anime.coverImage,
+      bannerImage: watchInfo.anime.bannerImage,
+      episodeNumber: watchInfo.currentEpisode,
+      totalEpisodes: watchInfo.availableEpisodes.length,
+      watchedDuration: detail.currentTime,
+      totalDuration: watchInfo.anime.duration,
+      latestWatchedEpisode: watchInfo.currentEpisode,
+      timestamp: new Date().toISOString(),
+    });
   };
 
   const noStreamingSources =
@@ -153,9 +157,9 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
   const proxyUrl = `${
     import.meta.env.VITE_API_URL
   }/api/proxy/v2?url=${encodeURIComponent(
-    episodeSources?.sources[0]?.url || ""
+    episodeSources?.sources[0]?.url || "",
   )}&origin=${encodeURIComponent(
-    "https://megacloud.club"
+    "https://megacloud.club",
   )}&headers=${encodeURIComponent(headers)}`;
 
   const chaptersUrl = `${
@@ -179,23 +183,31 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
     currentTime <= episodeSources.outro.end;
 
   // Handlers to skip intro/outro
-  const handleSkipIntro = () => {
-    remote.seek(episodeSources.intro.end);
+  const handleSkipIntro = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log("Skipping intro to:", episodeSources.intro.end);
+    if (playerRef.current) {
+      playerRef.current.currentTime = episodeSources.intro.end;
+    }
   };
 
-  const handleSkipOutro = () => {
-    remote.seek(episodeSources.outro.end);
+  const handleSkipOutro = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (playerRef.current) {
+      playerRef.current.currentTime = episodeSources.outro.end;
+    }
   };
 
   return (
-    <>
+    <div className="relative w-full md:h-[500px] h-[200px]">
       <MediaPlayer
         ref={playerRef}
         crossOrigin
         playsInline
         onTimeUpdate={handleTimeUpdate}
-        // title={`${watchInfo.anime.title.romaji} - Episode ${watchInfo.currentEpisode}`}
-        className="w-full bg-black md:h-[500px] h-[200px] relative"
+        className="w-full h-full bg-black"
         aspectRatio="16/9"
         load="eager"
         posterLoad="eager"
@@ -224,14 +236,19 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
               label="Skip Times"
             />
           )}
-          {episodeSources.tracks[0]?.url && (
-            <Track
-              kind="subtitles"
-              src={episodeSources.tracks[0]?.url}
-              default
-              label="English Subtitles"
-            />
-          )}
+          {/* Render caption/subtitle tracks */}
+          {episodeSources.tracks
+            ?.filter((track: any) => track.kind === "captions")
+            .map((track: any, index: number) => (
+              <Track
+                key={`caption-${index}`}
+                kind="subtitles"
+                src={track.file}
+                default={track.default}
+                label={track.label || "English"}
+              />
+            ))}
+          {/* Render thumbnail tracks */}
         </MediaProvider>
 
         <DefaultAudioLayout icons={defaultLayoutIcons} />
@@ -239,32 +256,35 @@ export const Player: React.FC<PlayerProps> = ({ watchInfo }) => {
           icons={{
             ...defaultLayoutIcons,
           }}
+          thumbnails={
+            episodeSources.tracks?.filter(
+              (track: any) => track.kind === "thumbnails",
+            )[0]?.file
+          }
           slots={{
             captionButton: null,
             chaptersMenu: null,
           }}
         />
-
-        {isInIntro && (
-          <Button
-            onClick={handleSkipIntro}
-            variant={"outline"}
-            className="absolute rounded-md bg-transparent bottom-20 right-5 z-50 h-[40px] hover:bg-transparent hover:text-white"
-          >
-            Skip Intro
-          </Button>
-        )}
-
-        {isInOutro && (
-          <Button
-            onClick={handleSkipOutro}
-            variant={"outline"}
-            className="absolute rounded-md bg-transparent bottom-20 right-5 z-50 h-[40px] hover:bg-secondary hover:text-white"
-          >
-            Skip Outro
-          </Button>
-        )}
       </MediaPlayer>
-    </>
+
+      {isInIntro && (
+        <Button
+          onClick={handleSkipIntro}
+          className="skip-button absolute rounded-md right-2 bottom-10 md:bottom-20 md:right-5 z-50 md:h-[40px] text-xs px-4 md:text-sm font-medium text-white border-white/30 active:opacity-80 transition-all ease-in-out"
+        >
+          Skip Intro
+        </Button>
+      )}
+
+      {isInOutro && (
+        <Button
+          onClick={handleSkipOutro}
+          className="skip-button absolute rounded-md right-2 bottom-10 md:bottom-20 md:right-5 z-50 md:h-[40px] text-xs px-4 md:text-sm font-medium text-white border-white/30 active:opacity-80 ease-in-out"
+        >
+          Skip Outro
+        </Button>
+      )}
+    </div>
   );
 };

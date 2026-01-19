@@ -64,3 +64,23 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Skip button animation */
+@keyframes skip-fill {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.skip-button {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.4) 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: skip-fill 0.5s ease-out forwards;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+}
+

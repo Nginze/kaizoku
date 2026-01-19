@@ -35,7 +35,7 @@ export const SearchInputMobile: React.FC = () => {
 
       {/* Mobile Search Overlay */}
       {mobileSearchOpen && (
-        <div className="fixed top-0 left-0 right-0 z-[100] bg-[#191919] border-b border-secondary p-4">
+        <div className="fixed top-0 left-0 right-0 z-[100] bg-[#191919] border-b border-secondary px-4 py-3">
           <div className="flex items-center gap-2">
             <div className="flex-1 flex bg-[#141414] items-center border border-slate-50/10 rounded-sm">
               <Input

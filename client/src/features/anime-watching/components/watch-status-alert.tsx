@@ -43,7 +43,9 @@ export default function WatchStatusAlert() {
       {isExpanded ? (
         <>
           <div className="flex flex-col px-3 py-2 items-start w-full h-full gap-1.5">
-            <div className="text-xs opacity-85 w-full line">Continue Watching</div>
+            <div className="text-xs opacity-85 w-full line">
+              Continue Watching
+            </div>
             <Link
               to={`/watch/${mostRecentEpisode._id}?ep=${mostRecentEpisode.latestWatchedEpisode}`}
               className="flex items-center gap-2 hover:opacity-80 transition-opacity"
@@ -60,7 +62,7 @@ export default function WatchStatusAlert() {
             <div className="text-xs opacity-50">
               Episode {mostRecentEpisode.latestWatchedEpisode} of{" "}
               {mostRecentEpisode.totalEpisodes} •{" "}
-              {formatVideoTime(mostRecentEpisode.watchedDuration)}/{formatVideoTime(mostRecentEpisode.totalDuration)}
+              <span className="text-primary">{formatVideoTime(mostRecentEpisode.watchedDuration)}</span>
             </div>
           </div>
 
